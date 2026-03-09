@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Github, ChevronDown, Trophy, Search, Filter, ArrowUpRight, Terminal } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -53,7 +56,9 @@ function ScoreCell({ value }: { value: number }) {
   );
 }
 
-export default async function Home() {
+export default function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const data = Object.entries(resultData.evals)
     .map(([key, val], index) => {
       const parts = key.split("__");
@@ -70,7 +75,11 @@ export default async function Home() {
         isNew: index === 0,
       };
     })
-    .sort((a, b) => b.successRate - a.successRate);
+    .sort((a, b) => b.successRate - a.successRate)
+    .filter(row => 
+      row.agent.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      row.model.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/20">
@@ -119,6 +128,8 @@ export default async function Home() {
               <input 
                 type="text" 
                 placeholder="Search agents..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9 pr-4 py-2 bg-card border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 w-64"
               />
             </div>
