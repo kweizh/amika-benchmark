@@ -124,7 +124,7 @@ function TasksContent() {
       }
       return true;
     });
-  }, [searchQuery, queryStatus, queryModel, querySort, queryOrder]);
+  }, [searchQuery, queryStatus, queryModel, queryAgent, querySort, queryOrder]);
 
   const toggleSort = (field: string) => {
     if (querySort === field) {
@@ -154,7 +154,7 @@ function TasksContent() {
         </div>
         <div>
           <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
-            Task Details
+            Task
           </h1>
           <p className="text-muted-foreground max-w-2xl leading-relaxed mt-2">
             Detailed breakdown of individual task performance across different models and agents.
@@ -264,30 +264,32 @@ function TasksContent() {
               </div>
               
               <div className="overflow-x-auto pb-2">
-                <table className="w-full text-sm text-left min-w-[600px]">
+                <table className="w-full table-fixed text-sm text-left min-w-[600px]">
                   <thead className="bg-secondary/10 text-muted-foreground font-medium border-b border-border/50 select-none">
                     <tr>
-                      <th className="px-4 sm:px-6 py-3 w-[30%] sm:w-[25%]">Model / Agent</th>
-                      <th className="px-4 sm:px-6 py-3 w-[20%] sm:w-[15%] text-center">Status</th>
+                      <th className="px-4 sm:px-6 py-3 w-[50%]">Model / Agent</th>
+                      <th className="px-4 sm:px-6 py-3 w-[25%] text-center">Status</th>
                       <th 
-                        className="px-4 sm:px-6 py-3 w-[20%] cursor-pointer hover:bg-secondary/30 hover:text-foreground transition-colors group"
+                        className="px-4 sm:px-6 py-3 w-[25%] text-right cursor-pointer hover:bg-secondary/30 hover:text-foreground transition-colors group"
                         onClick={() => toggleSort("latency")}
                       >
-                        <div className="flex items-center gap-1 sm:gap-2">
+                        <div className="flex items-center justify-end gap-1 sm:gap-2">
                           Latency
                           {renderSortIcon("latency")}
                         </div>
                       </th>
-                      <th 
-                        className="px-4 sm:px-6 py-3 w-[30%] sm:w-[40%] cursor-pointer hover:bg-secondary/30 hover:text-foreground transition-colors group"
-                        onClick={() => toggleSort("tokens")}
-                      >
-                        <div className="flex items-center gap-1 sm:gap-2">
-                          <span className="hidden sm:inline">Tokens (In / Out / Cache)</span>
-                          <span className="sm:hidden">Tokens</span>
-                          {renderSortIcon("tokens")}
-                        </div>
-                      </th>
+                      {false && (
+                        <th 
+                          className="px-4 sm:px-6 py-3 w-[30%] sm:w-[40%] cursor-pointer hover:bg-secondary/30 hover:text-foreground transition-colors group"
+                          onClick={() => toggleSort("tokens")}
+                        >
+                          <div className="flex items-center gap-1 sm:gap-2">
+                            <span className="hidden sm:inline">Tokens (In / Out / Cache)</span>
+                            <span className="sm:hidden">Tokens</span>
+                            {renderSortIcon("tokens")}
+                          </div>
+                        </th>
+                      )}
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-border/30 relative">
@@ -326,16 +328,16 @@ function TasksContent() {
                             )}
                           </div>
                         </td>
-                        <td className="px-4 sm:px-6 py-3 text-muted-foreground">
+                        <td className="px-4 sm:px-6 py-3 text-muted-foreground text-right">
                           {trial.latency_breakdown ? (
                             <HoverCard openDelay={200} closeDelay={100}>
                               <HoverCardTrigger asChild>
-                                <button type="button" className="flex items-center gap-2 w-max cursor-help hover:text-foreground transition-colors">
+                                <button type="button" className="flex items-center justify-end gap-2 w-full cursor-help hover:text-foreground transition-colors">
                                   <span className="font-mono text-xs sm:text-sm">{trial.latency_sec ? `${trial.latency_sec.toFixed(1)}s` : '-'}</span>
                                 </button>
                               </HoverCardTrigger>
                               <HoverCardContent side="top" align="center" className="w-48 p-3 bg-popover shadow-xl border-border z-50">
-                                <div className="space-y-1.5 text-xs text-popover-foreground">
+                                <div className="space-y-1.5 text-xs text-popover-foreground text-left">
                                   <div className="flex justify-between">
                                     <span className="text-muted-foreground">Env Setup:</span>
                                     <span className="font-mono">{trial.latency_breakdown.env_setup?.toFixed(1) || '-'}s</span>
@@ -356,28 +358,30 @@ function TasksContent() {
                               </HoverCardContent>
                             </HoverCard>
                           ) : (
-                            <div className="flex items-center gap-2 w-max">
+                            <div className="flex items-center justify-end gap-2 w-full">
                               <span className="font-mono text-xs sm:text-sm">{trial.latency_sec ? `${trial.latency_sec.toFixed(1)}s` : '-'}</span>
                             </div>
                           )}
                         </td>
-                        <td className="px-4 sm:px-6 py-3 text-muted-foreground">
-                          <div className="flex items-center gap-2">
-                            <div className="flex flex-wrap gap-1 sm:gap-2 font-mono text-[10px] sm:text-[11px]">
-                              <span className="bg-secondary/50 text-foreground/80 px-1 sm:px-1.5 py-0.5 rounded border border-border whitespace-nowrap" title="Input Tokens">
-                                In: {trial.tokens?.input?.toLocaleString() || 0}
-                              </span>
-                              <span className="bg-secondary/50 text-foreground/80 px-1 sm:px-1.5 py-0.5 rounded border border-border whitespace-nowrap" title="Output Tokens">
-                                Out: {trial.tokens?.output?.toLocaleString() || 0}
-                              </span>
-                              {trial.tokens?.cache > 0 && (
-                                <span className="bg-secondary/50 text-foreground/80 px-1 sm:px-1.5 py-0.5 rounded border border-border whitespace-nowrap" title="Cache Tokens">
-                                  Cache: {trial.tokens?.cache?.toLocaleString()}
+                        {false && (
+                          <td className="px-4 sm:px-6 py-3 text-muted-foreground">
+                            <div className="flex items-center gap-2">
+                              <div className="flex flex-wrap gap-1 sm:gap-2 font-mono text-[10px] sm:text-[11px]">
+                                <span className="bg-secondary/50 text-foreground/80 px-1 sm:px-1.5 py-0.5 rounded border border-border whitespace-nowrap" title="Input Tokens">
+                                  In: {trial.tokens?.input?.toLocaleString() || 0}
                                 </span>
-                              )}
+                                <span className="bg-secondary/50 text-foreground/80 px-1 sm:px-1.5 py-0.5 rounded border border-border whitespace-nowrap" title="Output Tokens">
+                                  Out: {trial.tokens?.output?.toLocaleString() || 0}
+                                </span>
+                                {trial.tokens?.cache > 0 && (
+                                  <span className="bg-secondary/50 text-foreground/80 px-1 sm:px-1.5 py-0.5 rounded border border-border whitespace-nowrap" title="Cache Tokens">
+                                    Cache: {trial.tokens?.cache?.toLocaleString()}
+                                  </span>
+                                )}
+                              </div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
+                        )}
                       </tr>
                     ))}
                   </tbody>

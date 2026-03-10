@@ -59,6 +59,8 @@ export default async function Home() {
   const statsMap = new Map<string, {
     passed: number;
     total: number;
+    totalLatency: number;
+    latencyCount: number;
     model: string;
     agent: string;
   }>();
@@ -75,6 +77,8 @@ export default async function Home() {
         statsMap.set(key, {
           passed: 0,
           total: 0,
+          totalLatency: 0,
+          latencyCount: 0,
           model: modelName,
           agent: agentName
         });
@@ -85,18 +89,24 @@ export default async function Home() {
       if (trial.passed) {
         stats.passed += 1;
       }
+      if (trial.latency_sec) {
+        stats.totalLatency += trial.latency_sec;
+        stats.latencyCount += 1;
+      }
     });
   });
 
   const data = Array.from(statsMap.values())
     .map((stats, index) => {
       const successRate = stats.total > 0 ? Math.round((stats.passed / stats.total) * 100) : 0;
+      const avgLatency = stats.latencyCount > 0 ? stats.totalLatency / stats.latencyCount : 0;
       return {
         id: String(index + 1),
         model: stats.model,
         agent: stats.agent,
         passedEvals: stats.passed,
         successRate: successRate,
+        avgLatency: avgLatency,
         isNew: index === 0, // This logic might need updating if 'isNew' has a specific meaning
       };
     })
@@ -155,7 +165,7 @@ export default async function Home() {
               className="flex items-center justify-center gap-2 px-4 py-2 border border-border bg-card/50 hover:bg-secondary/50 text-foreground rounded-lg text-sm font-medium transition-colors shadow-sm backdrop-blur-sm whitespace-nowrap"
             >
               <ListTree className="w-4 h-4" />
-              View Tasks Details
+              View Tasks
             </Link>
             
             <div className="relative w-full sm:w-auto">
@@ -175,10 +185,11 @@ export default async function Home() {
             <table className="w-full text-sm text-left">
               <thead className="bg-secondary/50 text-muted-foreground font-medium border-b border-border">
                 <tr>
-                  <th className="px-6 py-4 w-[30%]">Model</th>
-                  <th className="px-6 py-4 w-[20%]">Agent</th>
+                  <th className="px-6 py-4 w-[25%]">Model</th>
+                  <th className="px-6 py-4 w-[15%]">Agent</th>
                   <th className="px-6 py-4 w-[15%] text-center">Passed</th>
-                  <th className="px-6 py-4 w-[35%]">Success Rate</th>
+                  <th className="px-6 py-4 w-[15%] text-right">Avg Latency</th>
+                  <th className="px-6 py-4 w-[30%]">Success Rate</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/50">
@@ -211,6 +222,9 @@ export default async function Home() {
                     </td>
                     <td className="px-6 py-4 text-center text-muted-foreground font-mono">
                       {row.passedEvals}
+                    </td>
+                    <td className="px-6 py-4 text-right text-muted-foreground font-mono">
+                      {row.avgLatency > 0 ? `${row.avgLatency.toFixed(1)}s` : '-'}
                     </td>
                     <td className="px-6 py-4">
                       <Link href={`./tasks?model=${encodeURIComponent(row.model)}&agent=${encodeURIComponent(row.agent.toLowerCase())}`} className="block w-full hover:opacity-80 transition-opacity">
