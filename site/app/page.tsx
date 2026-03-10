@@ -213,7 +213,7 @@ export default async function Home() {
                       {row.passedEvals}
                     </td>
                     <td className="px-6 py-4">
-                      <Link href={`/tasks?model=${encodeURIComponent(row.model)}&agent=${encodeURIComponent(row.agent.toLowerCase())}`} className="block w-full hover:opacity-80 transition-opacity">
+                      <Link href={`./tasks?model=${encodeURIComponent(row.model)}&agent=${encodeURIComponent(row.agent.toLowerCase())}`} className="block w-full hover:opacity-80 transition-opacity">
                         <ScoreCell value={row.successRate} />
                       </Link>
                     </td>
