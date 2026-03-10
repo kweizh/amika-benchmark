@@ -1,4 +1,4 @@
-import { Github, ChevronDown, Trophy, Search, Filter, ArrowUpRight, Terminal } from "lucide-react";
+import { Github, Trophy, Search, Terminal } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import resultData from "./result-data";
