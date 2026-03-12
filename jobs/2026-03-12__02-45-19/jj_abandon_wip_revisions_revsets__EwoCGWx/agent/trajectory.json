@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you prune the stale WIP revisions from the Jujutsu repository. Let me complete this step by step.  ",
       "reasoning_content": " The user wants me to complete a task involving Jujutsu (jj) version control system. Let me break down what needs to be done:\n\n1. Inspect the current log with `jj log`\n2. Abandon WIP revisions using a revset expression\n3. Verify the result\n\nLet me start by running the commands to complete this task. ",
       "tool_calls": [
@@ -39,7 +39,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I can see the current log with two WIP commits (no description set) that are children of the `feature/core` bookmark. Now let me abandon those stale WIP revisions:  ",
       "reasoning_content": " Good, I can see the current log. There are:\n1. Root commit (zzzzzzzz)\n2. \"Initial project scaffold\" commit (yomlvppo) with bookmark \"main\"\n3. \"Add core library module\" commit (vrwlxnvo) with bookmark \"feature/core\"\n4. Two WIP commits with \"(no description set)\":\n   - knnwumty (1d308619)\n   - mpuuvout (babb6d72)\n\nNow I need to abandon those WIP revisions using the revset expression. ",
       "tool_calls": [
@@ -63,7 +63,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  Now let me verify the cleanup was successful:     ",
       "reasoning_content": " None         Great! The command abandoned the 2 WIP commits. Now let me verify the result:\n\n1. Check `jj log` to confirm only the bookmarked commits remain\n2. Check the revset query to confirm no matching WIP revisions remain\n3. Verify the bookmarks are still present\n4. Confirm the files still exist ",
       "tool_calls": [
@@ -120,7 +120,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  All verification checks passed:\n\n1. The 2 WIP commits with no description were abandoned: `mpuuvout 1d308619` and `knnwumty babb6d72`\n2. `jj log` now shows only the `main` and `feature/core` bookmarks with their proper commits\n3. `jj log -r 'mutable() & description(\"\") & ~::bookmarks()'` returns empty (no more matching commits)\n4. Both bookmarks are still present:\n   - `main` \u2192 \"Initial project scaffold\"\n   - `feature/core` \u2192 \"Add core library module\"\n5. Files still exist:\n   - `/home/user/mylib/README.md`\n   - `/home/user/mylib/src/lib.rs`\n\nThe cleanup was successful!",
       "reasoning_content": " None "
     },
@@ -132,7 +132,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The task is complete. I have successfully pruned the stale WIP revisions from the Jujutsu repository. Let me summarize what was accomplished:\n\n1. Inspected the current log - found 2 WIP commits with no description\n2. Abandoned those WIP revisions using the revset `mutable() & description(\"\") & ~::bookmarks()`\n3. Verified the result:\n   - `jj log` now shows only main and feature/core bookmarks\n   - The revset query returns empty\n   - Both bookmarks are still present\n   - README.md and src/lib.rs still exist\n\nI should use attemptCompletion to submit the final result. ",
       "tool_calls": [

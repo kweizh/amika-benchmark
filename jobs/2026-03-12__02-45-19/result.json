@@ -7,7 +7,7 @@
         "n_trials": 64,
         "n_errors": 2,
         "evals": {
-            "pochi__moonshotai-Kimi-K2.5__tasks": {
+            "pochi__moonshotai-kimi-k2.5__tasks": {
                 "n_trials": 63,
                 "n_errors": 2,
                 "metrics": [

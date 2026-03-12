@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll configure the jj command alias and UI pager setting for you. Let me create a todo list and complete these tasks.  ",
       "reasoning_content": " The user wants me to configure two settings in the jj (Jujutsu) version control system:\n1. Create an alias `st` that expands to `status`\n2. Set `ui.paginate` to `\"never\"` to disable the pager\n\nI need to use the `jj config set --user` command to make these changes, not edit the file directly.\n\nLet me start by creating a todo list for this task, then execute the commands. ",
       "tool_calls": [
@@ -64,7 +64,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Now let me complete the first task - creating the alias. ",
       "tool_calls": [
@@ -88,7 +88,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The alias has been set. Now let me set the pager configuration. ",
       "tool_calls": [
@@ -137,7 +137,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -161,7 +161,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  Now let me mark the second task as complete and verify both settings. ",
       "tool_calls": [
@@ -210,7 +210,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -246,7 +246,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " The alias works and the config is set correctly. Let me also verify the config file directly to confirm the settings are persisted correctly. ",
       "tool_calls": [
@@ -312,7 +312,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The config file shows only the [user] section, but `jj config list` shows the settings. Let me check if jj is storing configs elsewhere. The config path command should tell me where the user config is stored. ",
       "tool_calls": [
@@ -336,7 +336,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneThe user config is actually at `/root/.config/jj/config.toml`, not `/home/user/.config/jj/config.toml`. Let me read that file instead. ",
       "tool_calls": [
@@ -360,7 +360,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The config file is at `/root/.config/jj/config.toml` (since we're running as root). The file shows the alias and ui.paginate settings are correctly configured:\n\n- `aliases.st = [\"status\"]`\n- `ui.paginate = \"never\"`\n\nBoth tasks are complete. Let me update the todo list and provide the final confirmation. ",
       "tool_calls": [
@@ -415,7 +415,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " All tasks are complete. Let me provide a summary. ",
       "tool_calls": [

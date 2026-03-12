@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you create and move bookmarks in the jj repository. Let me break this down into the required tasks.\n\nFirst, I need to navigate to the repository directory and then perform the two bookmark operations.\n\n",
       "tool_calls": [
         {
@@ -38,7 +38,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let me check the current state of the repository to confirm the commit history and existing bookmarks.\n\n",
       "tool_calls": [
         {
@@ -61,7 +61,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me also check the current bookmarks to confirm the initial state.\n\n",
       "tool_calls": [
         {
@@ -84,7 +84,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! I can now see the current state of the repository:\n\n1. The commit history shows 4 commits from oldest to newest:\n   - Root commit (`chore: init webapp`)\n   - Commit with `feat: add homepage route` (has the `dev` bookmark)\n   - Commit with `feat: add contact page` \n   - Empty working copy commit (current `@`)\n\n2. Currently, only the `dev` bookmark exists, pointing to the second commit (`feat: add homepage route`).\n\nNow I'll perform the two required tasks:\n\n## Task 1: Create a new bookmark `feature/contact` on commit 3\n\nCommit 3 is the parent of the working copy (`@-`), which has the description `feat: add contact page`.\n\n",
       "tool_calls": [
         {
@@ -107,7 +107,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Great! I've successfully created the `feature/contact` bookmark pointing to commit 3 (`feat: add contact page`).\n\n## Task 2: Move the existing `dev` bookmark forward to commit 3\n\nNow I'll move the existing `dev` bookmark from commit 2 to commit 3 (which is `@-`).\n\n",
       "tool_calls": [
         {
@@ -130,7 +130,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Excellent! I've successfully moved the `dev` bookmark to point to commit 3 (`feat: add contact page`).\n\n## Final Verification\n\nLet me verify that both bookmarks now point to the same commit (commit 3):\n\n",
       "tool_calls": [
         {
@@ -153,7 +153,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! Let me also run `jj log` to visually confirm the bookmarks are correctly placed:\n\n",
       "tool_calls": [
         {
@@ -176,7 +176,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I have successfully completed both tasks for managing bookmarks in the jj repository:\n\n1. Created a new bookmark `feature/contact` on commit 3 (`feat: add contact page`)\n2. Moved the existing `dev` bookmark forward to also point to commit 3\n\nBoth bookmarks now correctly point to the same commit, as verified by the `jj bookmark list` and `jj log` commands. The commit with description `feat: add contact page` now has both bookmarks (`dev` and `feature/contact`) attached to it, while the working copy remains unchanged.\n\n",
       "tool_calls": [
         {

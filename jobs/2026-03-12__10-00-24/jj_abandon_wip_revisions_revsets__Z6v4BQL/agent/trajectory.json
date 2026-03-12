@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you prune stale WIP revisions using revsets in your Jujutsu repository. Let me start by inspecting the current log to understand the repository state.\n\n",
       "tool_calls": [
         {
@@ -38,7 +38,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I can see the repository structure. As expected, there are two WIP commits with no description that are children of the `feature/core` bookmark. Let me verify these commits match our criteria by checking if they have empty descriptions and are not ancestors of any bookmarks.\n\nLet's run the abandon command to remove all mutable revisions that have an empty description and are not ancestors of any local bookmark:\n\n",
       "tool_calls": [
         {
@@ -61,7 +61,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Great! I've successfully abandoned the two WIP commits that had empty descriptions and were not ancestors of any local bookmarks. Now let's verify the result by checking the log:\n\n",
       "tool_calls": [
         {
@@ -84,7 +84,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! The log now shows only the commits with bookmarks (`main` and `feature/core`) and the working-copy commit. The two WIP scratch commits have been successfully removed.\n\nLet's run one more verification to confirm that there are no remaining mutable revisions with empty descriptions that are not ancestors of bookmarks:\n\n",
       "tool_calls": [
         {
@@ -107,7 +107,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Excellent! The command returned an empty result, confirming that there are no more mutable revisions with empty descriptions that are not ancestors of bookmarks.\n\nLet's also verify that our bookmarks are still present:\n\n",
       "tool_calls": [
         {
@@ -130,7 +130,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! Both bookmarks (`main` and `feature/core`) are still present.\n\nFinally, let's verify that our expected files still exist:\n\n",
       "tool_calls": [
         {
@@ -153,7 +153,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I've successfully completed the task of pruning stale WIP revisions using revsets in your Jujutsu repository. Here's what I accomplished:\n\n1. **Inspected the current log**: Found two WIP commits with empty descriptions that were not associated with any bookmarks\n2. **Abandoned stale WIP revisions**: Used the revset `mutable() & description(\"\") & ~::bookmarks()` to identify and abandon the two WIP commits\n3. **Verified the result**: Confirmed that:\n   - The jj log now shows only the commits with bookmarks (`main` and `feature/core`)\n   - The revset query `mutable() & description(\"\") & ~::bookmarks()` returns empty, confirming no matching revisions remain\n   - Both bookmarks are still present and intact\n   - Required files (`README.md` and `src/lib.rs`) still exist\n\nThe repository is now clean with only the meaningful commits preserved, and the stale WIP revisions have been properly abandoned.\n\n",
       "tool_calls": [
         {

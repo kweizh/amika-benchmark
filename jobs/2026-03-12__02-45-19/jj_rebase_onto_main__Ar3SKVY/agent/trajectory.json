@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you rebase the working copy onto the `main` bookmark and save the log output. Let me start by exploring the repository state.   ",
       "reasoning_content": " The user wants me to work with a jj (Jujutsu) repository. Let me understand the task:\n\n1. We're in `/home/user/project`\n2. There's a `main` bookmark pointing to `chore: project setup` commit\n3. There's a separate line of commits from `root()`:\n   - `feat: add helper` commit which created `helper.py`\n   - Working copy `@` is at `feat: add helper`\n4. The `main` bookmark was updated, and `feat: add helper` needs to be rebased onto `main` (not on root)\n5. After rebasing, I need to save the output of a specific `jj log` command to `/home/user/project/rebase.log`\n\nLet me first navigate to the project directory and explore the jj repository structure. ",
       "tool_calls": [
@@ -50,7 +50,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Now I can see the current state. The working copy `@` is at `feat: add helper`, but its parent is the root commit `zzzzzzzz`. The `main` bookmark is at `chore: project setup`. I need to rebase `@` onto `main`.  ",
       "reasoning_content": " I can see:\n1. `@` (working copy) is at `feat: add helper` with change ID `wozrqzxt`\n2. The parent of `@` is the root commit (`zzzzzzzz 00000000`)\n3. There's a `main` bookmark at `chore: project setup` (change ID `okqurxxp`)\n\nI need to rebase the working copy (`@` - `feat: add helper`) on top of `main` (which points to `chore: project setup`). Then I need to save the log output to `/home/user/project/rebase.log`.\n\nLet me first do the rebase operation using jj rebase. ",
       "tool_calls": [
@@ -74,7 +74,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " The rebase was successful. Let me verify the state and create the log file.     ",
       "reasoning_content": " The rebase was successful. Now let me verify:\n1. The parent of `@` is now the commit at `main` (`chore: project setup`)\n2. `@` still has description `feat: add helper`\n3. Both files exist\n\nLet me verify the state and create the log file. ",
       "tool_calls": [
@@ -109,7 +109,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None \n\nEverything looks correct:\n1. The parent of `@` is now `main | chore: project setup`\n2. `@` is still `feat: add helper`\n3. Now I need to save the log output to `/home/user/project/rebase.log`\n\nLet me save the log output to the file. ",
       "tool_calls": [
@@ -133,7 +133,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None         I need to verify the log file was created and check its contents, and also verify both files exist in the working directory. ",
       "tool_calls": [
@@ -168,7 +168,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Good! All tasks are complete:\n\n1. \u2705 The parent of `@` is the commit described as `chore: project setup` (verified via `jj status`)\n2. \u2705 `feat: add helper` is the description of `@` \n3. \u2705 Both `main.py` and `helper.py` exist in the working directory (verified via `ls -la`)\n4. \u2705 `/home/user/project/rebase.log` exists and contains both `chore: project setup` and `feat: add helper` (verified via `cat`)\n\nAll tasks are complete. ",
       "tool_calls": [

@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you insert a commit between A and B using jj commands. Let me start by exploring the repository and understanding the current state.  ",
       "reasoning_content": " The user wants me to work with a jj (Jujutsu) repository to manipulate the commit history. Let me break down what I need to do:\n\n1. There's a repository at `/home/user/repo`\n2. Current history: A -> B -> C (where C has description 'C')\n3. I need to insert a new commit between A and B with:\n   - File: config.txt with content \"base=true\"\n   - Description: \"Add config\"\n4. After insertion, the history should be: A -> Add config -> B -> C\n5. Finally, create a new empty commit on top of C and make it the current working copy\n\nI should use jj commands for this. Let me first navigate to the repo and understand the current state. ",
       "tool_calls": [
@@ -70,7 +70,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Now let me navigate to the repo and check the jj status. ",
       "tool_calls": [
@@ -94,7 +94,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The working copy is an empty commit with no description. The parent commit is `C` (commit hash 7570f232). Let me check the full log to see A, B, and C. ",
       "tool_calls": [
@@ -118,7 +118,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " I can see the current jj history:\n- @ is current working copy (empty, no description)\n- Commit C (prvmzvsr/7570f232)\n- Commit B (pywzuyso/d371b393)\n- Commit A (zltvylzo/a0033f09)\n\nSo the history is: root -> A -> B -> C -> current (empty)\n\nI need to insert a new commit between A and B. In jj, I should use `jj new --before` or `jj new --after` with the revset.\n\nLet me update my todos and check what the parent of B is:\n- Parent of B should be A\n\nIn jj, to insert a commit between A (zltvylzo) and B (pywzuyso), I should:\n1. Create a new commit after A (or before B)\n2. The command would be something like: `jj new --before B` or `jj new --after A`\n\nLet me do this. ",
       "tool_calls": [
@@ -173,7 +173,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I can see the current state:\n- A: `zltvylzo` (change_id), `a0033f09` (commit_id), description \"A\"\n- B: `pywzuyso` (change_id), `d371b393` (commit_id), description \"B\"\n- C: `prvmzvsr` (change_id), `7570f232` (commit_id), description \"C\"\n\nThere's also an empty working copy on top of C.\n\nI need to:\n1. Insert a new commit between A and B\n2. Use jj's `new --insert-after` to insert after A, which will automatically rebase B and C\n\nLet me do this:  I can see the history:\n- A: `zltvylzo` (a0033f09)\n- B: `pywzuyso` (d371b393)\n- C: `prvmzvsr` (7570f232)\n\nNow I'll insert a new commit after A (which will automatically rebase B and C). First, let me create the config.txt file and then use `jj new --insert-after`:  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -197,7 +197,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  The editor failed. Let me use `-m` flag for description and create the file in a cleaner way. First, let me see the current state and abandon the incomplete operation:    ",
       "reasoning_content": " None editorcommand failed. Let me use --message flag instead to set the description directly from command line. I need to use `jj new --insert-after A` with the file and message properly. Let me abandon what I did and try again. ",
       "tool_calls": [
@@ -221,7 +221,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   Good, let me redo this properly. I'll use `jj describe -m` instead of relying on an editor:      ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -245,7 +245,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Now the working copy is the new commit with A as parent. I need to use `jj new --insert-after` to properly insert it and then add the file. Let me abandon this and do it correctly:    ",
       "reasoning_content": " None  Now I need to put it after A using `jj rebase`. Actually, looking at the output, the current working copy already has A as parent. But I created an empty commit on top of A. I need to:\n1. Add the config.txt file\n2. Make sure this commit is inserted between A and B\n\nWait, looking at the output again: \"Parent commit (@-)      : zltvylzo a0033f09 A\", so the working copy is currently on top of A. But I need to insert this commit between A and the old B. \n\nLet me check what happened with the previous commands. I think the issue was that I used `jj new --insert-after` which created the commit correctly, but then the description edit failed.\n\nLet me try again properly this time. I'll use the describe with -m flag inline, and also add the file before describing. ",
       "tool_calls": [
@@ -269,7 +269,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " None     Let me try a different approach. I need to:\n  1. Position myself at commit A\n  2. Create the new commit with the file\n  3. Let jj rebase B and C automatically\n \n  First, let me edit A and then use `jj new` after it:      ",
       "reasoning_content": " None     Let me try a different approach. I need to:\n  1. Position myself at commit A\n  2. Create the new commit with the file\n  3. Let jj rebase B and C automatically\n \n  First, let me edit A and then use `jj new` after it:      ",
       "tool_calls": [
@@ -293,7 +293,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  Good, now I'm at commit A. Now I'll create the new commit after A using `jj new` which will automatically insert it and rebase descendants. Then I'll add the file. ",
       "tool_calls": [
@@ -317,7 +317,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  The `jj describe` is trying to use nano as the editor. I don't need to call describe again since I already passed `-m \"Add config\"`. The commit should already have the description. Let me check the status and then manually rebase B onto this new commit. ",
       "tool_calls": [
@@ -341,7 +341,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Good! The file was created. Now let me check the current log and see that B and C are not being tracked as descendants:  ",
       "reasoning_content": " Good! The file was added. Now I need to rebase B and C on top of this new commit. Let me check the current log: ",
       "tool_calls": [
@@ -365,7 +365,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   I see the issue - the new commit is on a separate branch. I need to use `jj new --insert-after` to properly insert. Let me abandon this and do it correctly:      ",
       "reasoning_content": " None  I see the issue - the new commit is on a separate branch. I need to use `jj new --insert-after` to properly insert it. Let me abandon this and do it correctly. ",
       "tool_calls": [
@@ -389,7 +389,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Hmm, let me check the log again to understand the structure: ",
       "tool_calls": [
@@ -413,7 +413,7 @@
     {
       "step_id": 16,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Good. Now I've abandoned the incorrectly placed commit. B and C are still dangling (they were rebased to point to A but now there's a split). Now let me use the proper approach with `--insert-after`: ",
       "tool_calls": [
@@ -437,7 +437,7 @@
     {
       "step_id": 17,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  Good, it rebased 3 descendant commits. Now let me check the log and then add the config.txt file: ",
       "tool_calls": [
@@ -461,7 +461,7 @@
     {
       "step_id": 18,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  Now I need to add the config.txt file to this commit. The working copy is at the \"Add config\" commit:  ",
       "reasoning_content": " The `--insert-after` puts the new commit BEFORE the B commit in the log output (nutynnvy is after zltvylzo). Now I need to add the config.txt file to this commit and then create an empty commit on top of C.\n\nLet me add the file: ",
       "tool_calls": [
@@ -485,7 +485,7 @@
     {
       "step_id": 19,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Good! Now let me verify the history is linear as expected: ",
       "tool_calls": [
@@ -509,7 +509,7 @@
     {
       "step_id": 20,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Now I have:\n- A -> Add config -> B -> C\n\nThe history is linear! Let me verify:  ",
       "reasoning_content": " Now I have:\n- A -> Add config -> B -> C\n\nThe history is linear! Let me verify:  ",
       "tool_calls": [
@@ -564,7 +564,7 @@
     {
       "step_id": 21,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   The history is now linear: A -> Add config -> B -> C. Now I need to create a new empty commit on top of C and make it the current working copy:    ",
       "reasoning_content": " NoneThe history is now linear as required: A -> Add config -> B -> C. Now I need to create a new empty commit on top of C and make it the current working copy. I should move to C and then create a new commit: ",
       "tool_calls": [
@@ -588,7 +588,7 @@
     {
       "step_id": 22,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  Let me verify the final log: ",
       "tool_calls": [
@@ -612,7 +612,7 @@
     {
       "step_id": 23,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  The history is now:\n- A (zltvylzo)\n- Add config (nutynnvy)\n- B (pywzuyso)\n- C (prvmzvsr)\n- new empty commit (mwxmwkon) - current working copy\n\nThis is exactly what was requested:\n1. \u2705 Inserted new commit before B (and after A)\n2. \u2705 Added file config.txt with exact content \"base=true\" to this new commit\n3. \u2705 Set description to \"Add config\"\n4. \u2705 History is linear: A -> Add config -> B -> C\n5. \u2705 Created new empty commit on top of rebased C\n\nLet me verify the config.txt content: ",
       "tool_calls": [
@@ -636,7 +636,7 @@
     {
       "step_id": 24,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -660,7 +660,7 @@
     {
       "step_id": 25,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  Good, the file has the correct content. All tasks are now complete. Let me finalize: ",
       "tool_calls": [

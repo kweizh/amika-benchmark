@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you squash consecutive bot commits while preserving human commits. Let me first examine the git history to understand the current state and identify which commits need to be squashed.\n\n",
       "tool_calls": [
         {
@@ -38,7 +38,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me get a clearer view of the commit history with authors and dates to better identify consecutive bot commits that need to be squashed.\n\n",
       "tool_calls": [
         {
@@ -61,7 +61,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me get the full commit history to properly identify all consecutive bot commits that need to be squashed.\n\n",
       "tool_calls": [
         {
@@ -84,7 +84,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check if there are more commits in the history:\n\n",
       "tool_calls": [
         {
@@ -107,7 +107,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I have a clear picture of the commit history. Let me identify the consecutive bot commits that need to be squashed:\n\n",
       "tool_calls": [
         {
@@ -130,7 +130,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Based on the commit history, I can now identify the consecutive bot commits that need to be squashed:\n\n1. First group: c48cb25, 1e775ed, f307015 (3 bot commits)\n2. Second group: 133e651, 76996e3 (2 bot commits)\n3. Third group: 074f929, 59262c1, c961c7b (3 bot commits)\n\nLet me create a plan for squashing these commits:\n\n",
       "tool_calls": [
         {
@@ -184,7 +184,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll perform an interactive rebase to squash the consecutive bot commits. First, let me check the current branch and then perform the rebase:\n\n",
       "tool_calls": [
         {
@@ -207,7 +207,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the current HEAD commit and the main branch commit to understand the relationship:\n\n",
       "tool_calls": [
         {
@@ -230,7 +230,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {
@@ -253,7 +253,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the commit history from the main branch to understand the structure better:\n\n",
       "tool_calls": [
         {
@@ -276,7 +276,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the full history from the earliest commit to understand the complete structure:\n\n",
       "tool_calls": [
         {
@@ -299,7 +299,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll create a script to perform the squash operations. I need to do an interactive rebase to combine the consecutive bot commits. Let me first create a backup of the current state:\n\n",
       "tool_calls": [
         {
@@ -322,7 +322,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll create a script to perform the interactive rebase. I'll need to create a file with the rebase instructions:\n\n",
       "tool_calls": [
         {
@@ -346,7 +346,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the current git configuration to make sure I can perform the rebase:\n\n",
       "tool_calls": [
         {
@@ -369,7 +369,7 @@
     {
       "step_id": 16,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me set up a temporary git user for the rebase operation:\n\n",
       "tool_calls": [
         {
@@ -392,7 +392,7 @@
     {
       "step_id": 17,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll perform the interactive rebase using the script I created. I'll need to set the sequence editor to use my script:\n\n",
       "tool_calls": [
         {
@@ -415,7 +415,7 @@
     {
       "step_id": 18,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I need to stash the changes first before performing the rebase:\n\n",
       "tool_calls": [
         {
@@ -438,7 +438,7 @@
     {
       "step_id": 19,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll try the rebase again:\n\n",
       "tool_calls": [
         {
@@ -461,7 +461,7 @@
     {
       "step_id": 20,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "It looks like the rebase was successful but it didn't quite work as expected. Let me check the current commit history to see what happened:\n\n",
       "tool_calls": [
         {
@@ -484,7 +484,7 @@
     {
       "step_id": 21,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "It seems that the rebase only kept the human commits and discarded the bot commits entirely. Let me try a different approach by manually creating the squashed commits. First, let me reset to the original state:\n\n",
       "tool_calls": [
         {
@@ -507,7 +507,7 @@
     {
       "step_id": 22,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me try a different approach. I'll manually create the squashed commits by resetting to the first commit and then cherry-picking the commits I want to keep, combining the bot commits as I go:\n\n",
       "tool_calls": [
         {
@@ -530,7 +530,7 @@
     {
       "step_id": 23,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll create the squashed commits manually. Let me start by creating the first squashed commit for the first group of bot commits:\n\n",
       "tool_calls": [
         {
@@ -553,7 +553,7 @@
     {
       "step_id": 24,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me try again with the correct git command:\n\n",
       "tool_calls": [
         {
@@ -576,7 +576,7 @@
     {
       "step_id": 25,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me use the correct git commit command:\n\n",
       "tool_calls": [
         {

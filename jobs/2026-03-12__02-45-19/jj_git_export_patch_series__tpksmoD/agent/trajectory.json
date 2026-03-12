@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you export the patch series from the jj repository. Let me start by exploring the repository structure and understanding the current state.   ",
       "reasoning_content": " The user wants me to create a patch series from a jj repository. Let me first explore the repository structure and understand the current state of the jj repository at `/home/user/patch-work`.\n\nI need to:\n1. Check the jj repository and understand the commit stack\n2. Create the patches directory\n3. Export each commit as a patch file\n4. Create a cover letter\n5. Write a log file\n\nLet me start by exploring the repository. ",
       "tool_calls": [
@@ -51,7 +51,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "     ",
       "reasoning_content": " Now I can see the repository structure. The commits are:\n1. `fix: correct off-by-one error in parser` - vmuswuyu\n2. `fix: handle empty input in tokenizer` - pzrznrnw\n3. `refactor: extract validation helper` - onxllvwm\n4. `test: add parser edge case tests` - owwsmotq\n5. `docs: update parser documentation` - zsovvyyz (patch-series bookmark)\n\nLet me get more details about the changes in each commit. ",
       "tool_calls": [
@@ -109,7 +109,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " The repository structure is clear. I see the 5 commits above main, and the files involved are in place:\n- `src/parser.py`, `src/tokenizer.py`, `src/validation.py`\n- `tests/test_parser.py`\n- `docs/parser.md`\n\nLet me now read the files to understand their contents for generating the diff. ",
       "tool_calls": [
@@ -194,7 +194,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " NoneI need to export the patches. Let me get the git object IDs and diffs for each commit. I'll need to work with the git backend of the colocated repo.\n\nFirst, let me get the git commit IDs and then export via git format-patch or generate them manually using jj commands.\n\nSince this is a colocated jj+git repository, I can use \"jj git export\" to sync, then use \"git format-patch\" to generate the patches. Or I can manually generate each patch using jj diff commands.\n\nLet me first try to get the git commit IDs and then use git format-patch if possible.\n\nActually, since the repository is colocated, we need to export jj changes to git first. ",
       "tool_calls": [
@@ -231,7 +231,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Good, the repo is colocated with git. Let me check if git format-patch can work. First, let me get the commit range and then use git format-patch. ",
       "tool_calls": [
@@ -256,7 +256,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "    ",
       "reasoning_content": " None\")Let me check the generated patches to understand their format. ",
       "tool_calls": [
@@ -302,7 +302,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " NoneThe patches have been created with git format-patch. They already have the proper format with all the required headers. Let me read the remaining patches and then create the cover letter and log file. ",
       "tool_calls": [
@@ -337,7 +337,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None\">\nGood! The patches are correctly formatted with the [PATCH N/5] format. Now I need to:\n1. Update the todo list to mark patches 1-5 as complete\n2. Create the cover letter (0000)\n3. Create the log file\n\nLet me update the todos and create the remaining files. ",
       "tool_calls": [
@@ -422,7 +422,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None\t\t\t\t} else { ",
       "tool_calls": [
@@ -507,7 +507,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "    ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -602,7 +602,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " All tasks are completed. Let me verify the acceptance criteria one more time:\n\n1. \u2705 `/home/user/patches/` directory exists with exactly 6 files (0000 through 0005)\n2. \u2705 Each patch file (0001-0005) contains `Subject: [PATCH` and the correct sequence number\n3. \u2705 Each patch file contains a diff section with lines starting with `+` and `-`\n4. \u2705 The cover letter (0000) contains `[PATCH 0/5]` in its Subject line\n5. \u2705 `/home/user/patch_export_log.txt` exists with exactly 5 non-empty lines\n\nAll acceptance criteria are met. ",
       "tool_calls": [
@@ -626,7 +626,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " All tasks completed successfully:\n\n1. \u2705 Created `/home/user/patches/` directory with exactly 6 files (0000 through 0005)\n2. \u2705 Each patch file (0001-0005) contains `Subject: [PATCH` with correct sequence numbers (1/5, 2/5, 3/5, 4/5, 5/5)\n3. \u2705 Each patch file contains diff sections with `+` and `-` lines\n4. \u2705 The cover letter (0000) contains `[PATCH 0/5]` in its Subject line\n5. \u2705 `/home/user/patch_export_log.txt` exists with exactly 5 non-empty lines\n\nLet me verify the diff sections exist and then complete. ",
       "tool_calls": [
@@ -650,7 +650,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " All patches have the required content. Let me verify the cover letter has the required format. ",
       "tool_calls": [
@@ -674,7 +674,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " All tasks are complete. Let me verify everything meets the acceptance criteria:\n\n1. \u2705 `/home/user/patches/` directory exists with exactly 6 files (0000 through 0005)\n2. \u2705 Each patch file (0001-0005) contains `Subject: [PATCH` and the correct sequence number (verified with head command)\n3. \u2705 Each patch file contains a diff section (lines starting with `+` or `-`) (verified with grep, all have multiple +/- lines)\n4. \u2705 The cover letter (0000) contains `[PATCH 0/5]` in its Subject line (verified)\n5. \u2705 `/home/user/patch_export_log.txt` exists with exactly 5 non-empty lines (verified with cat command)\n\nAll acceptance criteria are met. I can now call attemptCompletion. ",
       "tool_calls": [

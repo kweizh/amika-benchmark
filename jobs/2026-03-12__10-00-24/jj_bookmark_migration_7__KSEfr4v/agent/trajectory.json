@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you migrate from Git and manage your bookmarks in the jj repository. Let me break this down into steps and create a todo list to track our progress.\n\n",
       "tool_calls": [
         {
@@ -69,7 +69,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "First, let me check the current repository status and bookmarks to understand the current state.\n\n",
       "tool_calls": [
         {
@@ -92,7 +92,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let me check the current bookmarks to see their positions:\n\n",
       "tool_calls": [
         {
@@ -115,7 +115,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I see the command is \"bookmark\" not \"bookmarks\". Let me check the current bookmarks:\n\n",
       "tool_calls": [
         {
@@ -138,7 +138,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I can see the current state:\n- We have a working copy commit (lpvklxok) that's ahead of the main branch\n- The feature-x bookmark is pointing to an older commit (c24c5bed)\n- The main bookmark is at the initial commit (4da3f851)\n\nLet me move the feature-x bookmark to the current working copy commit:\n\n",
       "tool_calls": [
         {
@@ -161,7 +161,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I see that jj is refusing to move the bookmark backwards. Since we want to move it forward to the current working copy commit, I'll use the --allow-backwards flag as suggested:\n\n",
       "tool_calls": [
         {
@@ -184,7 +184,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Good! Now let's create the bugfix-y bookmark pointing to the commit immediately preceding the current working copy (@-):\n\n",
       "tool_calls": [
         {
@@ -207,7 +207,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let's verify the bookmarks to confirm they're in the correct positions:\n\n",
       "tool_calls": [
         {
@@ -230,7 +230,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! Now let's run the verification command and save its output to the specified log file:\n\n",
       "tool_calls": [
         {
@@ -253,7 +253,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let's save this output to the verification log file:\n\n",
       "tool_calls": [
         {
@@ -277,7 +277,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me update the todo list to reflect the completed tasks:\n\n",
       "tool_calls": [
         {
@@ -331,7 +331,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {

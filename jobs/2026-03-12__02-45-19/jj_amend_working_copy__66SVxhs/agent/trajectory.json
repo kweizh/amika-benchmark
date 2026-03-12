@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The user wants me to:\n1. Amend the current working copy commit description from \"wip: add feature\" to \"feat: implement hello function\"\n2. Save the output of `jj log --no-graph -r @ -T 'description'` to `/home/user/repo/desc.log`\n\nLet me first explore the repository structure to understand what we're working with. ",
       "tool_calls": [
@@ -40,7 +40,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " I can see the repository structure. It has a `.jj` directory indicating it's using Jujutsu (jj), with a README.md and feature.py file. The feature.py file exists. I need to:\n\n1. Check the current commit with `jj log`\n2. Amend the commit message from \"wip: add feature\" to \"feat: implement hello function\" using `jj describe`\n3. Save the output of the log command to desc.log\n\nLet me first check the current state with jj log. ",
       "tool_calls": [
@@ -64,7 +64,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " I can see the current jj log shows:\n- The current working copy (@) with description \"wip: add feature\"\n- A parent commit \"chore: initial setup\"\n- Root\n\nI need to:\n1. Amend the working copy commit description from \"wip: add feature\" to \"feat: implement hello function\"\n2. Save the output of `jj log --no-graph -r @ -T 'description'` to `/home/user/repo/desc.log`\n\nIn jj, I can use `jj describe` or `jj amend` to change the description of the working copy commit. The `jj describe` command is used to update the description of a commit.\n\nLet me first check the current feature.py content to verify it's unchanged, then use `jj describe` to update the description. ",
       "tool_calls": [
@@ -88,7 +88,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The repository state is:\n- Current working copy commit has description \"wip: add feature\"\n- feature.py exists with content `def hello():\\n    pass`\n\nI need to amend the working copy commit description without changing the file contents. In jj, this can be done with `jj describe -m \"new message\"` or `jj commit --amend -m \"new message\"`.\n\nLet me amend the commit description. ",
       "tool_calls": [
@@ -112,7 +112,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -136,7 +136,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -160,7 +160,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -184,7 +184,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -208,7 +208,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [

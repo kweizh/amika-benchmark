@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you rebase the `feature/add-metrics` branch onto the current `main` bookmark. Let me perform these steps in the monorepo directory.  ",
       "reasoning_content": " The user wants me to perform a jj rebase operation on a feature branch. Let me understand the task:\n\n1. There's a jj repo in `/home/user/monorepo`\n2. There's a `main` bookmark that has moved forward with a new commit (adding deploy.sh)\n3. There's a `feature/add-metrics` bookmark that was branched off an older main\n4. I need to rebase the feature branch onto the current main\n\nThe steps are:\n1. Run `jj rebase -s 'roots(main..feature/add-metrics)' -d main`\n2. Verify with `jj log -r 'main::feature/add-metrics'`\n3. Confirm with `jj bookmark list`\n\nLet me start by running these commands. ",
       "tool_calls": [
@@ -40,7 +40,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " The rebase is complete. Let me verify the rebased history and bookmark tracking:   ",
       "reasoning_content": " The rebase was successful. Now let me verify the rebased history as requested in step 2. ",
       "tool_calls": [
@@ -77,7 +77,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  Let me also verify that all expected files are present in the feature branch:   ",
       "reasoning_content": " The rebase was successful. Let me also verify the file listing to confirm all expected files are present: ",
       "tool_calls": [
@@ -102,7 +102,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Everything looks good. Let me complete the task. ",
       "tool_calls": [

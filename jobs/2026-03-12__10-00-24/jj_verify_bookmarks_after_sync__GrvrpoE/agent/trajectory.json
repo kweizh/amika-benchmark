@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you resolve the diverged bookmark `feature-x` by forcing it to point to the remote version. Let me break this down into steps.\n\nFirst, I'll create a todo list to track our progress:\n\n",
       "tool_calls": [
         {
@@ -63,7 +63,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let's start with changing to the repository directory:\n\n",
       "tool_calls": [
         {
@@ -86,7 +86,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Good, we're now in the correct directory. Let's mark this task as completed:\n\n",
       "tool_calls": [
         {
@@ -116,7 +116,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let's fetch the latest changes from the remote origin:\n\n",
       "tool_calls": [
         {
@@ -139,7 +139,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Great! We've successfully fetched the latest changes. I can see that the bookmark `feature-x@origin` was updated. Let's mark this task as completed:\n\n",
       "tool_calls": [
         {
@@ -169,7 +169,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let's check the current status of the bookmarks to see the divergence:\n\n",
       "tool_calls": [
         {
@@ -192,7 +192,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I can see the divergence clearly now. The `feature-x` bookmark is conflicted with three versions:\n1. Base commit: b7ed4de9\n2. Local change: 689f4f07\n3. Remote change: 8cb8f471\n\nThe `@origin` marker correctly points to the remote version (8cb8f471).\n\nNow, let's resolve the divergence by forcing the local `feature-x` bookmark to point to the remote's version:\n\n",
       "tool_calls": [
         {
@@ -215,7 +215,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Excellent! The bookmark has been moved successfully. Let's mark this task as completed:\n\n",
       "tool_calls": [
         {
@@ -245,7 +245,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let's verify that the bookmark `feature-x` no longer has a conflict/divergence:\n\n",
       "tool_calls": [
         {
@@ -268,7 +268,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! The bookmark list now shows that `feature-x` is no longer conflicted. It cleanly points to the remote version commit `8cb8f471` with the message \"Remote change to feature X\".\n\nLet's mark the final task as completed:\n\n",
       "tool_calls": [
         {
@@ -298,7 +298,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {

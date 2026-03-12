@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you insert a new commit between commits A and B in your jj repository while maintaining the linear history. Let me break this down into steps.\n\nFirst, let's understand the current repository structure and then perform the required operations.\n\n",
       "tool_calls": [
         {
@@ -38,7 +38,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I can see the repository structure. We have commits A, B, C, and an empty commit on top. Let me identify the commit IDs for each:\n\n- A: a0033f09\n- B: d371b393\n- C: 7570f232\n- Empty commit: 4e548b8f (current working copy)\n\nLet's create a new commit with the config.txt file between A and B. First, I'll need to check out the parent of B (which is A):\n\n",
       "tool_calls": [
         {
@@ -61,7 +61,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the correct jj command for checking out a commit:\n\n",
       "tool_calls": [
         {
@@ -84,7 +84,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I see that jj uses \"edit\" to set a revision as the working-copy revision. Let's use that command to set commit A as our working copy:\n\n",
       "tool_calls": [
         {
@@ -107,7 +107,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Good, now I've set commit A as the working copy. Now let's create the new commit with the config.txt file:\n\n",
       "tool_calls": [
         {
@@ -130,7 +130,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let's commit this file with the description \"Add config\":\n\n",
       "tool_calls": [
         {
@@ -153,7 +153,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Excellent! JJ automatically rebased the descendant commits (B and C) onto the new commit. Let's verify the log to see the updated history:\n\n",
       "tool_calls": [
         {
@@ -176,7 +176,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I notice that the history isn't quite linear as expected. It seems that the rebase operation created a merge-like structure. Let me check the commit details to better understand what happened:\n\n",
       "tool_calls": [
         {
@@ -199,7 +199,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I see the issue. The commits are not in the right order. Let me check the parent-child relationships to understand the structure better:\n\n",
       "tool_calls": [
         {
@@ -222,7 +222,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me try a different approach to understand the commit structure:\n\n",
       "tool_calls": [
         {
@@ -245,7 +245,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let's try a simpler approach to check the structure:\n\n",
       "tool_calls": [
         {
@@ -268,7 +268,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {
@@ -291,7 +291,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {
@@ -314,7 +314,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I notice that the original commit A had a.txt, but our new commit with \"Add config\" now also has a.txt. This suggests that when we checked out commit A, we got its contents, and then when we committed, we included both the config.txt and the a.txt file. Let me check the parent of the \"Add config\" commit to verify if it's the root commit:\n\n",
       "tool_calls": [
         {
@@ -337,7 +337,7 @@
     {
       "step_id": 16,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I see the issue. When we used `jj edit a0033f09`, we moved the working copy to commit A, but then when we committed, we created a new commit that has the root as its parent, rather than having A as its parent. This broke the continuity of our history.\n\nLet's try a different approach. I'll use the `jj new` command to create a new commit with a specific parent:\n\nFirst, let's undo our last commit to get back to a clean state:\n\n",
       "tool_calls": [
         {
@@ -360,7 +360,7 @@
     {
       "step_id": 17,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let's check the log again to confirm we're back to the original state:\n\n",
       "tool_calls": [
         {
@@ -383,7 +383,7 @@
     {
       "step_id": 18,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "We're back to the original state. Now, let's try a different approach. I'll use `jj new` to create a new commit with A as its parent, add the config file, and then rebase B and C on top of it.\n\nFirst, let's create a new commit with A as its parent:\n\n",
       "tool_calls": [
         {
@@ -406,7 +406,7 @@
     {
       "step_id": 19,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let's add the config.txt file to this new commit:\n\n",
       "tool_calls": [
         {
@@ -429,7 +429,7 @@
     {
       "step_id": 20,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let's commit this change with the description \"Add config\":\n\n",
       "tool_calls": [
         {
@@ -452,7 +452,7 @@
     {
       "step_id": 21,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now we need to rebase commits B and C on top of our new commit. Let's first check the log to see the current state:\n\n",
       "tool_calls": [
         {
@@ -475,7 +475,7 @@
     {
       "step_id": 22,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I see that we now have divergent commits for A. We need to rebase B and C onto our new \"Add config\" commit. Let's do that:\n\n",
       "tool_calls": [
         {
@@ -498,7 +498,7 @@
     {
       "step_id": 23,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let's rebase C as well:\n\n",
       "tool_calls": [
         {
@@ -521,7 +521,7 @@
     {
       "step_id": 24,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let's check the log to see the current state:\n\n",
       "tool_calls": [
         {
@@ -544,7 +544,7 @@
     {
       "step_id": 25,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "We still have divergent commits. Let's try a cleaner approach. Let's undo the operations and try a different strategy:\n\n",
       "tool_calls": [
         {

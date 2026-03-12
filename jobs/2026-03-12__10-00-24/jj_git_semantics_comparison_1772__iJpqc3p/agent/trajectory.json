@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you compare how `jj` handles branches compared to Git by following the specified steps. Let me start by checking the repository structure and then performing the required operations.\n\n",
       "tool_calls": [
         {
@@ -38,7 +38,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the current state of the repository and understand its structure better.\n\n",
       "tool_calls": [
         {
@@ -61,7 +61,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now let me check the current state of the jj repository and the existing bookmark.\n\n",
       "tool_calls": [
         {
@@ -84,7 +84,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the current bookmarks in the jj repository.\n\n",
       "tool_calls": [
         {
@@ -107,7 +107,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll start performing the required tasks. First, I'll create a new commit on top of main that adds a file `git_semantics.txt` with the text 'git semantics' and describe the commit as 'add git semantics'.\n\n",
       "tool_calls": [
         {
@@ -130,7 +130,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll create a bookmark named `git_branch` pointing to this new commit.\n\n",
       "tool_calls": [
         {
@@ -153,7 +153,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Next, I'll create another new commit on top of main that adds a file `jj_semantics.txt` with the text 'jj semantics' and describe the commit as 'add jj semantics'. For this, I need to first update to the main bookmark and then create the new commit.\n\n",
       "tool_calls": [
         {
@@ -176,7 +176,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the correct command for switching to a bookmark in jj.\n\n",
       "tool_calls": [
         {
@@ -199,7 +199,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I see that the command is `edit` to set a revision as the working-copy revision. Let me use that to switch to the main bookmark.\n\n",
       "tool_calls": [
         {
@@ -222,7 +222,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll create the second commit with the jj_semantics.txt file.\n\n",
       "tool_calls": [
         {
@@ -245,7 +245,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll create a bookmark named `jj_branch` pointing to this second new commit.\n\n",
       "tool_calls": [
         {
@@ -268,7 +268,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the current state of the repository and bookmarks.\n\n",
       "tool_calls": [
         {
@@ -291,7 +291,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me also check the bookmarks to confirm they're correctly set.\n\n",
       "tool_calls": [
         {
@@ -314,7 +314,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll export the bookmarks to git using `jj git export`.\n\n",
       "tool_calls": [
         {
@@ -337,7 +337,7 @@
     {
       "step_id": 16,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the git log to see if the branches were exported.\n\n",
       "tool_calls": [
         {
@@ -360,7 +360,7 @@
     {
       "step_id": 17,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the git branches to see if they were created.\n\n",
       "tool_calls": [
         {
@@ -383,7 +383,7 @@
     {
       "step_id": 18,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me try a different approach to check the git branches.\n\n",
       "tool_calls": [
         {
@@ -406,7 +406,7 @@
     {
       "step_id": 19,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the git references directly.\n\n",
       "tool_calls": [
         {
@@ -429,7 +429,7 @@
     {
       "step_id": 20,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Good! The branches were created. Now let me run a `jj log` command that shows only the `git_branch` and `jj_branch` commits, and save the output to `/home/user/comparison_log.txt`.\n\n",
       "tool_calls": [
         {
@@ -452,7 +452,7 @@
     {
       "step_id": 21,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me verify the content of the comparison_log.txt file.\n\n",
       "tool_calls": [
         {
@@ -475,7 +475,7 @@
     {
       "step_id": 22,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me also check the current state of the repository to summarize what we've done.\n\n",
       "tool_calls": [
         {
@@ -498,7 +498,7 @@
     {
       "step_id": 23,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {

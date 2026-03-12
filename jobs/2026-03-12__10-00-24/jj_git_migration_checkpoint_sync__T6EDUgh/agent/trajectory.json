@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you migrate from Git to Jujutsu and complete the requested tasks. Let me start by checking the project directory and then performing each step.\n\nFirst, let me verify the project directory exists:\n\n",
       "tool_calls": [
         {
@@ -38,7 +38,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Good, I can see the project directory exists with both `.git` and `.jj` folders, indicating it's already set up for both Git and Jujutsu. Let me check the current Git branches and Jujutsu status to understand the current state.\n\n",
       "tool_calls": [
         {
@@ -61,7 +61,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {
@@ -84,7 +84,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll create a new jj bookmark called `jj-feature-y` pointing to the same commit as `feature-x`. First, let me get the commit hash for `feature-x`:\n\n",
       "tool_calls": [
         {
@@ -107,7 +107,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll create the new jj bookmark `jj-feature-y` pointing to the same commit as `feature-x`:\n\n",
       "tool_calls": [
         {
@@ -130,7 +130,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Next, I'll make a new commit on `jj-feature-y` by creating a file `new_feature.txt` with the content `Hello jj` and recording the change with the description `Add new feature`:\n\n",
       "tool_calls": [
         {
@@ -153,7 +153,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {
@@ -176,7 +176,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I need to export the jj bookmarks to the underlying Git repository so that Git can see the new branch `jj-feature-y`:\n\n",
       "tool_calls": [
         {
@@ -199,7 +199,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the current bookmarks and Git branches to see the status:\n\n",
       "tool_calls": [
         {
@@ -222,7 +222,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {
@@ -245,7 +245,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I notice that the `jj-feature-y` branch is already visible in Git, which means the export happened automatically. Now let me verify the export by running `git branch` and redirecting the output to a file named `git_branches.log` in the repository root:\n\n",
       "tool_calls": [
         {
@@ -268,7 +268,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the content of the `git_branches.log` file to confirm it was created correctly:\n\n",
       "tool_calls": [
         {
@@ -291,7 +291,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! Let me summarize what I've accomplished:\n\n1. Created a new jj bookmark called `jj-feature-y` pointing to the same commit as `feature-x`.\n2. Made a new commit on `jj-feature-y` by creating a file `new_feature.txt` with the content `Hello jj` and recording the change with the description `Add new feature`.\n3. Verified that the jj bookmarks were exported to the underlying Git repository (this happened automatically).\n4. Created a `git_branches.log` file in the repository root containing the output of `git branch`.\n\nLet me check the new_feature.txt file to make sure it was created correctly:\n\n",
       "tool_calls": [
         {
@@ -314,7 +314,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {

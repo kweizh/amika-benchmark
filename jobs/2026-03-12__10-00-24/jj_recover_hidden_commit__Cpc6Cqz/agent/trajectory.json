@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you recover the hidden commit in the Jujutsu repository. Let me start by examining the operation log to find the hidden commit.\n\n",
       "tool_calls": [
         {
@@ -57,7 +57,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me first check the operation log to understand the history of operations in this repository.\n\n",
       "tool_calls": [
         {
@@ -81,7 +81,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I can see the operation log. I can see that there was a commit with the description \"feat: add watchdog timer support\" that was later abandoned. Let me look at the specific commit that was abandoned by using the `at_operation` revset function.\n\n",
       "tool_calls": [
         {
@@ -105,7 +105,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! I can see the hidden commit with the description \"feat: add watchdog timer support\" and the commit ID `0d59ce77`. Now let me get the full commit ID and restore this hidden commit.\n\n",
       "tool_calls": [
         {
@@ -129,7 +129,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I have the full commit ID of the hidden commit: `0d59ce777ce4ed157e7d923294c2d6c16aefa5c1`. Let me use `jj new` to create a new visible commit with this hidden commit as its parent, which will make the hidden commit visible in the history.\n\n",
       "tool_calls": [
         {
@@ -153,7 +153,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Great! I've successfully restored the hidden commit. Now let me verify that the commit is visible in the history and that the `watchdog.c` file is accessible.\n\n",
       "tool_calls": [
         {
@@ -177,7 +177,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Excellent! The commit with description \"feat: add watchdog timer support\" is now visible in the history (no longer marked as hidden). Now let me verify that the `watchdog.c` file is accessible in this commit.\n\n",
       "tool_calls": [
         {
@@ -201,7 +201,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! I have successfully completed all the steps to recover the hidden commit in the Jujutsu repository. Let me update the task status.\n\n",
       "tool_calls": [
         {
@@ -243,7 +243,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "",
       "tool_calls": [
         {

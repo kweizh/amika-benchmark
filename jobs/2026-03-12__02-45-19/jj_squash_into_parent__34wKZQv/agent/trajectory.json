@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you squash the current working copy into its parent and complete the task. Let me first check the current state of the repository.   ",
       "reasoning_content": " The user wants me to work with a `jj` (Jujutsu) repository. Let me understand the task:\n\n1. The repository has 3 commits above root:\n   - `build: add base Makefile` - creates Makefile with `all:\\n\\techo done`\n   - `build: add lint target` - appends `lint:\\n\\tpylint src/` to Makefile\n   - `wip: fixup lint flag` - modifies Makefile so lint line becomes `lint:\\n\\tpylint --errors-only src/`\n\n2. The working copy is at `wip: fixup lint flag` (`@`)\n\n3. I need to:\n   - Squash the current working copy (`@`) into its parent (`@-`)\n   - The resulting combined commit description must be `build: add lint target with error-only flag`\n   - Save `jj log --no-graph -r 'root()..@' -T 'description ++ \"\\n\"'` to `/home/user/monorepo/log.txt`\n\n4. The expected end state:\n   - Exactly two commits above root\n   - The commit that was `build: add lint target` now has description `build: add lint target with error-only flag`\n   - `Makefile` contains `pylint --errors-only src/`\n   - `wip: fixup lint flag` no longer appears in the log\n   - `/home/user/monorepo/log.txt` exists and is non-empty\n\nLet me first check if the repository exists and what the current state is. ",
       "tool_calls": [
@@ -50,7 +50,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I can see the current state - there are 3 commits above root, with the working copy at \"wip: fixup lint flag\". The Makefile already has the correct content with `pylint --errors-only src/`.\n\nNow let me squash the current working copy into its parent with the new description:  ",
       "reasoning_content": " The log shows three commits above root:\n1. `wip: fixup lint flag` (current `@`)\n2. `build: add lint target`\n3. `build: add base Makefile`\n\nAnd the Makefile shows `pylint --errors-only src/` which is correct.\n\nI need to:\n1. Squash `@` (wip: fixup lint flag) into `@-` (build: add lint target) with the new description \"build: add lint target with error-only flag\"\n2. Verify the result (2 commits above root)\n3. Save the log output to /home/user/monorepo/log.txt\n\nLet me first squash using jj. ",
       "tool_calls": [
@@ -74,7 +74,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  The squash was successful. Now let me verify the log and save it to the file:    ",
       "reasoning_content": " The squash was successful. Now let me verify the state and save the log output to the file. ",
       "tool_calls": [
@@ -98,7 +98,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None  I see there's an empty commit at the top (the (empty) (no description set) message in the squash output). This is expected after a squash operation - the working copy now sits on top of the squashed commit.\n\nLet me now save the log output to the file and then verify all conditions are met: ",
       "tool_calls": [
@@ -134,7 +134,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -169,7 +169,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -224,7 +224,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " ",
       "reasoning_content": " None     ",
       "tool_calls": [
@@ -259,7 +259,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " All requirements are met. Let me update the todos and complete the task. ",
       "tool_calls": [
@@ -314,7 +314,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [

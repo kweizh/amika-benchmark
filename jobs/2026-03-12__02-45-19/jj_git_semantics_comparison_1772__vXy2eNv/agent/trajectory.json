@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -20,7 +20,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Good, I can see the repository exists at `/home/user/repo`. Let me first check the current state of the repository with jj log to see the commit with the `main` bookmark. ",
       "tool_calls": [
@@ -44,7 +44,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I can see the repository has a `main` bookmark pointing to commit `poslltlx` with \"initial commit\". Let me complete the tasks.  ",
       "reasoning_content": " I can see the repository structure. There's a `main` bookmark pointing to commit `poslltlx` with description \"initial commit\". The \"@\" indicates the working commit which is currently empty (no description set).\n\nLet me now complete the tasks:\n\n1. Create a new commit on top of `main` that adds `git_semantics.txt` with text 'git semantics', described as 'add git semantics'\n2. Create a bookmark named `git_branch` pointing to this new commit\n3. Create another new commit on top of `main` that adds `jj_semantics.txt` with text 'jj semantics', described as 'add jj semantics'\n4. Create a bookmark named `jj_branch` pointing to this second new commit\n5. Export the bookmarks to git using `jj git export`\n6. Run a `jj log` command that shows only the `git_branch` and `jj_branch` commits, and save the output to `/home/user/comparison_log.txt`\n\nLet me start by creating the first commit. In `jj`, I need to first check out `main`, then create a new change with the file. ",
       "tool_calls": [
@@ -93,7 +93,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  Let me start by creating the first commit with git semantics and the git_branch bookmark. First, I need to be on the main bookmark:   ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -117,7 +117,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  Good, now I'm on a new empty commit on top of main. Let me add the git_semantics.txt file:     ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -141,7 +141,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Now let me create the `git_branch` bookmark:  ",
       "reasoning_content": " None  The commit was authored. Now I need to create the `git_branch` bookmark pointing to this new commit. ",
       "tool_calls": [
@@ -165,7 +165,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " None        Now I need to create another commit on top of main with jj_semantics.txt. Let me create a new commit on main:          ```     \ud83d\udcbbfunctions.executeCommand:6 <|tool_call_argument_begin|> {\"command\":\"cd /home/user/repo && jj new main\"} <|tool_call_end|> ",
       "reasoning_content": " None        Now I need to create another commit on top of main with jj_semantics.txt. Let me create a new commit on main:          ```     \ud83d\udcbbfunctions.executeCommand:6 <|tool_call_argument_begin|> {\"command\":\"cd /home/user/repo && jj new main\"} <|tool_call_end|> "
     },

@@ -30,7 +30,7 @@ error stack:
   isRetryable: [33mtrue[39m,
   message: [32m'Model busy, retry later'[39m,
   requestBodyValues: {
-    model: [32m'Qwen/Qwen3-Coder-480B-A35B-Instruct'[39m,
+    model: [32m'Qwen/qwen3-coder-480b-A35b-instruct'[39m,
     max_tokens: [33m4096[39m,
     messages: [
       {
@@ -1276,7 +1276,7 @@ error stack:
   isRetryable: [33mtrue[39m,
   message: [32m'Model busy, retry later'[39m,
   requestBodyValues: {
-    model: [32m'Qwen/Qwen3-Coder-480B-A35B-Instruct'[39m,
+    model: [32m'Qwen/qwen3-coder-480b-A35b-instruct'[39m,
     max_tokens: [33m4096[39m,
     messages: [
       {
@@ -2514,7 +2514,7 @@ error stack:
   isRetryable: [33mtrue[39m,
   message: [32m'Model busy, retry later'[39m,
   requestBodyValues: {
-    model: [32m'Qwen/Qwen3-Coder-480B-A35B-Instruct'[39m,
+    model: [32m'Qwen/qwen3-coder-480b-A35b-instruct'[39m,
     max_tokens: [33m4096[39m,
     messages: [
       {
@@ -3769,7 +3769,7 @@ error stack:
   isRetryable: [33mtrue[39m,
   message: [32m'Model busy, retry later'[39m,
   requestBodyValues: {
-    model: [32m'Qwen/Qwen3-Coder-480B-A35B-Instruct'[39m,
+    model: [32m'Qwen/qwen3-coder-480b-A35b-instruct'[39m,
     max_tokens: [33m4096[39m,
     messages: [
       {
@@ -5026,7 +5026,7 @@ error stack:
   isRetryable: [33mtrue[39m,
   message: [32m'Model busy, retry later'[39m,
   requestBodyValues: {
-    model: [32m'Qwen/Qwen3-Coder-480B-A35B-Instruct'[39m,
+    model: [32m'Qwen/qwen3-coder-480b-A35b-instruct'[39m,
     max_tokens: [33m4096[39m,
     messages: [
       {
@@ -6302,7 +6302,7 @@ error stack:
   isRetryable: [33mtrue[39m,
   message: [32m'Model busy, retry later'[39m,
   requestBodyValues: {
-    model: [32m'Qwen/Qwen3-Coder-480B-A35B-Instruct'[39m,
+    model: [32m'Qwen/qwen3-coder-480b-A35b-instruct'[39m,
     max_tokens: [33m4096[39m,
     messages: [
       {

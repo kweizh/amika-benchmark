@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -20,7 +20,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " The task is to reconcile two divergent commits in a jj repository. Let me review what I've done:\n\n1. \u2705 Created a merge of both divergent commits using `jj new zrmmrlps mzzwlqxp -m \"fix: patch\"`\n2. \u2705 Edited `src/patch.py` to contain both functions and the combined `apply_patch()` function\n3. \u2705 Verified the reconciled commit\n4. \u2705 Moved the `patch` bookmark to the reconciled commit\n5. \u23f3 Now I need to write the divergence log\n\nLet me write the divergence log file. Based on the commands I ran, I have:\n- patch_v1_change_id: zrmmrlpswrmooqnotkkvvnolntypzpwl\n- patch_v2_change_id: mzzwlqxputpnusnswxvnzwmuqvyvmzro\n- canonical_change_id: zsymxymlmsnlzqvkyvxrvknukluwxmks ",
       "tool_calls": [
@@ -87,7 +87,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " Let me verify all the work is complete:\n\n1. \u2705 Merge created with `jj new zrmmrlps mzzwlqxp -m \"fix: patch\"`\n2. \u2705 src/patch.py contains both v1 and v2 functions plus the combined apply_patch() function\n3. \u2705 Patch bookmark moved to the reconciled commit\n4. \u2705 Divergence log written\n\nLet me verify the final state. ",
       "tool_calls": [
@@ -122,7 +122,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The divergence log has been written. Let me verify everything is complete:\n\n1. \u2705 Created merge of both divergent commits using `jj new zrmmrlps mzzwlqxp -m \"fix: patch\"`\n2. \u2705 Edited src/patch.py to contain both functions AND the combined apply_patch()\n3. \u2705 Verified - the reconciled commit is at `@` with change ID `zsymxyml...`\n4. \u2705 Moved patch bookmark to the reconciled commit\n5. \u2705 Wrote divergence log to /home/user/divergence_log.txt\n\nLet me just double-check the file contents one more time and then mark the task complete. ",
       "tool_calls": [

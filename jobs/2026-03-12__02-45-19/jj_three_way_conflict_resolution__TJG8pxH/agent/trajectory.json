@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you resolve the merge conflict in `src/config.py`. Let me first examine the current state of the file to see the conflict markers.  ",
       "reasoning_content": " The user wants me to resolve a git merge conflict in `src/config.py`. Let me understand the task:\n\n1. There's a merge commit `merge-ab` that merges two branches (`branch-a` and `branch-b`)\n2. Both branches modified `src/config.py` from a common base\n3. I need to:\n   - Keep database settings (host, port, name, max connections) from `branch-a`\n   - Keep logging/timeout settings (LOG_LEVEL, TIMEOUT) from `branch-b`\n   - Mark the resolution complete so no conflicts remain\n   - Write a conflict resolution summary to `/home/user/resolution_summary.md`\n\nFirst, I should read the current state of `src/config.py` to see the conflict markers and understand what's there. ",
       "tool_calls": [
@@ -39,7 +39,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I can see the conflict. The file is using jj's conflict format. The resolution should keep database settings from branch-a and logging/timeout settings from branch-b:\n\n- **From branch-a**: DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, MAX_CONNECTIONS  \n- **From branch-b**: LOG_LEVEL, TIMEOUT\n\nLet me write the resolved file and create the summary:   ",
       "reasoning_content": " The user wants me to:\n1. Resolve the conflict in `/home/user/repo/src/config.py`\n2. Keep DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, MAX_CONNECTIONS from branch-a\n3. Keep LOG_LEVEL and TIMEOUT from branch-b\n4. Mark the resolution complete\n5. Write a summary to `/home/user/resolution_summary.md`\n\nLooking at the conflict:\n- Branch-a (5a475cf) has:\n  - DATABASE_HOST = \"db.production.example.com\"\n  - DATABASE_PORT = 5433\n  - DATABASE_NAME = \"mydb_prod\"\n  - LOG_LEVEL = \"INFO\"\n  - MAX_CONNECTIONS = 50\n  - TIMEOUT = 30\n\n- Base (34c74f8) had:\n  - DATABASE_HOST = \"localhost\"\n  - DATABASE_PORT = 5432\n  - DATABASE_NAME = \"mydb\"\n  - LOG_LEVEL = \"INFO\"\n  - MAX_CONNECTIONS = 10\n  - TIMEOUT = 30\n\n- Branch-b (226243e5) has:\n  - DATABASE_HOST = \"localhost\"\n  - DATABASE_PORT = 5432\n  - DATABASE_NAME = \"mydb\"\n  - LOG_LEVEL = \"DEBUG\"\n  - MAX_CONNECTIONS = 10\n  - TIMEOUT = 60\n\nThe resolution should be:\n- DATABASE_HOST = \"db.production.example.com\" (from branch-a)\n- DATABASE_PORT = 5433 (from branch-a)\n- DATABASE_NAME = \"mydb_prod\" (from branch-a)\n- LOG_LEVEL = \"DEBUG\" (from branch-b)\n- MAX_CONNECTIONS = 50 (from branch-a)\n- TIMEOUT = 60 (from branch-b)\n\nLet me write the resolved file and then create the summary. ",
       "tool_calls": [
@@ -76,7 +76,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "     ",
       "reasoning_content": " Both files have been written successfully. Let me verify the resolution by checking the file status. ",
       "tool_calls": [
@@ -100,7 +100,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Let me verify the file content and check jj status:   ",
       "reasoning_content": " Actually, it looks like the jj conflict markers are still there, but the file shows \"Resolved\". This is a remnant in the diff output. Let me check the file content again: ",
       "tool_calls": [
@@ -135,7 +135,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Good, the file is correct now without conflict markers. The conflict has been resolved. Let me update the TODO list and complete the task. ",
       "tool_calls": [

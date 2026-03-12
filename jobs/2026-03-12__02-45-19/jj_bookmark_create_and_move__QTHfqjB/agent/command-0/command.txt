@@ -6,13 +6,13 @@ mkdir -p ~/.pochi && cat << EOF > ~/.pochi/config.jsonc
       "baseURL": "https://api.deepinfra.com/v1/openai",
       "apiKey": "DEEPINFRA_API_KEY",
       "models": {
-        "zai-org/GLM-4.7-Flash": {
+        "zai-org/glm-4.7-flash": {
           "name": "glm-4.7-flash"
         },
-        "moonshotai/Kimi-K2.5": {
+        "moonshotai/kimi-k2.5": {
           "name": "kimi-K2.5"
         },
-        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+        "Qwen/qwen3-coder-480b-A35b-instruct": {
           "name": "qwen3-coder-480b"
         }
       }
@@ -20,7 +20,7 @@ mkdir -p ~/.pochi && cat << EOF > ~/.pochi/config.jsonc
   }
 }
 EOF
-sed -i 's/DEEPINFRA_API_KEY/'$DEEPINFRA_API_KEY'/g' ~/.pochi/config.jsonc && pochi --model deepinfra/moonshotai/Kimi-K2.5 --stream-json > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+sed -i 's/DEEPINFRA_API_KEY/'$DEEPINFRA_API_KEY'/g' ~/.pochi/config.jsonc && pochi --model deepinfra/moonshotai/kimi-k2.5 --stream-json > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
 # Create and Move Bookmarks in a jj Repository
 
 ## Context

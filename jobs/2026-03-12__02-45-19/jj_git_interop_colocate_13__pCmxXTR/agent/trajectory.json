@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you migrate your Git repository to use Jujutsu (jj) with colocation. Let me start by navigating to the project and setting everything up.  ",
       "reasoning_content": " The user wants me to help them migrate from Git to Jujutsu (jj) while maintaining Git compatibility. Let me break down the tasks:\n\n1. Navigate to `/home/user/my-project`\n2. Initialize a colocated jj repository\n3. Create a bookmark named `feature-x`\n4. Create a file `feature.txt` with content `Hello jj`\n5. Create a jj commit with description `Add feature.txt`\n\nLet me start by navigating to the directory and checking if it exists, then proceed with the jj initialization. ",
       "tool_calls": [
@@ -70,7 +70,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Let me navigate to the project directory and check if it exists, then initialize the colocated jj repository. ",
       "tool_calls": [
@@ -94,7 +94,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The directory exists. Now let me check if it's a Git repository and then initialize jj with colocation. ",
       "tool_calls": [
@@ -118,7 +118,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Good, it's a clean Git repository. Now let me verify jj is available and then initialize it as a colocated repo. ",
       "tool_calls": [
@@ -142,7 +142,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -197,7 +197,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -221,7 +221,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " The colocated jj repository has been initialized. Now I need to:1. Check if the repo is set up correctly\n2. Create a bookmark named `feature-x`\n3. Create the feature.txt file\n4. Create a jj commit  ",
       "reasoning_content": " The colocated jj repository has been initialized. Now I need to:1. Check if the repo is set up correctly\n2. Create a bookmark named `feature-x`\n3. Create the feature.txt file\n4. Create a jj commit  ",
       "tool_calls": [
@@ -245,7 +245,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneThe jj repository is initialized and colocated with Git. I can see that the working copy is empty and has no description. Now let me:\n1. Create the bookmark feature-x\n2. Create the file feature.txt with \"Hello jj\"\n3. Add the commit with description \"Add feature.txt\" ",
       "tool_calls": [
@@ -300,7 +300,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -324,7 +324,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None, let me set the user config first and then recreate the bookmark to avoid the warning. ",
       "tool_calls": [
@@ -348,7 +348,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  \n\nLet me verify the bookmark was created: ",
       "tool_calls": [
@@ -372,7 +372,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The bookmark was created. Now let me update the todo and create the feature.txt file. ",
       "tool_calls": [
@@ -427,7 +427,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -452,7 +452,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneI created the file. Now let me verify it and then create the jj commit. ",
       "tool_calls": [
@@ -476,7 +476,7 @@
     {
       "step_id": 16,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -531,7 +531,7 @@
     {
       "step_id": 17,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Now let me create the jj commit with the description. Since we're working with a working copy change that hasn't been committed yet, I need to use `jj describe` to describe the working copy with the commit message and then check if I need to create a commit. ",
       "tool_calls": [
@@ -555,7 +555,7 @@
     {
       "step_id": 18,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneThe working copy now has the new file `feature.txt`. I can see that the bookmark `feature-x` has moved to the working copy change (c4d88965). Now I need to describe this commit with the message \"Add feature.txt\". In jj, I use the `jj describe` command or `jj commit` to create a new commit. Since this is the working copy with changes, I should describe it first. ",
       "tool_calls": [
@@ -579,7 +579,7 @@
     {
       "step_id": 19,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -603,7 +603,7 @@
     {
       "step_id": 20,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Now let me verify that everything is properly set up - the commit exists with the bookmark, and check the Git side to make sure it's exported. ",
       "tool_calls": [
@@ -627,7 +627,7 @@
     {
       "step_id": 21,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None\ufffdI see the issue. The changes have been described in jj, but they're still in the working copy. In jj, the working copy changes are committed automatically. Let me check the jj log: ",
       "tool_calls": [
@@ -651,7 +651,7 @@
     {
       "step_id": 22,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneI need to check if the bookmark was exported to git. Let me also check the git branches: ",
       "tool_calls": [
@@ -675,7 +675,7 @@
     {
       "step_id": 23,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneGreat! The feature-x bookmark has been exported to Git as a branch. Let me verify the file contents and complete the task. ",
       "tool_calls": [
@@ -699,7 +699,7 @@
     {
       "step_id": 24,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None \nThe task calls for creating a \"new jj commit,\" but the user also mentions \"or describe the working copy.\" Looking at the jj status, I see the working copy already has the bookmark `feature-x` and the description `Add feature.txt`. The file `feature.txt` is staged in jj (shown as `A feature.txt` in the status output).\n \n Since there's an empty commit that was created when I created the bookmark at the empty working copy, and now the working copy has changes, I'll need to either:\n 1. Squash the changes into the existing commit (if we want a single commit), or\n 2. Leave it as is since the working copy is already described\n \n Actually, looking at the output more carefully:\n - The working copy (@) now has the description \"Add feature.txt\"\n - The file `feature.txt` has been added\n \n The `jj describe` command already set the description for the working copy. The working copy in jj is essentially like the staging area in Git - it's where changes are collected before being \"committed\" (which in jj terms would be squashing into a parent or creating a new commit from the working copy).\n \n In jj, the working copy itself can be described, and when you eventually squash or rebase, that description becomes the commit message. The current state shows:\n - Working copy has description: \"Add feature.txt\"\n - Working copy has change: A feature.txt\n \n This satisfies the requirement. The working copy is described and has the file. In jj, the working copy is a commit that can be described and moved independently.\n \n Let me verify everything is complete:\n 1. \u2705 Colocated jj repository initialized\n 2. \u2705 `feature-x` bookmark created (and exported to Git as shown by `git branch -a`)\n 3. \u2705 `feature.txt` created with \"Hello jj\"\n 4. \u2705 Working copy described as \"Add feature.txt\"\n \n The task is complete. All requirements have been met. ",
       "tool_calls": [
@@ -754,7 +754,7 @@
     {
       "step_id": 25,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [

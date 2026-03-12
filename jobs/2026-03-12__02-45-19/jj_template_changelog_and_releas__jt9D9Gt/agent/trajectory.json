@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you prepare the v1.1 release. Let me start by exploring the repository structure and understanding the commit history.   ",
       "reasoning_content": " The user wants me to act as a release manager for a jj repository. Let me break down the tasks:\n\n1. First, I need to understand the repository structure and the commits\n2. Generate a changelog based on commits from v1.0 to main\n3. Generate contributor stats\n4. Create a release commit with the changelog\n5. Create a v1.1 bookmark\n\nLet me start by exploring the repository at `/home/user/release-repo` and understanding the commit history. ",
       "tool_calls": [
@@ -51,7 +51,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Let me fix the template syntax and explore the commit history properly:  ",
       "reasoning_content": " Let me fix the template syntax for jj log. ",
       "tool_calls": [
@@ -76,7 +76,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Let me also check the v1.0 bookmark to confirm the baseline:  ",
       "reasoning_content": " Now I can see the commit history. Let me also check the v1.0 bookmark to confirm the baseline: ",
       "tool_calls": [
@@ -101,7 +101,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I can see the commit history now. Let me create a todo list and complete all the tasks:  ",
       "reasoning_content": " None                                        I can see the commit history. Now I have all the information needed to:\n\n1. Create the CHANGELOG.md at /home/user/CHANGELOG.md\n2. Create the contributor_stats.txt at /home/user/contributor_stats.txt\n3. Copy CHANGELOG.md to the repository\n4. Create a release commit with description \"release: v1.1 changelog\"\n5. Create a v1.1 bookmark pointing to this commit\n\nLet me create a todo list and start working on these tasks: ",
       "tool_calls": [
@@ -162,7 +162,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None  Now let me create the CHANGELOG.md and contributor_stats.txt files with the exact required content. ",
       "tool_calls": [
@@ -199,7 +199,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -260,7 +260,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  Now I need to copy the CHANGELOG.md to the repository and create the release commit. In jj, I need to:\n1. Copy the CHANGELOG.md to the repo\n2. Create a new commit with the change\n3. Create the v1.1 bookmark  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -285,7 +285,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  Let me check the current state and create the release commit:    ",
       "reasoning_content": " None  The CHANGELOG.md has been copied. Now I need to create a new commit. In jj, I'll need to:\n1. Use `jj describe` to set the commit description\n2. Then use `jj new` to create the commit with the right parent\n\nOr I can:\n1. Use `jj commit` after staging the file\n\nLet me check what changes are in the working directory first ",
       "tool_calls": [
@@ -310,7 +310,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   Now I'll create the release commit with the CHANGELOG.md:     ",
       "reasoning_content": " None  I see the workspace is at the \"feat: add dark mode\" commit. I need to:\n1. Create a new commit on top of this with the CHANGELOG.md\n2. Create the v1.1 bookmark pointing to it\n\nFirst, let me check if there's an untracked CHANGELOG.md or if it needs to be added. Let me create the new commit with the CHANGELOG.md: ",
       "tool_calls": [
@@ -335,7 +335,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The commit has been created with the description \"release: v1.1 changelog\". Now I need to create the v1.1 bookmark pointing to this commit. ",
       "tool_calls": [
@@ -396,7 +396,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  Now I need to create the v1.1 bookmark pointing to this commit:    ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -421,7 +421,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  Let me verify all acceptance criteria are met. ",
       "tool_calls": [
@@ -482,7 +482,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Now let me verify all the acceptance criteria:       ",
       "reasoning_content": " Now let me verify all the acceptance criteria are met by checking the files and repository state: ",
       "tool_calls": [
@@ -540,7 +540,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " All acceptance criteria are verified. Let me mark the final task as completed:   ",
       "reasoning_content": " NoneAll the acceptance criteria are verified:\n1. `/home/user/CHANGELOG.md` exists with the exact content\n2. `/home/user/contributor_stats.txt` exists with exactly 3 lines\n3. A commit with description `release: v1.1 changelog` exists in the repository (at bdcecdd7)\n4. CHANGELOG.md is present in the repository at the `release: v1.1 changelog` commit\n5. The `v1.1` bookmark points to the `release: v1.1 changelog` commit (I can see it in the log: main v1.1 bdcecdd7)\n\nLet me mark the todo as complete and finish. ",
       "tool_calls": [
@@ -601,7 +601,7 @@
     {
       "step_id": 16,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [

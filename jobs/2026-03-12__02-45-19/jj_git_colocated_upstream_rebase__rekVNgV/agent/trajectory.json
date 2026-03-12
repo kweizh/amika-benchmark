@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you fetch from upstream, rebase your local commits, and create a status report. Let me start by exploring the repository structure.     ",
       "reasoning_content": " The user wants me to work with a jj+git colocated repository. Let me break down the task:\n\n1. The repo is at `/home/user/local-repo`\n2. It tracks an upstream remote at `/home/user/upstream.git`\n3. Upstream has 2 new commits that aren't locally\n4. There are 3 local commits on top of an older base\n5. I need to:\n   - Fetch from upstream\n   - Rebase local commits onto the new upstream HEAD\n   - Resolve any conflicts\n   - Write a status report to `/home/user/status_report.txt`\n\nLet me start by exploring the repository structure and understanding the current state. ",
       "tool_calls": [
@@ -73,7 +73,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " Now let me check the state of the upstream repository and perform the fetch and rebase:        ",
       "reasoning_content": " Now I can see:\n1. This is a jj+git colocated repo at `/home/user/local-repo`\n2. There are 3 local commits starting from `baa3f93` (empty message) and then `76b5990` (local-1), `fa0d978` (local-2)\n3. The upstream has commits at `7a932c3` and `2273211` which are in the history before the local commits\n4. The upstream remote is at `/home/user/upstream.git`\n\nI need to:\n1. Check the current state of the upstream\n2. Fetch from upstream\n3. Rebase the local commits onto the new upstream HEAD\n4. Write a status report to `/home/user/status_report.txt`\n\nLet me check the upstream state and then perform the operations. ",
       "tool_calls": [
@@ -108,7 +108,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " Now I understand the situation:\n- Local repo has 3 commits on top of an old base (baa3f93)\n- Upstream has 2 new commits (upstream-3 and upstream-4)\n- I need to rebase the local commits onto the new upstream HEAD\n\nLet me check what branch we're on and perform the rebase ",
       "tool_calls": [
@@ -143,7 +143,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " None        }  ",
       "reasoning_content": " None        }  ",
       "tool_calls": [
@@ -167,7 +167,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None        Let me check which branch I'm on and what's the current HEAD:         I need to commit the unstaged changes first or stash them. Let me check the jj status and then decide how to proceed. ",
       "tool_calls": [
@@ -191,7 +191,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None               \nI see - this is a Jujutsu (jj) repository that's colocated with Git. The working directory has uncommitted/staged changes tracked by jj. Let me check the jj status and handle the changes appropriately. I need to:\n\n1. First understand the jj state better\n2. Finish the drafts/complete revisions in jj\n3. Then rebase in git\n\nOr I could work with jj directly since it handles rebasing more efficiently. ",
       "tool_calls": [
@@ -226,7 +226,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None        \n        \n         I'll complete the pending commit, then perform the rebase using jj. ",
       "tool_calls": [
@@ -261,7 +261,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " None  ",
       "reasoning_content": " None  ",
       "tool_calls": [
@@ -285,7 +285,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None        I see there's an issue with the jj fallback being used. Let me check and handle this. I'll try to fix this by using jj commands with the proper base branch. Let me check the status again: ",
       "tool_calls": [
@@ -320,7 +320,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None        Hmm, that's not right either. The bookmark moved to main. Let me re-check the jj log to understand the current state of the branches: ",
       "tool_calls": [
@@ -344,7 +344,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None                        I need to set bookmarks on the local commits. Let me do this properly:                                                     \n                                                                             \n                                          ",
       "tool_calls": [
@@ -390,7 +390,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " ",
       "reasoning_content": " None))  ",
       "tool_calls": [
@@ -425,7 +425,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None I see jj git export said \"Nothing changed\". Let me check the jj git configuration. It should say something about how jj handles the git export/import. Let me check the .jj directory. ",
       "tool_calls": [
@@ -460,7 +460,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -484,7 +484,7 @@
     {
       "step_id": 16,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None                    Wait, I'm confused about the state. Let me just let jj handle things cleanly. Let me reset the git state and let jj manage it:                    \tjj git import\tWait, I'm confused about the state. Let me just let jj handle things cleanly. Let me reset the git state and let jj manage it:                    \tjj git import ",
       "tool_calls": [
@@ -508,7 +508,7 @@
     {
       "step_id": 17,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -532,7 +532,7 @@
     {
       "step_id": 18,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ...Wait let me re-read the jj log to understand. It seems after rebase in jj, the local-branch bookmark moved to main's tip (0c6e465), and the local commits are in detached state. The git branches are now aligned with jj bookmarks because we set local-branch to point to main.\n\nLet me verify the git state: ",
       "tool_calls": [
@@ -556,7 +556,7 @@
     {
       "step_id": 19,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -580,7 +580,7 @@
     {
       "step_id": 20,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " NoneI see, there are local changes that would be overwritten. Let me check what's going on: ",
       "tool_calls": [
@@ -615,7 +615,7 @@
     {
       "step_id": 21,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "    ",
       "reasoning_content": " None                        Good! Now let me force-update the local-branch to point to the rebased commits:                          \n```xml\n<function_calls>\n<invoke name=\"executeCommand\">\n<parameter name=\"command\">cd /home/user/local-repo && git branch -f local-branch 68fc5ff</parameter>\n</invoke>\n<invoke name=\"executeCommand\">\n<parameter name=\"command\">cd /home/user/local-repo && git checkout local-branch</parameter>\n</invoke>\n<invoke name=\"executeCommand\">\n<parameter name=\"command\">cd /home/user/local-repo && git log --oneline -10</parameter>\n</invoke>\n</function_calls> ",
       "tool_calls": [
@@ -661,7 +661,7 @@
     {
       "step_id": 22,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None        - commit: 2273211 upstream-1: initial project\n  - commit: 7a932c3 upstream-2: add features list\n  - commit: c506565 upstream-3: add security config\n  - commit: 0c6e465 upstream-4: add cache and logging config\n  - commit: 533ebcf (empty merge base)\n  - commit: 997c3e9 local-1: add user service\n  - commit: 6c37281 local-2: add product service\n  - commit: 68fc5ff local-3: add order service (HEAD)\n\n## Conflicts During Operation\n\nNone - The rebase completed without conflicts.\n\n## Final State\n\nThe local-branch is now rebased onto origin/main (0c6e465), and all 3 local commits are preserved\non top of the latest upstream code. The working directory is clean. ",
       "tool_calls": [
@@ -686,7 +686,7 @@
     {
       "step_id": 23,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -710,7 +710,7 @@
     {
       "step_id": 24,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [

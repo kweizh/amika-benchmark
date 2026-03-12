@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you resolve the diverged bookmark in your Jujutsu (jj) repository. Let me work through this step by step.  ",
       "reasoning_content": " The user wants me to work with Jujutsu (jj), which is a version control system. Let me break down the task:\n\n1. Change to `/home/user/repo` directory\n2. Fetch latest changes from remote `origin` using `jj git fetch`\n3. Resolve a diverged bookmark `feature-x` so it points to `feature-x@origin`\n4. Ensure the bookmark no longer has a conflict\n\nFirst, I need to navigate to the repo and understand the current state of the jj repository. Then I'll fetch and resolve the divergence.\n\nLet me start by changing to the directory and checking the status. ",
       "tool_calls": [
@@ -39,7 +39,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Good, I'm now in the repo directory. Now let me fetch the latest changes and check the status of the bookmarks. ",
       "tool_calls": [
@@ -63,7 +63,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " I see, there's no jj repository in `/home/user/repo`. Let me check what's actually in that directory. ",
       "tool_calls": [
@@ -88,7 +88,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The repo exists. Let me run the jj commands from the repo directory. ",
       "tool_calls": [
@@ -113,7 +113,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -138,7 +138,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None  The bookmark `feature-x` is indeed conflicted. I can see:\n- The bookmark has multiple heads: `b7ed4de9`, `689f4f07` (local), and `8cb8f471` (remote, also at @origin)\n- The @origin is behind by 1 commits and points to `vvvrulkp 8cb8f471`\n\nI need to resolve the divergence by forcing the local `feature-x` bookmark to point to `feature-x@origin`. In jj, I can use `jj bookmark set --allow-backwards` or `jj bookmark set --force` to move the bookmark to a specific commit.\n\nLet me check the current status more precisely to understand how to resolve this. I should set the bookmark `feature-x` to point to `feature-x@origin`, discarding local changes. ",
       "tool_calls": [
@@ -163,7 +163,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneHmm, that didn't quite work as expected. The bookmark set command didn't actually reset to origin. Let me try a different approach. I need to set the bookmark to the remote's version specifically.\n\nLet me check the status and try again with the correct revision. ",
       "tool_calls": [
@@ -188,7 +188,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Hmm, the output shows that `feature-x` is still pointing to the local change. I need to move the bookmark to point to the remote's version. Let me try using `jj bookmark move` or a different approach.\n\nLooking at the output, `feature-x@origin` should be at `vvvrulkp 8cb8f471 Remote change to feature X`. I need to move `feature-x` to that commit.\n\nLet me try `jj bookmark move` instead. ",
       "tool_calls": [
@@ -213,7 +213,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -238,7 +238,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneThe bookmark `feature-x@origin` is still showing the old commit. Let me try to sync it properly. I need to fetch again and then check if the bookmark needs to be deleted and recreated. ",
       "tool_calls": [
@@ -263,7 +263,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -288,7 +288,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  perfect! The bookmark is now resolved. Let me verify once more that there's no conflict/divergence.  ",
       "reasoning_content": "  perfect! The bookmark is now resolved. Let me verify once more that there's no conflict/divergence.  ",
       "tool_calls": [
@@ -313,7 +313,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -338,7 +338,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None \nFinal check - the bookmark should be showing connected to origin: ",
       "tool_calls": [
@@ -363,7 +363,7 @@
     {
       "step_id": 16,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The bookmark no longer shows a conflict. Let me verify with `jj status` as well to confirm everything is clean. ",
       "tool_calls": [
@@ -388,7 +388,7 @@
     {
       "step_id": 17,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneAll done! Let me summarize what was accomplished:\n\n1. \u2705 Changed to `/home/user/repo`\n2. \u2705 Fetched latest changes from the remote with `jj git fetch`\n3. \u2705 Resolved the diverged bookmark - The bookmark `feature-x` now points to `vvvrulkp 8cb8f471 Remote change to feature X` which matches the remote version\n4. \u2705 The `feature-x` bookmark no longer has a conflict\n\nThe conflict has been resolved by moving the local `feature-x` bookmark to point to the same commit as `feature-x@origin` (the remote version), discarding the local conflicting changes. ",
       "tool_calls": [

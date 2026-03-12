@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct"
+    "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "I'll help you restore the `parser.py` file to its previous version while keeping the current working copy revision and `config.toml` intact.\n\nFirst, let me check the current state of the repository and files.\n\n",
       "tool_calls": [
         {
@@ -38,7 +38,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me check the current content of `parser.py` to confirm it has the unwanted changes.\n\n",
       "tool_calls": [
         {
@@ -61,7 +61,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me also check the content of `config.toml` to ensure it's present and unchanged.\n\n",
       "tool_calls": [
         {
@@ -84,7 +84,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Now I'll use `jj` to restore `parser.py` to its version from the parent commit (the `feat: add parser` commit) while keeping the current working copy revision.\n\n",
       "tool_calls": [
         {
@@ -107,7 +107,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me verify that `parser.py` now has the correct content.\n\n",
       "tool_calls": [
         {
@@ -130,7 +130,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Good! Now let me check that `config.toml` is still present and unchanged.\n\n",
       "tool_calls": [
         {
@@ -153,7 +153,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Perfect! Now let me run `jj status` and save its output to `/home/user/project/status.log` as requested.\n\n",
       "tool_calls": [
         {
@@ -176,7 +176,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me verify that the status.log file was created and check its contents.\n\n",
       "tool_calls": [
         {
@@ -199,7 +199,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me also verify the current commit description to ensure it remains \"wip: partial refactor\".\n\n",
       "tool_calls": [
         {
@@ -222,7 +222,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_name": "deepinfra/Qwen/qwen3-coder-480b-A35b-instruct",
       "message": "Let me summarize what I've accomplished:\n\n1. Restored `parser.py` to its version from the parent commit (`feat: add parser`) which contains:\n   ```\n   # parser module\n   def parse(text):\n       return text.strip()\n   ```\n\n2. Verified that `config.toml` still exists and is unchanged with content:\n   ```\n   [settings]\n   version = 1\n   ```\n\n3. Created `/home/user/project/status.log` with the output of `jj status`:\n   ```\n   Working copy changes:\n   A status.log\n   Working copy  (@) : mtrlxmvp 3b10e582 wip: partial refactor\n   Parent commit (@-): torvmptm bc609a6c feat: add parser\n   ```\n\n4. Confirmed that the working copy revision description remains \"wip: partial refactor\"\n\nAll requirements have been met. The unwanted changes to `parser.py` have been reverted while preserving the working copy revision and `config.toml`.\n\n",
       "tool_calls": [
         {

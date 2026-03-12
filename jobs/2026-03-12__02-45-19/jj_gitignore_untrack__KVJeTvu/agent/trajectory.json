@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you complete this jj training scenario. Let me start by examining the current state of the repository.  ",
       "reasoning_content": " This is a training scenario for learning how to manage `.gitignore` files and untrack files in `jj` (Jujutsu VCS). Let me break down what I need to do:\n\n1. First, I need to understand the current state of the repository at `/home/user/myrepo`\n2. Create a `.gitignore` file that ignores the `build/` directory\n3. Run `jj status` to observe that `build/output.bin` is still tracked\n4. Use `jj file untrack` to stop tracking `build/output.bin`\n5. Verify the final state with `jj status` and `jj file list`\n\nLet me start by checking the current state of the repository. ",
       "tool_calls": [
@@ -40,7 +40,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " The repository exists. Let me check the current status and then create the .gitignore file. ",
       "tool_calls": [
@@ -94,7 +94,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The jj status shows:\n- `A build/output.bin` - a build artifact that is currently tracked (A means added)\n- `A src/main.py` - a source file that should remain tracked\n\nNow I need to:\n1. Create a .gitignore file with `build/` pattern\n2. Untrack the build/output.bin file\n3. Verify the final state\n\nLet me create the .gitignore file first. ",
       "tool_calls": [
@@ -118,7 +118,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Now let me verify the .gitignore file was created and check the status again. ",
       "tool_calls": [
@@ -142,7 +142,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " The .gitignore file was created successfully with the content \"build/\". Now let me run `jj status` to observe the state as mentioned in the task. I expect that `build/output.bin` will still be shown as tracked because adding a .gitignore doesn't automatically untrack already-tracked files. ",
       "tool_calls": [
@@ -166,7 +166,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None \n\nAs expected, `build/output.bin` is still tracked. Now I need to untrack it.  ",
       "tool_calls": [
@@ -220,7 +220,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None']) {\n    stream.write(chunk);\n  }\n  stream.close();\n}\n\n'' is truncated here but likely continues. As this is the exact output string and it appears to be the command output. It seems to be an empty output, command was successful. Also seems truncated is false, so probably successful. Let me check the status: ",
       "tool_calls": [
@@ -244,7 +244,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "      ",
       "reasoning_content": " None```\nTask 3: Verify the final state\n```\n\nLet me run all the verification commands: ",
       "tool_calls": [
@@ -331,7 +331,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -374,7 +374,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [

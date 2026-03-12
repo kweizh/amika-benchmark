@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you initialize a Jujutsu repository and configure your user identity. Let me start by creating a todo list to track these tasks.  ",
       "reasoning_content": " The user wants me to initialize a Jujutsu (jj) repository in `/home/user/myproject` and configure user identity globally. Let me break this down into tasks and execute them.\n\nFirst, let me check if the directory exists and what's in it, then proceed with the initialization and configuration. ",
       "tool_calls": [
@@ -64,7 +64,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Let me first check if the directory exists and then initialize the jj repository. ",
       "tool_calls": [
@@ -88,7 +88,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " Good, the directory exists with README.md. Now let me initialize the jj repository. ",
       "tool_calls": [
@@ -112,7 +112,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None }The repository has been initialized. I can see it was created and there's a warning about `git clean` possibly removing the `.jj/` directory. Let me update the todo and verify the .jj directory exists. ",
       "tool_calls": [
@@ -161,7 +161,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -196,7 +196,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None() The commands completed successfully (no output means success). Now let me update the todos and verify everything. ",
       "tool_calls": [
@@ -245,7 +245,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "     ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -302,7 +302,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None                \u24d8 Reminder: The file must still contain `# My Project`\n                     content is preserved. ",
       "tool_calls": [
@@ -326,7 +326,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -375,7 +375,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " All verification steps have passed:\n\n1. \u2713 The directory `/home/user/myproject/.jj` exists - verified with ls -la\n2. \u2713 Running `jj status` inside `/home/user/myproject` exits with code 0 - it shows working copy with README.md added\n3. \u2713 Running `jj config get user.name` outputs exactly `Alex Developer` - confirmed\n4. \u2713 Running `jj config get user.email` outputs exactly `alex@example.com` - confirmed\n5. \u2713 Both user.name and user.email are set at the user level (we used --user flag)\n6. \u2713 The file `/home/user/myproject/README.md` still exists and contains `# My Project` - confirmed\n\nAll tasks completed successfully. Let me provide the completion result. ",
       "tool_calls": [

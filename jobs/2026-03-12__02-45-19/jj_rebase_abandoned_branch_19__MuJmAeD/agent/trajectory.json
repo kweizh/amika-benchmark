@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/moonshotai/Kimi-K2.5"
+    "model_name": "deepinfra/moonshotai/kimi-k2.5"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " I'll help you recover the abandoned `feature-x` branch in the Jujutsu (jj) repository. Let me start by exploring the repository structure and finding the lost revision.   ",
       "reasoning_content": " The user wants me to help recover a lost branch in a Jujutsu (jj) repository. Let me understand the task:\n\n1. Find the abandoned revision that was previously pointed to by `feature-x`\n2. Restore the bookmark `feature-x` to point to that revision\n3. Rebase `feature-x` onto the `main` branch\n4. Save the output of `jj log -r feature-x` to `/home/user/log.txt`\n\nI can see from the system information that there's a `.config/jj` directory with a repository configuration. Let me first explore the repository structure and understand the current state.\n\nI should start by:\n1. Finding the jj repository root\n2. Looking at the current state of the repo (branches, log, etc.)\n3. Finding the abandoned revision\n4. Restoring the bookmark\n5. Rebasing\n6. Saving the log\n\nLet me start by exploring the repository structure. ",
       "tool_calls": [
@@ -51,7 +51,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " The git repository doesn't seem to have a `.jj` folder. Let me look for Jujutsu (jj) repositories in a different way and also check if there's any git repository that might be using jj.    Let me check if there's a .jj directory in the current working directory or look for all .jj directories: ",
       "tool_calls": [
@@ -86,7 +86,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " I need to find where the jj repository is. Let me search for it more thoroughly. ",
       "tool_calls": [
@@ -121,7 +121,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  Found the repository at `/home/user/repo`. Let me work with it:   ",
       "reasoning_content": " Found it! The jj repo is at `/home/user/repo/.jj`. Let me navigate there and work with it. ",
       "tool_calls": [
@@ -156,7 +156,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -180,7 +180,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " NoneI can see the main branch. Now let me check the JJ operation log to find the abandoned `feature-x` bookmark and its revision. ",
       "tool_calls": [
@@ -204,7 +204,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " ",
       "reasoning_content": " None    I can see the operation log. I found that:\n 1. `feature-x` was created pointing to commit `9c56f5dcac6c5eeb103563754a32d49b4cac998a`\n 2. Then `feature-x` was abandoned\n \n Now I need to:\n 1. Restore the `feature-x` bookmark to that commit\n 2. Rebase `feature-x` onto `main`\n 3. Save the log output\n\n Let me first restore the bookmark:     ",
       "tool_calls": [
@@ -264,7 +264,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " The bookmark has been restored. Now I need to rebase feature-x onto main. Let me do that. ",
       "tool_calls": [
@@ -324,7 +324,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": " None    The `jj rebase` command appears to have taken effect, but I need to confirm this by inspecting the repository's log output. Checking the log for the `feature-x` bookmark will verify if the commits were successfully integrated into the intended branch position and the repository state reflects the rebase.     ",
       "reasoning_content": " None    The `jj rebase` command appears to have taken effect, but I need to confirm this by inspecting the repository's log output. Checking the log for the `feature-x` bookmark will verify if the commits were successfully integrated into the intended branch position and the repository state reflects the rebase.     ",
       "tool_calls": [
@@ -348,7 +348,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " The log shows:\n- Commit `9c56f5dc` was rebased to new commit `9d8d07e2` (with change ID `xvxlorlq`)\n- The bookmark `feature-x` now points to this rebased commit\n- Message is \"feature-x work\"\n\nNow I need to save this output to `/home/user/log.txt`. ",
       "tool_calls": [
@@ -408,7 +408,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "   ",
       "reasoning_content": " None ",
       "tool_calls": [
@@ -468,7 +468,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/moonshotai/Kimi-K2.5",
+      "model_name": "deepinfra/moonshotai/kimi-k2.5",
       "message": "  ",
       "reasoning_content": " All tasks are complete. Let me verify the final state and provide a completion message. ",
       "tool_calls": [
