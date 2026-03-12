@@ -52,7 +52,7 @@ function MultiSelect({
               </Badge>
             )}
             {selected.length > 0 && selected.length <= 2 && selected.map(s => (
-              <Badge variant="secondary" key={s} className="px-1 font-normal rounded-sm truncate max-w-[80px]">
+              <Badge variant="secondary" key={s} className="px-1 font-normal rounded-sm truncate max-w-[200px]">
                 {s}
               </Badge>
             ))}
@@ -352,7 +352,7 @@ function TasksContent() {
               options={allModels}
               selected={selectedModels}
               onChange={(vals) => updateParams({ model: vals.length > 0 ? vals.join(",") : null })}
-              className="w-full sm:w-[180px]"
+              className="w-full sm:min-w-[180px] sm:w-auto"
             />
           </div>
 

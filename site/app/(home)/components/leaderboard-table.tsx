@@ -23,7 +23,7 @@ export interface LeaderboardEntry {
 
 function ProgressBar({ value, colorClass }: { value: number; colorClass: string }) {
   return (
-    <div className="h-2 w-24 bg-secondary rounded-full overflow-hidden">
+    <div className="h-2 w-16 sm:w-24 bg-secondary rounded-full overflow-hidden">
       <div
         className={cn("h-full transition-all duration-500 ease-out", colorClass)}
         style={{ width: `${value}%` }}
@@ -108,19 +108,19 @@ export default function LeaderboardTable({ data }: { data: LeaderboardEntry[] })
       {/* Leaderboard Table */}
       <div className="rounded-xl border border-border bg-card/50 backdrop-blur-sm shadow-xl overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm text-left">
+          <table className="w-full text-sm text-left whitespace-nowrap">
             <thead className="bg-secondary/50 text-muted-foreground font-medium border-b border-border">
               <tr>
-                <th className="px-6 py-4 w-[40%]">Model</th>
-                <th className="px-6 py-4 w-[15%] text-center">Passed</th>
-                <th className="px-6 py-4 w-[15%] text-right">Avg Duration</th>
-                <th className="px-6 py-4 w-[30%]">Success Rate</th>
+                <th className="px-4 py-3 sm:px-6 sm:py-4 w-[40%]">Model</th>
+                <th className="px-4 py-3 sm:px-6 sm:py-4 w-[15%] text-center">Passed</th>
+                <th className="px-4 py-3 sm:px-6 sm:py-4 w-[15%] text-right">Avg Duration</th>
+                <th className="px-4 py-3 sm:px-6 sm:py-4 w-[30%]">Success Rate</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/50">
               {filteredData.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="px-6 py-8 text-center text-muted-foreground">
+                  <td colSpan={4} className="px-4 py-8 sm:px-6 text-center text-muted-foreground">
                     No results found matching your search.
                   </td>
                 </tr>
@@ -131,7 +131,7 @@ export default function LeaderboardTable({ data }: { data: LeaderboardEntry[] })
                     onClick={() => router.push(`./tasks?model=${encodeURIComponent(row.model)}`)}
                     className="group hover:bg-secondary/30 transition-colors duration-200 cursor-pointer"
                   >
-                  <td className="px-6 py-4 font-medium text-foreground flex items-center gap-3">
+                  <td className="px-4 py-3 sm:px-6 sm:py-4 font-medium text-foreground flex items-center gap-2 sm:gap-3">
                     <span className="w-6 text-muted-foreground/50 text-xs">#{index + 1}</span>
                     <div className="flex flex-col">
                       <span className="flex items-center gap-2">
@@ -145,13 +145,13 @@ export default function LeaderboardTable({ data }: { data: LeaderboardEntry[] })
                       </span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-center text-muted-foreground font-mono">
+                  <td className="px-4 py-3 sm:px-6 sm:py-4 text-center text-muted-foreground font-mono">
                     {row.passedEvals}
                   </td>
-                  <td className="px-6 py-4 text-right text-muted-foreground font-mono">
+                  <td className="px-4 py-3 sm:px-6 sm:py-4 text-right text-muted-foreground font-mono">
                     {row.avgLatency > 0 ? `${row.avgLatency.toFixed(1)}s` : '-'}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-3 sm:px-6 sm:py-4">
                     <div className="block w-full group-hover:opacity-80 transition-opacity">
                       <ScoreCell value={row.successRate} />
                     </div>
