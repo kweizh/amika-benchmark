@@ -264,7 +264,7 @@ function TasksContent() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl h-[100dvh] flex flex-col overflow-hidden">
+    <div className="container mx-auto px-4 sm:px-8 lg:px-12 py-8 max-w-screen-2xl h-[100dvh] flex flex-col overflow-hidden">
       {/* Header Section */}
       <div className="mb-6 space-y-4 shrink-0">
         <div className="flex items-center gap-4">
@@ -349,18 +349,18 @@ function TasksContent() {
       </div>
 
       {/* Task List */}
-      <div className="rounded-xl border border-border bg-card/50 backdrop-blur-sm shadow-sm overflow-hidden animate-in fade-in duration-500 relative flex flex-col max-h-full">
+      <div className="rounded-xl border border-border bg-card/50 backdrop-blur-sm shadow-sm overflow-hidden animate-in fade-in duration-500 relative flex flex-col max-h-full pb-1">
         {filteredAndSortedTasks.length === 0 ? (
           <div className="text-center py-12 text-muted-foreground flex-1 flex items-center justify-center">
             No tasks found matching your filters
           </div>
         ) : (
-          <div className="overflow-auto relative">
+          <div className="overflow-auto relative custom-scrollbar">
             <table className="w-full text-sm text-left border-collapse">
               <thead className="sticky top-0 z-30 bg-secondary/95 backdrop-blur text-muted-foreground font-medium border-b border-border select-none shadow-sm">
                 <tr>
                   <th 
-                    className="md:sticky left-0 z-40 bg-transparent md:bg-[#f6f6f6] dark:md:bg-[#0f0f0f] border-r border-border/50 px-3 sm:px-6 py-4 w-[200px] min-w-[200px] max-w-[200px] md:w-[350px] md:min-w-[350px] md:max-w-[350px] cursor-pointer hover:bg-secondary/50 hover:text-foreground transition-colors group"
+                    className="md:sticky left-0 z-40 bg-transparent md:bg-[#f6f6f6] dark:md:bg-[#0f0f0f] border-r border-border/50 px-3 sm:px-6 py-3 w-[200px] min-w-[200px] max-w-[200px] md:w-[350px] md:min-w-[350px] md:max-w-[350px] cursor-pointer hover:bg-secondary/50 hover:text-foreground transition-colors group"
                     onClick={() => toggleSort("taskName")}
                   >
                     <div className="flex items-center gap-1 sm:gap-2">
@@ -369,7 +369,7 @@ function TasksContent() {
                     </div>
                   </th>
                   <th 
-                    className="md:sticky md:left-[350px] z-40 bg-transparent md:bg-[#f6f6f6] dark:md:bg-[#0f0f0f] border-r border-border/50 px-3 sm:px-6 py-4 w-[100px] min-w-[100px] max-w-[100px] md:w-[120px] md:min-w-[120px] md:max-w-[120px] text-right cursor-pointer hover:bg-secondary/50 hover:text-foreground transition-colors group md:shadow-[1px_0_0_rgba(0,0,0,0.05)]"
+                    className="md:sticky md:left-[350px] z-40 bg-transparent md:bg-[#f6f6f6] dark:md:bg-[#0f0f0f] border-r border-border/50 px-3 sm:px-6 py-3 w-[100px] min-w-[100px] max-w-[100px] md:w-[120px] md:min-w-[120px] md:max-w-[120px] text-right cursor-pointer hover:bg-secondary/50 hover:text-foreground transition-colors group md:shadow-[1px_0_0_rgba(0,0,0,0.05)]"
                     onClick={() => toggleSort("latency")}
                   >
                     <div className="flex items-center justify-end gap-1 sm:gap-2">
@@ -379,7 +379,7 @@ function TasksContent() {
                     </div>
                   </th>
                   {activeCombos.map(combo => (
-                    <th key={combo} className="px-3 sm:px-6 py-4 min-w-[120px] md:min-w-[150px] text-left border-l border-border/50">
+                    <th key={combo} className="px-3 sm:px-6 py-3 min-w-[120px] md:min-w-[150px] text-left border-l border-border/50">
                       <div className="flex flex-col items-start">
                         <span className="text-foreground font-medium truncate max-w-[100px] md:max-w-[130px]" title={combo.split(' (')[0]}>
                           {combo.split(' (')[0]}
@@ -396,23 +396,23 @@ function TasksContent() {
                 {filteredAndSortedTasks.map((task, index) => (
                   <tr 
                     key={task.taskName} 
-                    className="hover:bg-secondary/20 even:bg-secondary/5 transition-colors duration-200 group"
+                    className="hover:bg-secondary/30 even:bg-secondary/5 transition-colors duration-200 group"
                   >
                     <td className="md:sticky left-0 z-20 bg-background border-r border-border/50 p-0 font-mono w-[200px] min-w-[200px] max-w-[200px] md:w-[350px] md:min-w-[350px] md:max-w-[350px]">
                       <a 
                         href={`https://github.com/TabbyML/jj-benchmark/tree/main/tasks/${task.taskName}/instruction.md`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 sm:px-6 py-3 w-full h-full text-foreground group-hover:text-primary transition-colors focus:outline-none bg-transparent group-even:bg-secondary/5 group-hover:bg-secondary/20"
+                        className="group/task flex items-center gap-2 px-3 sm:px-6 py-2 w-full h-full text-foreground hover:text-primary transition-colors focus:outline-none bg-transparent group-even:bg-secondary/5 group-hover:bg-secondary/30"
                         title={`View ${task.taskName} instruction on GitHub`}
                       >
-                        <span className="truncate w-full block group-hover:underline text-xs md:text-sm">
+                        <span className="truncate w-full block group-hover/task:underline text-xs md:text-sm">
                           {task.taskName}
                         </span>
                       </a>
                     </td>
                     <td className="md:sticky md:left-[350px] z-20 bg-background border-r border-border/50 p-0 text-right w-[100px] min-w-[100px] max-w-[100px] md:w-[120px] md:min-w-[120px] md:max-w-[120px] md:shadow-[1px_0_0_rgba(0,0,0,0.05)]">
-                      <div className="flex items-center justify-end px-3 sm:px-6 py-3 w-full h-full bg-transparent group-even:bg-secondary/5 group-hover:bg-secondary/20 transition-colors">
+                      <div className="flex items-center justify-end px-3 sm:px-6 py-2 w-full h-full bg-transparent group-even:bg-secondary/5 group-hover:bg-secondary/30 transition-colors">
                         <span className="font-mono text-xs md:text-sm text-muted-foreground">
                           {task.avgDuration > 0 ? `${task.avgDuration.toFixed(1)}s` : '-'}
                         </span>
@@ -429,7 +429,7 @@ function TasksContent() {
                                   href={`https://github.com/TabbyML/jj-benchmark/blob/main/jobs/${trial.job_id}/${trial.trial_name}/result.json`}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="absolute inset-0 flex items-center justify-start gap-1.5 md:gap-2 px-3 sm:px-6 w-full h-full cursor-pointer hover:bg-secondary/40 transition-colors group/cell focus:outline-none"
+                                  className="absolute inset-0 flex items-center justify-start gap-1.5 md:gap-2 px-3 sm:px-6 w-full h-full cursor-pointer hover:bg-secondary/50 transition-colors group/cell focus:outline-none"
                                 >
                                   {trial.error ? (
                                     <AlertTriangle className="w-3.5 h-3.5 md:w-4 md:h-4 text-red-500/90 shrink-0" />
@@ -480,7 +480,7 @@ function TasksContent() {
                               </HoverCardContent>
                             </HoverCard>
                           ) : (
-                            <div className="flex justify-start pl-1 text-muted-foreground/30 font-mono text-sm py-1.5">
+                            <div className="flex items-center justify-start pl-3 sm:pl-6 text-muted-foreground/30 font-mono text-xs md:text-sm py-2 w-full h-full">
                               -
                             </div>
                           )}
