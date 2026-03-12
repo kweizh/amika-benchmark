@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/zai-org/GLM-4.7-Flash"
+    "model_name": "deepinfra/zai-org/glm-4.7-flash"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I'll help you clean up the stale audit revisions. Let me work through this step by step.",
       "reasoning_content": "The user wants me to clean up stale audit revisions in a jj repository. Let me break down the task:\n\n1. Understand the current state by running `jj log`\n2. Identify draft revisions using a revset\n3. Abandon both draft revisions\n4. Move the `audit-main` bookmark\n5. Verify no draft revisions remain\n6. Confirm the file system reflects the cleaned history\n7. Final log check\n\nLet me start by changing to the audit-repo directory and examining the current state.\n\nFirst, I need to navigate to `/home/user/audit-repo` and check the current state.",
       "tool_calls": [
@@ -39,7 +39,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Good, the repository exists. Let me now proceed with the steps outlined in the task.",
       "reasoning_content": "Good, the repository exists. Let me now proceed with the steps outlined in the task.",
       "tool_calls": [
@@ -63,7 +63,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I can see the repository structure and the current state. Now let me proceed with the steps:",
       "reasoning_content": "Good, I can see the current log output:\n- Empty working copy (@)\n- audit-main points to revision with description \"feat: add reporting module\" with change ID c27d8bce\n- Then two draft revisions:\n  - \"draft: experimental dedup pass\" (rzqvsuyy)\n  - \"draft: WIP validation logic (do not merge)\" (rynsswwy)\n- Then the three feat revisions\n\nNow I need to:\n1. Use the revset to identify draft revisions\n2. Abandon both drafts\n3. Move the bookmark\n4. Verify the cleanup\n\nLet me continue with the steps.",
       "tool_calls": [
@@ -87,7 +87,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Perfect! I can see exactly 2 revisions matching the draft pattern. Now I'll abandon both draft revisions:",
       "reasoning_content": "Good, I can see exactly 2 revisions matched with the revset (those are revisions #5 and #4 in the task description). Now let me abandon them.",
       "tool_calls": [
@@ -111,7 +111,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Great! The abandon operation worked correctly. Now I need to move the audit-main bookmark to the parent of the current working-copy commit, which is the rebased `feat: add reporting module` revision.",
       "reasoning_content": "Great! The abandon operation worked correctly. Now I need to move the audit-main bookmark to the parent of the current working-copy commit, which is the rebased `feat: add reporting module` revision.",
       "tool_calls": [
@@ -135,7 +135,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Interesting! The bookmark already points to the correct location (`tmwqkvnk afdebdc2` is the rebased `feat: add reporting module`). Let me verify this by checking where the bookmark currently points.",
       "reasoning_content": "Interesting! The bookmark already points to the correct location (`tmwqkvnk afdebdc2` is the rebased `feat: add reporting module`). Let me verify this by checking where the bookmark currently points.",
       "tool_calls": [
@@ -159,7 +159,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Good! The bookmark is already pointing to the correct commit. Let me continue with the verification steps.",
       "reasoning_content": "Good! The bookmark is already pointing to the correct commit. Let me continue with the verification steps.",
       "tool_calls": [
@@ -183,7 +183,7 @@
     {
       "step_id": 9,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Excellent! The draft revisions have been successfully removed. Now let me perform the file system verification.",
       "reasoning_content": "Excellent! The draft revisions have been successfully removed. Now let me perform the file system verification.",
       "tool_calls": [
@@ -207,7 +207,7 @@
     {
       "step_id": 10,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "The revset `description(\"feat: add reporting module\")` didn't work. Let me try with -G flag for git-style revision selectors:",
       "reasoning_content": "The revset `description(\"feat: add reporting module\")` didn't work. Let me try with -G flag for git-style revision selectors:",
       "tool_calls": [
@@ -231,7 +231,7 @@
     {
       "step_id": 11,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "The revset with description is not matching. Let me try a different approach - use the bookmark to list files.",
       "reasoning_content": "The revset with description is not matching. Let me try a different approach - use the bookmark to list files.",
       "tool_calls": [
@@ -255,7 +255,7 @@
     {
       "step_id": 12,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Good! The file list shows exactly what we expect. Now let me try a different approach for step 6 - I'll use the parent of the working copy to get the specific revision with the reporting module description.",
       "reasoning_content": "Good! The file list shows exactly what we expect. Now let me try a different approach for step 6 - I'll use the parent of the working copy to get the specific revision with the reporting module description.",
       "tool_calls": [
@@ -279,7 +279,7 @@
     {
       "step_id": 13,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Let me check what the current state of the repository is to understand what's happening with the revset query.",
       "reasoning_content": "Let me check what the current state of the repository is to understand what's happening with the revset query.",
       "tool_calls": [
@@ -303,7 +303,7 @@
     {
       "step_id": 14,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Perfect! Now let me run the final check with `jj log -r 'audit-main::@'` to confirm the bookmark and working copy relationship.",
       "reasoning_content": "Perfect! Now let me run the final check with `jj log -r 'audit-main::@'` to confirm the bookmark and working copy relationship.",
       "tool_calls": [
@@ -327,7 +327,7 @@
     {
       "step_id": 15,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Perfect! Now I need to summarize what was accomplished in a concise manner using attemptCompletion. Let me review what I've verified:\n\n1. \u2705 Step 1 - Understood the current shape: Confirmed 6 non-root revisions and 1 working-copy change\n2. \u2705 Step 2 - Identified draft revisions: Confirmed exactly 2 revisions matching `description(glob:\"draft:*\")`\n3. \u2705 Step 3 - Abandoned draft revisions: Successfully abandoned both drafts and rebase completed\n4. \u2705 Step 4 - Moved audit-main bookmark: It already pointed to the correct location (afdebdc2 - feat: add reporting module)\n5. \u2705 Step 5 - Verified no draft revisions remain: Output is empty (no revisions matched)\n6. \u2705 Step 6 - Confirmed file system: Found exactly 4 files at audit-main: README.md, pipelines/ingest.py, pipelines/transform.py, reports/summary.py - the draft files are NOT present\n7. \u2705 Step 7 - Final log check: audit-main is the direct parent of @ (working copy)\n\nEverything is complete! The repository is now clean with exactly 4 non-root, non-working-copy revisions and no draft revisions remaining.",
       "reasoning_content": "Perfect! Now I need to summarize what was accomplished in a concise manner using attemptCompletion. Let me review what I've verified:\n\n1. \u2705 Step 1 - Understood the current shape: Confirmed 6 non-root revisions and 1 working-copy change\n2. \u2705 Step 2 - Identified draft revisions: Confirmed exactly 2 revisions matching `description(glob:\"draft:*\")`\n3. \u2705 Step 3 - Abandoned draft revisions: Successfully abandoned both drafts and rebase completed\n4. \u2705 Step 4 - Moved audit-main bookmark: It already pointed to the correct location (afdebdc2 - feat: add reporting module)\n5. \u2705 Step 5 - Verified no draft revisions remain: Output is empty (no revisions matched)\n6. \u2705 Step 6 - Confirmed file system: Found exactly 4 files at audit-main: README.md, pipelines/ingest.py, pipelines/transform.py, reports/summary.py - the draft files are NOT present\n7. \u2705 Step 7 - Final log check: audit-main is the direct parent of @ (working copy)\n\nEverything is complete! The repository is now clean with exactly 4 non-root, non-working-copy revisions and no draft revisions remaining.",
       "tool_calls": [

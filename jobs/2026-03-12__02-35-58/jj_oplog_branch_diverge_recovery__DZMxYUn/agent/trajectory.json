@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/zai-org/GLM-4.7-Flash"
+    "model_name": "deepinfra/zai-org/glm-4.7-flash"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I'll help you perform a forensic analysis to find when the `develop` branch diverged from `main`. Let me start by exploring the repository structure.",
       "reasoning_content": "The user wants me to perform a forensic analysis on a repository to find when the `develop` branch diverged from `main`. Let me break down the task:\n\n1. Find the common ancestor using `jj log -r 'heads(::develop & ::main)'`\n2. Use `jj op log` to find the divergence operation\n3. Use `jj op show <OP_ID>` to confirm the divergence\n4. Identify specific information about the divergence\n5. Create a specific report file format\n\nFirst, I need to check if the repository exists at `/home/user/repo` and what's in it.\n\nLet me start by exploring the repository structure.",
       "tool_calls": [
@@ -29,7 +29,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "The directory doesn't exist at `/home/user/repo`. Let me check what directories are available in the root and look for a jj repository.",
       "reasoning_content": "The directory doesn't exist at `/home/user/repo`. Let me check what directories are available in the root and look for a jj repository.",
       "tool_calls": [
@@ -53,7 +53,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I notice the repository doesn't exist at `/home/user/repo`. Let me check if it needs to be created or if the path should be different.",
       "reasoning_content": "It seems the repo directory doesn't exist yet. Let me create it and initialize it if needed, or ask the user for clarification. Actually, looking at the task, it says the working directory is `/home/user/repo` but there's no such directory here. Let me check what actually exists and create the repo if needed.",
       "tool_calls": [

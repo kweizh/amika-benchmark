@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/zai-org/GLM-4.7-Flash"
+    "model_name": "deepinfra/zai-org/glm-4.7-flash"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I'll help you recover from the mistaken rebase. Let me start by checking the operation log to see what happened.",
       "reasoning_content": "The user wants me to help them recover from a mistaken rebase operation where they rebased the `feature` bookmark onto the wrong commit (`dev` instead of `main`).\n\nSince they're migrating from Git to JJ (Janus), I need to:\n1. Look at the operation log to see what happened\n2. Help them undo the mistaken rebase\n3. Correctly rebase feature onto main\n4. Verify the rebase worked\n5. Save the verification log\n\nFirst, I should check the operations through JJ. In JJ, I can use `jj op log` to see the operations, and `jj op run` to replay or undo operations.\n\nLet me start by checking the current state and operation log.",
       "tool_calls": [
@@ -39,7 +39,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "It seems there's no jj repository in the current directory. I need to understand the structure better. Let me list the files again to see what's available, particularly looking at the jj repos directory.",
       "reasoning_content": "It seems there's no jj repository in the current directory. I need to understand the structure better. Let me list the files again to see what's available, particularly looking at the jj repos directory.",
       "tool_calls": [
@@ -74,7 +74,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "The user says they are a developer migrating from Git and they accidentally rebased the `feature` bookmark onto `dev` instead of `main`. But looking at the current directory, I don't see a jj repository initialized. \n\nLet me check if there's a repository in the .config/jj/repos directory that might be related to the feature branch.",
       "reasoning_content": "The user says they are a developer migrating from Git and they accidentally rebased the `feature` bookmark onto `dev` instead of `main`. But looking at the current directory, I don't see a jj repository initialized. \n\nLet me check if there's a repository in the .config/jj/repos directory that might be related to the feature branch.",
       "tool_calls": [
@@ -98,7 +98,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Let me check the jj repo configuration to find out where the git repositories are located.",
       "reasoning_content": "Let me check the jj repo configuration to find out where the git repositories are located.",
       "tool_calls": [
@@ -122,7 +122,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Let me check the metadata.binpb file to see if I can extract information about bookmarks and operations from it.",
       "reasoning_content": "Let me check the metadata.binpb file to see if I can extract information about bookmarks and operations from it.",
       "tool_calls": [
@@ -146,7 +146,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Let me check the parent directory and look for jj repos in the .config directory more carefully.",
       "reasoning_content": "Let me check the parent directory and look for jj repos in the .config directory more carefully.",
       "tool_calls": [
@@ -170,7 +170,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I don't see an active jj repository in the current working directory. The jj configuration files exist in `.config/jj/repos/`, but there's no `.jj` directory in this location. This might be a Daytona workspace that hasn't had a repository initialized yet.\n\nLet me ask where your jj repository is located:",
       "reasoning_content": "It seems there's no git repository initialized here. The JJ repository configuration files exist in `.config/jj/repos/` but there's no actual `.jj` directory in the root. This might be a Daytona workspace that doesn't have an actual repository yet, or the user needs to be in a specific directory.\n\nLet me check if there's a repository in one of the Daytona sessions, or if I need to ask the user where their repository is located.",
       "tool_calls": [

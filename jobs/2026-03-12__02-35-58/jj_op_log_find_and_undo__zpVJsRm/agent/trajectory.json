@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/zai-org/GLM-4.7-Flash"
+    "model_name": "deepinfra/zai-org/glm-4.7-flash"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I'll help you recover the lost work in the Jujutsu repository. Let me start by examining the current state and then investigate the operation log.",
       "reasoning_content": "Let me break down the task:\n\n1. I'm working with a Jujutsu (jj) repository in `/home/user/project`\n2. The `feature` bookmark and its commit seem to have disappeared\n3. I need to:\n   - First, understand the current state with `jj log` and `jj bookmark list`\n   - Inspect the operation log with `jj op log` to find the operation that caused the loss\n   - Use `jj undo` to undo the problematic operation\n   - Verify the recovery\n\nLet me start by examining the current state of the repository.",
       "tool_calls": [
@@ -52,7 +52,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Good, I can see the current state:\n- There's a commit with description \"main follow-up work\" (7bf50aa5)\n- There's a previous commit \"initial project setup\" (06424ce8)\n- The `feature` bookmark is indeed missing\n\nNow I need to check the operation log to find what operation caused the loss.",
       "reasoning_content": "Good, I can see the current state:\n- There's a commit with description \"main follow-up work\" (7bf50aa5)\n- There's a previous commit \"initial project setup\" (06424ce8)\n- The `feature` bookmark is indeed missing\n\nNow I need to check the operation log to find what operation caused the loss.",
       "tool_calls": [
@@ -77,7 +77,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Perfect! I can see the operation log now. Looking at the most recent operation:\n\n```\n071afa8c4650 root@dc80f86768ae 1 week ago, lasted 6 milliseconds\n\u2502  abandon commit 6dedbdc9e9bdfb59ee2ada2c80945c8207d5e788\n\u2502  args: jj --repository /home/user/project abandon feature\n```\n\nThis operation says \"abandon commit 6dedbdc9e9bdfb59ee2ada2c80945c8207d5e788\" and the command was `jj abandon feature`. This is clearly the operation that caused the loss of the feature bookmark and commit.\n\nLooking back at the operation before that, I can see:\n```\nd503dded0585 root@e5cabc1e81c1 1 week ago, lasted 2 milliseconds\n\u2502  create bookmark feature pointing to commit 6dedbdc9e9bdfb59ee2ada2c80945c8207d5e788\n\u2502  args: jj --repository /home/user/project bookmark create feature -r @\n```\n\nAnd the one before that:\n```\n13cc7f008be7 root@992f9ca1784e 1 week ago, lasted 1 millisecond\n\u2502  describe commit 587f123aa887c295e771172565119ffd2c31b6a0\n\u2502  args: jj --repository /home/user/project describe -m 'implement feature'\n```\n\nSo the sequence was:\n1. Create the commit with \"implement feature\" description\n2. Create the bookmark 'feature' pointing to that commit\n3. Abandon the feature bookmark (and its commit)\n\n\n4. I'll execute the undo command to restore the previous state. This should bring back the bookmark and commit that were previously removed.",
       "reasoning_content": "Perfect! I can see the operation log now. Looking at the most recent operation:\n\n```\n071afa8c4650 root@dc80f86768ae 1 week ago, lasted 6 milliseconds\n\u2502  abandon commit 6dedbdc9e9bdfb59ee2ada2c80945c8207d5e788\n\u2502  args: jj --repository /home/user/project abandon feature\n```\n\nThis operation says \"abandon commit 6dedbdc9e9bdfb59ee2ada2c80945c8207d5e788\" and the command was `jj abandon feature`. This is clearly the operation that caused the loss of the feature bookmark and commit.\n\nLooking back at the operation before that, I can see:\n```\nd503dded0585 root@e5cabc1e81c1 1 week ago, lasted 2 milliseconds\n\u2502  create bookmark feature pointing to commit 6dedbdc9e9bdfb59ee2ada2c80945c8207d5e788\n\u2502  args: jj --repository /home/user/project bookmark create feature -r @\n```\n\nAnd the one before that:\n```\n13cc7f008be7 root@992f9ca1784e 1 week ago, lasted 1 millisecond\n\u2502  describe commit 587f123aa887c295e771172565119ffd2c31b6a0\n\u2502  args: jj --repository /home/user/project describe -m 'implement feature'\n```\n\nSo the sequence was:\n1. Create the commit with \"implement feature\" description\n2. Create the bookmark 'feature' pointing to that commit\n3. Abandon the feature bookmark (and its commit)\n\n\n4. I'll execute the undo command to restore the previous state. This should bring back the bookmark and commit that were previously removed.",
       "tool_calls": [
@@ -102,7 +102,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Hmm, it seems the undo command was applied but the result doesn't match what we expected. Let me verify the current state again.",
       "reasoning_content": "Hmm, it seems the undo command was applied but the result doesn't match what we expected. Let me verify the current state again.",
       "tool_calls": [
@@ -151,7 +151,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Great! The undo worked successfully. Let me verify all the conditions:\n\n1. \u2713 The `feature` bookmark exists and is present in the output of `jj bookmark list`.\n2. \u2713 The commit with the description `\"implement feature\"` exists and is reachable in `jj log`.\n3. \u2713 The `feature` bookmark points to the commit with the description `\"implement feature\"`.\n4. \u2713 The file `/home/user/project/feature.txt` exists and contains the text `feature work` (this file is part of the recovered commit).\n\nLet me verify the content of the feature.txt file to be absolutely sure.",
       "reasoning_content": "Great! The undo worked successfully. Let me verify all the conditions:\n\n1. \u2713 The `feature` bookmark exists and is present in the output of `jj bookmark list`.\n2. \u2713 The commit with the description `\"implement feature\"` exists and is reachable in `jj log`.\n3. \u2713 The `feature` bookmark points to the commit with the description `\"implement feature\"`.\n4. \u2713 The file `/home/user/project/feature.txt` exists and contains the text `feature work` (this file is part of the recovered commit).\n\nLet me verify the content of the feature.txt file to be absolutely sure.",
       "tool_calls": [
@@ -176,7 +176,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Perfect! All the conditions are verified:\n1. \u2705 The `feature` bookmark exists and is present in the output of `jj bookmark list`.\n2. \u2705 The commit with the description `\"implement feature\"` exists and is reachable in `jj log`.\n3. \u2705 The `feature` bookmark points to the commit with the description `\"implement feature\"`.\n4. \u2705 The file `/home/user/project/feature.txt` exists and contains the text `feature work`.\n\nAll requirements have been successfully met. I can now present the completion result.",
       "reasoning_content": "Perfect! All the conditions are verified:\n1. \u2705 The `feature` bookmark exists and is present in the output of `jj bookmark list`.\n2. \u2705 The commit with the description `\"implement feature\"` exists and is reachable in `jj log`.\n3. \u2705 The `feature` bookmark points to the commit with the description `\"implement feature\"`.\n4. \u2705 The file `/home/user/project/feature.txt` exists and contains the text `feature work`.\n\nAll requirements have been successfully met. I can now present the completion result.",
       "tool_calls": [

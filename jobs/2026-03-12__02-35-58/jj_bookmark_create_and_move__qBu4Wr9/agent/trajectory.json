@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/zai-org/GLM-4.7-Flash"
+    "model_name": "deepinfra/zai-org/glm-4.7-flash"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I'll help you create and move bookmarks in your jj repository. Let me start by verifying the current state and then complete both tasks.",
       "reasoning_content": "This is a task about managing bookmarks in a Jujutsu (jj) repository. Let me break down what I need to do:\n\n1. Create a new bookmark `feature/contact` that points to commit 3 (the commit with description `feat: add contact page`)\n2. Move the existing `dev` bookmark forward to commit 3\n\nThe user provides specific commands:\n- For creating: `jj bookmark create <bookmark-name> -r <revision>`\n- For moving: `jj bookmark move <bookmark-name> --to <revision>`\n\nThe revision for commit 3 is `@-` (the parent of the working copy).\n\nLet me start by:\n1. Listing the bookmarks to see the current state\n2. Creating the new bookmark `feature/contact -r @-`\n3. Moving `dev --to @-`\n4. Verifying with `jj bookmark list`\n\nSince this is a straightforward task with just 2 main steps, I don't need to create a TODO list. Let me proceed with the commands.",
       "tool_calls": [
@@ -61,7 +61,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Good! The first task is complete. I can see that:\n1. `dev` currently points to `pwpqpvrx` (commit 2 with description \"feat: add homepage route\")\n2. The new bookmark `feature/contact` has been created and points to `yyuvzlwn` (commit 3 with description \"feat: add contact page\")\n3. From the log, commit 3 (`yyuvzlwn`) is the parent of the working copy `@`\n\nNow I need to move the `dev` bookmark to commit 3 using `jj bookmark move dev --to @-`.",
       "reasoning_content": "Good! The first task is complete. I can see that:\n1. `dev` currently points to `pwpqpvrx` (commit 2 with description \"feat: add homepage route\")\n2. The new bookmark `feature/contact` has been created and points to `yyuvzlwn` (commit 3 with description \"feat: add contact page\")\n3. From the log, commit 3 (`yyuvzlwn`) is the parent of the working copy `@`\n\nNow I need to move the `dev` bookmark to commit 3 using `jj bookmark move dev --to @-`.",
       "tool_calls": [
@@ -85,7 +85,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Great! Both tasks have been completed successfully. Let me verify the final result by checking the bookmark list and log.",
       "reasoning_content": "Great! Both tasks have been completed successfully. Let me verify the final result by checking the bookmark list and log.",
       "tool_calls": [
@@ -120,7 +120,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Perfect! Both tasks have been completed successfully. Let me verify the results:\n\n1. **Created bookmark `feature/contact`**: \u2713\n   - The output shows: `feature/contact: yyuvzlwn 6bc57352 feat: add contact page`\n   - Commit 3 is `yyuvzlwn 6bc57352` with description `feat: add contact page`\n\n2. **Moved bookmark `dev` to commit 3**: \u2713\n   - The output shows: `dev: yyuvzlwn 6bc57352 feat: add contact page`\n   - It's now pointing to the same commit as `feature/contact`\n\n3. **Final verification**: \u2713\n   - `dev` points to commit with description `feat: add contact page` \u2713\n   - `feature/contact` points to commit with description `feat: add contact page` \u2713\n   - Both bookmarks point to the same commit (commit 3) \u2713\n\nThe log output shows that both `dev` and `feature/contact` are now pointing to the commit `yyuvzlwn 6bc57352 feat: add contact page`, which is the parent of the working copy.",
       "reasoning_content": "Perfect! Both tasks have been completed successfully. Let me verify the results:\n\n1. **Created bookmark `feature/contact`**: \u2713\n   - The output shows: `feature/contact: yyuvzlwn 6bc57352 feat: add contact page`\n   - Commit 3 is `yyuvzlwn 6bc57352` with description `feat: add contact page`\n\n2. **Moved bookmark `dev` to commit 3**: \u2713\n   - The output shows: `dev: yyuvzlwn 6bc57352 feat: add contact page`\n   - It's now pointing to the same commit as `feature/contact`\n\n3. **Final verification**: \u2713\n   - `dev` points to commit with description `feat: add contact page` \u2713\n   - `feature/contact` points to commit with description `feat: add contact page` \u2713\n   - Both bookmarks point to the same commit (commit 3) \u2713\n\nThe log output shows that both `dev` and `feature/contact` are now pointing to the commit `yyuvzlwn 6bc57352 feat: add contact page`, which is the parent of the working copy.",
       "tool_calls": [

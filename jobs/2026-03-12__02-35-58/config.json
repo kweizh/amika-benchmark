@@ -50,7 +50,7 @@
         {
             "name": null,
             "import_path": "agents.pochi:Pochi",
-            "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+            "model_name": "deepinfra/zai-org/glm-4.7-flash",
             "override_timeout_sec": null,
             "override_setup_timeout_sec": null,
             "max_timeout_sec": null,

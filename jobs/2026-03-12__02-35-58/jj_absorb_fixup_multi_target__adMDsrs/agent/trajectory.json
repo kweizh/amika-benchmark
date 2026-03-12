@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/zai-org/GLM-4.7-Flash"
+    "model_name": "deepinfra/zai-org/glm-4.7-flash"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I'll help you distribute these fixup changes using `jj absorb`. Let me start by examining the current stack and then run absorb to distribute the changes.",
       "reasoning_content": "The user wants me to use `jj absorb` to distribute fixup changes into the correct target commits in a 5-commit stack. The current working directory has modifications to:\n- parser.py (fixup to commit 1)\n- formatter.py (fixup to commit 3)\n- runner.py (fixup to commit 5)\n\nI need to:\n1. First understand the current state of the stack using `jj log`\n2. Run `jj absorb` with appropriate options to distribute the fixups\n3. Verify each target commit contains the combined changes\n4. Write an absorb report to `/home/user/absorb_report.md`\n\nLet me start by checking the current stack and understanding what fixups need to be applied.",
       "tool_calls": [
@@ -50,7 +50,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Good! I can see the stack clearly:\n- @ (HEAD) - rrytplwr - wip: fixups for parser, formatter, and runner (contains the fixup changes to all three files)\n- commit-5 (bc72e2c0) - add runner\n- commit-4 (4d4f347d) - add exporter\n- commit-3 (f05ca9a2) - add formatter\n- commit-2 (cdb07e92) - add validator\n- commit-1 (543568e4) - add parser\n\nAccording to the task:\n- Fixups to parser.py should go to commit-1 (add parser)\n- Fixups to formatter.py should go to commit-3 (add formatter)\n- Fixups to runner.py should go to commit-5 (add runner)\n\nNow let me run absorb to distribute these changes:",
       "reasoning_content": "Good! I can see the stack clearly:\n- @ (HEAD) - rrytplwr - wip: fixups for parser, formatter, and runner (contains the fixup changes to all three files)\n- commit-5 (bc72e2c0) - add runner\n- commit-4 (4d4f347d) - add exporter\n- commit-3 (f05ca9a2) - add formatter\n- commit-2 (cdb07e92) - add validator\n- commit-1 (543568e4) - add parser\n\nAccording to the task:\n- Fixups to parser.py should go to commit-1 (add parser)\n- Fixups to formatter.py should go to commit-3 (add formatter)\n- Fixups to runner.py should go to commit-5 (add runner)\n\nNow let me run absorb to distribute these changes:",
       "tool_calls": [
@@ -74,7 +74,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Now let me verify each target commit contains the combined changes. I'll use jj show for each commit to see what changes they contain.",
       "reasoning_content": "Now let me verify each target commit contains the combined changes. I'll use jj show for each commit to see what changes they contain.",
       "tool_calls": [
@@ -120,7 +120,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Now I need to verify the current log to show the state after absorb, and then create the absorb report.",
       "reasoning_content": "Now I need to verify the current log to show the state after absorb, and then create the absorb report.",
       "tool_calls": [
@@ -144,7 +144,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Now I need to create the absorb report showing the distribution. Let me write it to the specified location.",
       "reasoning_content": "Now I need to create the absorb report showing the distribution. Let me write it to the specified location.",
       "tool_calls": [
@@ -169,7 +169,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "The absorb operation was successful. Let me verify the report was created and present the results to the user.\n\nSummary of what happened:\n1. The working copy had 3 fixup changes to parser.py, formatter.py, and runner.py\n2. jj absorb automatically identified the intent and distributed them appropriately:\n   - parser.py changes \u2192 commit-1 (add parser)\n   - formatter.py changes \u2192 commit-3 (add formatter)\n   - runner.py changes \u2192 commit-5 (add runner)\n3. The absorb report was created at /home/user/absorb_report.md\n\nThe final working copy is now empty, and all target commits now contain their intended fixes combined with their original functionality.",
       "reasoning_content": "The absorb operation was successful. Let me verify the report was created and present the results to the user.\n\nSummary of what happened:\n1. The working copy had 3 fixup changes to parser.py, formatter.py, and runner.py\n2. jj absorb automatically identified the intent and distributed them appropriately:\n   - parser.py changes \u2192 commit-1 (add parser)\n   - formatter.py changes \u2192 commit-3 (add formatter)\n   - runner.py changes \u2192 commit-5 (add runner)\n3. The absorb report was created at /home/user/absorb_report.md\n\nThe final working copy is now empty, and all target commits now contain their intended fixes combined with their original functionality.",
       "tool_calls": [
@@ -194,7 +194,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I wrote the report to the same file again because I noticed the executeCommand tool first returned output, and I didn't want to overwrite it immediately. Now let me verify the final state and present the results.",
       "reasoning_content": "I wrote the report to the same file again because I noticed the executeCommand tool first returned output, and I didn't want to overwrite it immediately. Now let me verify the final state and present the results.",
       "tool_calls": [

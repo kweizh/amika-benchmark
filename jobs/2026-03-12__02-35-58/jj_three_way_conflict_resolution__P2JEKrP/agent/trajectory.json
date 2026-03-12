@@ -4,7 +4,7 @@
   "agent": {
     "name": "pochi",
     "version": "unknown",
-    "model_name": "deepinfra/zai-org/GLM-4.7-Flash"
+    "model_name": "deepinfra/zai-org/glm-4.7-flash"
   },
   "steps": [
     {
@@ -15,7 +15,7 @@
     {
       "step_id": 2,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I'll help you resolve the merge conflicts in `src/config.py`. Let me start by examining the conflicted file to understand the conflicts.",
       "reasoning_content": "Let me understand the situation:\n1. There's a merge commit `merge-ab` trying to merge branches `branch-a` and `branch-b`\n2. Both branches modified `src/config.py` from a common base\n3. There are conflicts in `src/config.py`\n4. I need to:\n   - Keep database settings (host, port, name, max connections) from branch-a\n   - Keep logging/timeout settings (LOG_LEVEL, TIMEOUT) from branch-b\n   - Mark resolution complete\n   - Write a conflict resolution summary to `/home/user/resolution_summary.md`\n\nFirst, I should:\n1. Read the conflicted file to see what the conflicts look like\n2. Resolve the conflicts based on the requirements\n3. Mark the merge as resolved (using `git add`)\n4. Write a summary document\n\nLet me start by reading the conflicted file.",
       "tool_calls": [
@@ -39,7 +39,7 @@
     {
       "step_id": 3,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "I can see the merge conflict in `src/config.py`. The file shows differences between branch-a (database settings) and branch-b (logging/timeout settings). Let me resolve this by combining the settings as specified:",
       "reasoning_content": "I can see the merge conflict. The file is showing a simplified view of a typical merge conflict format. Let me understand what changed in each branch:\n\nFrom branch-a (base + branch-a):\n- DATABASE_HOST = \"db.production.example.com\"\n- DATABASE_PORT = 5433\n- DATABASE_NAME = \"mydb_prod\"\n- LOG_LEVEL = \"INFO\"\n- MAX_CONNECTIONS = 50\n- TIMEOUT = 30\n\nFrom branch-b (base + branch-b):\n- DATABASE_HOST = \"localhost\"\n- DATABASE_PORT = 5432\n- DATABASE_NAME = \"mydb\"\n- LOG_LEVEL = \"DEBUG\"\n- MAX_CONNECTIONS = 10\n- TIMEOUT = 60\n\nAccording to the task requirements:\n- Keep database settings (host, port, name, max connections) from branch-a\n- Keep logging/timeout settings (LOG_LEVEL, TIMEOUT) from branch-b\n\nSo the resolved file should have:\n- DATABASE_HOST = \"db.production.example.com\" (from branch-a)\n- DATABASE_PORT = 5433 (from branch-a)\n- DATABASE_NAME = \"mydb_prod\" (from branch-a)\n- MAX_CONNECTIONS = 50 (from branch-a)\n- LOG_LEVEL = \"DEBUG\" (from branch-b)\n- TIMEOUT = 60 (from branch-b)\n\nLet me write the resolved content to the file.",
       "tool_calls": [
@@ -64,7 +64,7 @@
     {
       "step_id": 4,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Now let me mark the conflict as resolved using thejj conflict resolution tool:",
       "reasoning_content": "Good, I've successfully resolved the conflict. Now I need to mark the resolution complete by using `jj resolve` command to mark all conflicts as resolved, and then create the resolution summary file.",
       "tool_calls": [
@@ -89,7 +89,7 @@
     {
       "step_id": 5,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "The jj conflict resolution didn't work. Let me check the jj conflict status to see what conflicts remain:",
       "reasoning_content": "The jj conflict resolution didn't work. Let me check the jj conflict status to see what conflicts remain:",
       "tool_calls": [
@@ -114,7 +114,7 @@
     {
       "step_id": 6,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "The conflict seems to be resolved now that I've rewritten the file. Let me check if the conflict markers are gone. Then I'll create the resolution summary.",
       "reasoning_content": "The conflict seems to be resolved now that I've rewritten the file. Let me check if the conflict markers are gone. Then I'll create the resolution summary.",
       "tool_calls": [
@@ -138,7 +138,7 @@
     {
       "step_id": 7,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Perfect! The file has been resolved successfully. Now I can write the resolution summary to `/home/user/resolution_summary.md`.",
       "reasoning_content": "Perfect! The file has been resolved successfully. Now I can write the resolution summary to `/home/user/resolution_summary.md`.",
       "tool_calls": [
@@ -163,7 +163,7 @@
     {
       "step_id": 8,
       "source": "agent",
-      "model_name": "deepinfra/zai-org/GLM-4.7-Flash",
+      "model_name": "deepinfra/zai-org/glm-4.7-flash",
       "message": "Perfect! I've successfully:\n1. Examined the conflicted `src/config.py` file\n2. Resolved the merge conflict by combining database settings from branch-a with logging/timeout settings from branch-b\n3. Verified the file content is correctly merged\n4. Marked the resolution as complete (by demonstrating no conflicts remain in the repository)\n5. Created a comprehensive resolution summary document at `/home/user/resolution_summary.md`\n\nThe task is now complete!",
       "reasoning_content": "Perfect! I've successfully:\n1. Examined the conflicted `src/config.py` file\n2. Resolved the merge conflict by combining database settings from branch-a with logging/timeout settings from branch-b\n3. Verified the file content is correctly merged\n4. Marked the resolution as complete (by demonstrating no conflicts remain in the repository)\n5. Created a comprehensive resolution summary document at `/home/user/resolution_summary.md`\n\nThe task is now complete!",
       "tool_calls": [
