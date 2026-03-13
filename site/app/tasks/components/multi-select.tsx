@@ -80,7 +80,9 @@ export function MultiSelect({
                   if (selected.length === 0) {
                     onChange(options.filter((s) => s !== option));
                   } else if (selected.includes(option)) {
-                    onChange(selected.filter((s) => s !== option));
+                    if (selected.length > 1) {
+                      onChange(selected.filter((s) => s !== option));
+                    }
                   } else {
                     const newSelected = [...selected, option];
                     if (newSelected.length === options.length) {

@@ -104,26 +104,10 @@ function TasksContent() {
       const [model, agentStr] = combo.split(" (");
       const agent = agentStr.slice(0, -1);
       
-      if (selectedModels.length !== 1) {
-        if (selectedModels.length > 0 && !selectedModels.includes(model)) return false;
-      }
-      
+      if (selectedModels.length > 0 && !selectedModels.includes(model)) return false;
       if (selectedAgents.length > 0 && !selectedAgents.includes(agent.toLowerCase())) return false;
       return true;
     });
-
-    if (selectedModels.length === 1) {
-      const selectedModel = selectedModels[0];
-      combos.sort((a, b) => {
-        const aModel = a.split(" (")[0];
-        const bModel = b.split(" (")[0];
-        const aIsSelected = aModel === selectedModel;
-        const bIsSelected = bModel === selectedModel;
-        if (aIsSelected && !bIsSelected) return -1;
-        if (!aIsSelected && bIsSelected) return 1;
-        return a.localeCompare(b);
-      });
-    }
 
     return combos;
   }, [selectedModels.join(","), selectedAgents.join(",")]);
@@ -132,8 +116,6 @@ function TasksContent() {
     let result = tasksData.map(task => {
       const comboMap: Record<string, any> = {};
       let hasMatchingTrial = false;
-      let selectedModelMatchesStatus = false;
-      let hasSelectedModelTrial = false;
       
       task.trials.forEach(trial => {
         const comboKey = `${trial.model} (${trial.agent})`;
@@ -152,30 +134,11 @@ function TasksContent() {
           }
         }
 
-        if (selectedModels.length === 1 && trial.model === selectedModels[0]) {
-          hasSelectedModelTrial = true;
-          if (matchesStatus) {
-            selectedModelMatchesStatus = true;
-          }
-        }
-        
-        if (selectedModels.length === 1) {
+        if (matchesStatus) {
           comboMap[comboKey] = trial;
-        } else {
-          if (matchesStatus) {
-            comboMap[comboKey] = trial;
-            hasMatchingTrial = true;
-          }
+          hasMatchingTrial = true;
         }
       });
-
-      if (selectedModels.length === 1) {
-        if (selectedStatuses.length > 0) {
-          hasMatchingTrial = selectedModelMatchesStatus;
-        } else {
-          hasMatchingTrial = hasSelectedModelTrial;
-        }
-      }
 
       const avgDuration = Object.values(comboMap).length > 0 
         ? Object.values(comboMap).reduce((sum: number, t: any) => sum + t.exec_duration, 0) / Object.values(comboMap).length 
