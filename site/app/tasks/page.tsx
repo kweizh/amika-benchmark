@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect, Suspense } from "react";
-import { Check, X as XIcon, Search, AlertTriangle, ArrowUpDown, ArrowUp, ArrowDown, Filter, X, ExternalLink, ChevronsUpDown } from "lucide-react";
+import { Check, X as XIcon, Search, AlertTriangle, ArrowUpDown, ArrowUp, ArrowDown, Filter, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { clsx, type ClassValue } from "clsx";
@@ -12,109 +12,11 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
-import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
+import { MultiSelect } from "./components/multi-select";
+import { BackToTop } from "./components/back-to-top";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
-}
-
-function MultiSelect({
-  title,
-  options,
-  selected,
-  onChange,
-  className
-}: {
-  title: string;
-  options: string[];
-  selected: string[];
-  onChange: (vals: string[]) => void;
-  className?: string;
-}) {
-  return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <button
-          type="button"
-          className={cn(
-            "flex h-9 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
-            className
-          )}
-        >
-          <div className="flex gap-1 items-center overflow-hidden">
-            <span className="text-muted-foreground mr-1 whitespace-nowrap">{title}</span>
-            {selected.length === 0 && (
-              <Badge variant="secondary" className="px-1 font-normal rounded-sm">
-                All
-              </Badge>
-            )}
-            {selected.length > 0 && selected.length <= 2 && selected.map(s => (
-              <Badge variant="secondary" key={s} className="px-1 font-normal rounded-sm truncate max-w-[200px]">
-                {s}
-              </Badge>
-            ))}
-            {selected.length > 2 && (
-              <Badge variant="secondary" className="px-1 font-normal rounded-sm">
-                {selected.length} selected
-              </Badge>
-            )}
-          </div>
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0" align="start">
-        <Command>
-          <CommandInput placeholder={`Search ${title}...`} />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup>
-              <CommandItem
-                onSelect={() => onChange([])}
-              >
-                <Checkbox 
-                  checked={selected.length === 0} 
-                  className="mr-2"
-                  onCheckedChange={() => onChange([])}
-                />
-                <span>All</span>
-              </CommandItem>
-              {options.map((option) => {
-                const isSelected = selected.includes(option);
-                return (
-                  <CommandItem
-                    key={option}
-                    onSelect={() => {
-                      if (isSelected) {
-                        onChange(selected.filter((s) => s !== option));
-                      } else {
-                        onChange([...selected, option]);
-                      }
-                    }}
-                  >
-                    <Checkbox 
-                      checked={isSelected} 
-                      className="mr-2"
-                      onCheckedChange={() => {
-                        if (isSelected) {
-                          onChange(selected.filter((s) => s !== option));
-                        } else {
-                          onChange([...selected, option]);
-                        }
-                      }}
-                    />
-                    <span>{option}</span>
-                  </CommandItem>
-                );
-              })}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
-  );
 }
 
 // Convert object to array and sort by task name
@@ -138,13 +40,29 @@ const allTrialsFlat = tasksData.flatMap(task =>
 );
 
 const allModels = Array.from(new Set(allTrialsFlat.map(tr => tr.model)));
-const allAgents = Array.from(new Set(allTrialsFlat.map(tr => tr.agent)));
 const allCombos = Array.from(new Set(allTrialsFlat.map(tr => `${tr.model} (${tr.agent})`))).sort();
 
 function TasksContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Preload messages data in the background
+    const loadMessages = async () => {
+      try {
+        await import("../../messages.json");
+      } catch (error) {
+        console.error("Failed to preload messages:", error);
+      }
+    };
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      window.requestIdleCallback(() => loadMessages());
+    } else {
+      setTimeout(loadMessages, 1000); // Fallback for Safari
+    }
+  }, []);
 
   const queryQ = searchParams.get("q") || "";
   const queryStatusStr = searchParams.get("status") || "";
@@ -186,26 +104,10 @@ function TasksContent() {
       const [model, agentStr] = combo.split(" (");
       const agent = agentStr.slice(0, -1);
       
-      if (selectedModels.length !== 1) {
-        if (selectedModels.length > 0 && !selectedModels.includes(model)) return false;
-      }
-      
+      if (selectedModels.length > 0 && !selectedModels.includes(model)) return false;
       if (selectedAgents.length > 0 && !selectedAgents.includes(agent.toLowerCase())) return false;
       return true;
     });
-
-    if (selectedModels.length === 1) {
-      const selectedModel = selectedModels[0];
-      combos.sort((a, b) => {
-        const aModel = a.split(" (")[0];
-        const bModel = b.split(" (")[0];
-        const aIsSelected = aModel === selectedModel;
-        const bIsSelected = bModel === selectedModel;
-        if (aIsSelected && !bIsSelected) return -1;
-        if (!aIsSelected && bIsSelected) return 1;
-        return a.localeCompare(b);
-      });
-    }
 
     return combos;
   }, [selectedModels.join(","), selectedAgents.join(",")]);
@@ -214,8 +116,6 @@ function TasksContent() {
     let result = tasksData.map(task => {
       const comboMap: Record<string, any> = {};
       let hasMatchingTrial = false;
-      let selectedModelMatchesStatus = false;
-      let hasSelectedModelTrial = false;
       
       task.trials.forEach(trial => {
         const comboKey = `${trial.model} (${trial.agent})`;
@@ -234,30 +134,11 @@ function TasksContent() {
           }
         }
 
-        if (selectedModels.length === 1 && trial.model === selectedModels[0]) {
-          hasSelectedModelTrial = true;
-          if (matchesStatus) {
-            selectedModelMatchesStatus = true;
-          }
-        }
-        
-        if (selectedModels.length === 1) {
+        if (matchesStatus) {
           comboMap[comboKey] = trial;
-        } else {
-          if (matchesStatus) {
-            comboMap[comboKey] = trial;
-            hasMatchingTrial = true;
-          }
+          hasMatchingTrial = true;
         }
       });
-
-      if (selectedModels.length === 1) {
-        if (selectedStatuses.length > 0) {
-          hasMatchingTrial = selectedModelMatchesStatus;
-        } else {
-          hasMatchingTrial = hasSelectedModelTrial;
-        }
-      }
 
       const avgDuration = Object.values(comboMap).length > 0 
         ? Object.values(comboMap).reduce((sum: number, t: any) => sum + t.exec_duration, 0) / Object.values(comboMap).length 
@@ -363,7 +244,7 @@ function TasksContent() {
                 setSearchQuery("");
                 router.replace(pathname, { scroll: false });
               }}
-              className="flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium text-foreground bg-secondary hover:bg-secondary/80 border border-border shadow-sm rounded-md transition-colors w-full sm:w-auto ml-auto md:ml-0 cursor-pointer"
+              className="flex h-9 items-center justify-center gap-1.5 px-4 text-sm font-medium text-foreground bg-secondary hover:bg-secondary/80 border border-border shadow-sm rounded-md transition-colors w-full sm:w-auto ml-auto md:ml-0 cursor-pointer"
             >
               <X className="w-4 h-4" />
               Clear Filters
@@ -441,10 +322,10 @@ function TasksContent() {
                             <HoverCard openDelay={200} closeDelay={0}>
                               <HoverCardTrigger asChild>
                                 <a 
-                                  href={`https://github.com/TabbyML/jj-benchmark/blob/main/jobs/${trial.job_id}/${trial.trial_name}/result.json`}
+                                  href={`/tasks/redirect?job_name=${encodeURIComponent(trial.job_name)}&trial_name=${encodeURIComponent(trial.trial_name)}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="absolute inset-0 flex items-center justify-start gap-1.5 md:gap-2 px-3 sm:px-6 w-full h-full cursor-pointer hover:bg-secondary/50 transition-colors group/cell focus:outline-none"
+                                  className="absolute inset-0 flex items-center justify-start gap-1.5 md:gap-2 px-3 sm:px-6 w-full h-full cursor-pointer hover:bg-secondary/50 transition-colors group/cell focus:outline-none text-left bg-transparent border-none m-0 p-0"
                                 >
                                   {trial.error ? (
                                     <AlertTriangle className="w-3.5 h-3.5 md:w-4 md:h-4 text-red-500/90 shrink-0" />
@@ -525,42 +406,5 @@ export default function TasksPage() {
         <TasksContent />
       </Suspense>
     </div>
-  );
-}
-
-function BackToTop() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
-
-  if (!isVisible) return null;
-
-  return (
-    <button
-      type="button"
-      onClick={scrollToTop}
-      className="fixed bottom-8 right-8 p-3 bg-secondary text-foreground rounded-full shadow-lg border border-border hover:bg-secondary/80 transition-all z-50 flex items-center justify-center group backdrop-blur-sm"
-      aria-label="Back to top"
-    >
-      <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
-    </button>
   );
 }
