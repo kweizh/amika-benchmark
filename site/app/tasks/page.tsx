@@ -40,7 +40,6 @@ const allTrialsFlat = tasksData.flatMap(task =>
 );
 
 const allModels = Array.from(new Set(allTrialsFlat.map(tr => tr.model)));
-const allAgents = Array.from(new Set(allTrialsFlat.map(tr => tr.agent)));
 const allCombos = Array.from(new Set(allTrialsFlat.map(tr => `${tr.model} (${tr.agent})`))).sort();
 
 function TasksContent() {
@@ -282,7 +281,7 @@ function TasksContent() {
                 setSearchQuery("");
                 router.replace(pathname, { scroll: false });
               }}
-              className="flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium text-foreground bg-secondary hover:bg-secondary/80 border border-border shadow-sm rounded-md transition-colors w-full sm:w-auto ml-auto md:ml-0 cursor-pointer"
+              className="flex h-9 items-center justify-center gap-1.5 px-4 text-sm font-medium text-foreground bg-secondary hover:bg-secondary/80 border border-border shadow-sm rounded-md transition-colors w-full sm:w-auto ml-auto md:ml-0 cursor-pointer"
             >
               <X className="w-4 h-4" />
               Clear Filters

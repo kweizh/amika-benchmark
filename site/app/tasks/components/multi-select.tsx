@@ -37,19 +37,19 @@ export function MultiSelect({
           )}
         >
           <div className="flex gap-1 items-center overflow-hidden">
-            <span className="text-muted-foreground mr-1 whitespace-nowrap">{title}</span>
+            <span className="text-muted-foreground mr-1 whitespace-nowrap shrink-0">{title}</span>
             {selected.length === 0 && (
-              <Badge variant="secondary" className="px-1 font-normal rounded-sm">
+              <Badge variant="secondary" className="px-1 font-normal rounded-sm shrink-0">
                 All
               </Badge>
             )}
             {selected.length > 0 && selected.length <= 2 && selected.map(s => (
-              <Badge variant="secondary" key={s} className="px-1 font-normal rounded-sm truncate max-w-[80px]">
-                {s}
+              <Badge variant="secondary" key={s} className="px-1 font-normal rounded-sm max-w-[120px] overflow-hidden">
+                <span className="truncate">{s}</span>
               </Badge>
             ))}
             {selected.length > 2 && (
-              <Badge variant="secondary" className="px-1 font-normal rounded-sm">
+              <Badge variant="secondary" className="px-1 font-normal rounded-sm shrink-0">
                 {selected.length} selected
               </Badge>
             )}
@@ -74,28 +74,32 @@ export function MultiSelect({
                 <span>All</span>
               </CommandItem>
               {options.map((option) => {
-                const isSelected = selected.includes(option);
+                const isSelected = selected.length === 0 || selected.includes(option);
+                
+                const handleSelect = () => {
+                  if (selected.length === 0) {
+                    onChange(options.filter((s) => s !== option));
+                  } else if (selected.includes(option)) {
+                    onChange(selected.filter((s) => s !== option));
+                  } else {
+                    const newSelected = [...selected, option];
+                    if (newSelected.length === options.length) {
+                      onChange([]);
+                    } else {
+                      onChange(newSelected);
+                    }
+                  }
+                };
+
                 return (
                   <CommandItem
                     key={option}
-                    onSelect={() => {
-                      if (isSelected) {
-                        onChange(selected.filter((s) => s !== option));
-                      } else {
-                        onChange([...selected, option]);
-                      }
-                    }}
+                    onSelect={handleSelect}
                   >
                     <Checkbox 
                       checked={isSelected} 
                       className="mr-2"
-                      onCheckedChange={() => {
-                        if (isSelected) {
-                          onChange(selected.filter((s) => s !== option));
-                        } else {
-                          onChange([...selected, option]);
-                        }
-                      }}
+                      onCheckedChange={handleSelect}
                     />
                     <span>{option}</span>
                   </CommandItem>
