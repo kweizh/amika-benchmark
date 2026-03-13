@@ -44,7 +44,10 @@ function RedirectContent() {
 
           const { id } = await response.json();
           if (id) {
-            window.location.replace(`${baseUrl}/s/${id}?embed=true`);
+            const redirectUrl = new URL(`/s/${id}`, baseUrl);
+            redirectUrl.searchParams.set("embed", "true");
+            redirectUrl.searchParams.set("title", trialName);
+            window.location.replace(redirectUrl.toString());
             return;
           }
         }
