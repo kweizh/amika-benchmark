@@ -44,7 +44,7 @@ function RedirectContent() {
 
           const { id } = await response.json();
           if (id) {
-            window.location.replace(`${baseUrl}/s/${id}`);
+            window.location.replace(`${baseUrl}/s/${id}?embed=true`);
             return;
           }
         }
