@@ -62,9 +62,10 @@ export function TrajectoryPage({ name, jobName }: TrajectoryPageProps) {
 
           const { id } = await response.json();
           if (id) {
-            const url = new URL(`/s/${id}`, baseUrl);
+            const url = new URL(`/e/${id}`, baseUrl);
             url.searchParams.set("embed", "true");
             url.searchParams.set("title", name);
+            url.searchParams.set("theme", "dark")
             setRedirectUrl(url.toString());
             setIframeLoading(true);
             setShowIframe(true);
@@ -87,7 +88,7 @@ export function TrajectoryPage({ name, jobName }: TrajectoryPageProps) {
       if (iframeRef.current) {
         iframeRef.current.style.opacity = "1";
       }
-    }, 300);
+    }, 200);
   };
 
   const handleIframeError = () => {
