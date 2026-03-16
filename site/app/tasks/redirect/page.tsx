@@ -99,7 +99,6 @@ function RedirectContent() {
         {iframeLoading && (
           <div className="flex flex-col items-center justify-center h-full space-y-6">
             <div className="relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full w-24 h-24 animate-pulse" />
               <Loader2 className="w-12 h-12 text-primary animate-spin relative z-10" />
             </div>
             <div className="space-y-2 text-center">
@@ -114,7 +113,7 @@ function RedirectContent() {
           <iframe
             ref={iframeRef}
             src={redirectUrl}
-            className="fixed inset-0 w-full h-full border-0 opacity-0 transition-opacity duration-300"
+            className="fixed inset-0 w-full h-full border-0 opacity-0"
             title={searchParams.get("trial_name") || "Trial Details"}
             onLoad={handleIframeLoad}
             onError={handleIframeError}
@@ -127,7 +126,6 @@ function RedirectContent() {
   return (
     <div className="flex flex-col items-center justify-center h-screen space-y-6">
       <div className="relative flex items-center justify-center">
-        <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full w-24 h-24 animate-pulse" />
         <Loader2 className="w-12 h-12 text-primary animate-spin relative z-10" />
       </div>
       <div className="space-y-2 text-center">
