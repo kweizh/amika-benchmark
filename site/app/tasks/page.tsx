@@ -49,23 +49,6 @@ function TasksContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  useEffect(() => {
-    // Preload messages data in the background
-    const loadMessages = async () => {
-      try {
-        await import("../../messages.json");
-      } catch (error) {
-        console.error("Failed to preload messages:", error);
-      }
-    };
-
-    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-      window.requestIdleCallback(() => loadMessages());
-    } else {
-      setTimeout(loadMessages, 1000); // Fallback for Safari
-    }
-  }, []);
-
   const queryQ = searchParams.get("q") || "";
   const queryStatusStr = searchParams.get("status") || "";
   const queryModelStr = searchParams.get("model") || "";
