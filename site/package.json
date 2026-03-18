@@ -1,12 +1,10 @@
 {
-  "private": true,
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
-    "predev": "bun run compute-tasks && bun run compute-messages",
-    "prebuild": "bun run compute-tasks && bun run compute-messages",
-    "compute-tasks": "bun run scripts/compute-tasks.ts",
-    "compute-messages": "bun run scripts/compute-messages.ts"
+    "predev": "bun run compute-tasks",
+    "prebuild": "bun run compute-tasks",
+    "compute-tasks": "bun run scripts/compute-tasks.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

@@ -33,6 +33,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env*
 
 # vercel
 .vercel
@@ -40,7 +41,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# local generated benchmark artifacts
-site/messages.json
-site/tasks.json
