@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
-import zealtConfig from "../../../../../../../zealt.json";
+import zealtConfig from "@/../zealt.json";
 
 type TrajectoryPageProps = {
   name: string;
