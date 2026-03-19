@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Check, Copy, List, ListOrdered, Loader2 } from "lucide-react";
+import { Check, Copy, Loader2 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 
@@ -18,11 +18,10 @@ export function TrajectoryPage({
   fallbackUrl,
   stderrText,
   verifierText,
-  topOffsetClassName = "top-20",
+  topOffsetClassName = "top-28",
 }: TrajectoryPageProps) {
   const [iframeLoading, setIframeLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("trajectory");
-  const [showLineNumbers, setShowLineNumbers] = useState(false);
   const [copiedTab, setCopiedTab] = useState<"log" | "test" | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -65,53 +64,15 @@ export function TrajectoryPage({
     setCopiedTab(activeTab === "log" ? "log" : "test");
   };
 
-  const getLogStats = (text: string | null) => {
-    if (!text || text.length === 0) {
-      return {
-        chars: 0,
-        lines: 0,
-        nonEmptyLines: 0,
-      };
-    }
-
-    const lines = text.split(/\r?\n/);
-    const nonEmptyLines = lines.reduce((count, line) => {
-      return line.trim().length > 0 ? count + 1 : count;
-    }, 0);
-
-    return {
-      chars: text.length,
-      lines: lines.length,
-      nonEmptyLines,
-    };
-  };
-
-  const verifierStats = getLogStats(verifierText);
-  const stderrStats = getLogStats(stderrText);
-
-  const renderLogContent = (text: string | null, emptyMessage: string, toneClassName: string) => {
+  const renderLogContent = (text: string | null, emptyMessage: string) => {
     if (!text) {
       return <p className="text-sm text-muted-foreground">{emptyMessage}</p>;
     }
 
-    if (!showLineNumbers) {
-      return (
-        <pre className={`whitespace-pre-wrap wrap-break-word font-mono text-xs leading-5 ${toneClassName}`}>
-          {text}
-        </pre>
-      );
-    }
-
-    const lines = text.split(/\r?\n/);
     return (
-      <div className={`font-mono text-xs leading-5 ${toneClassName}`}>
-        {lines.map((line, index) => (
-          <div key={`${index}-${line.length}`} className="grid grid-cols-[auto_1fr] gap-3">
-            <span className="select-none text-muted-foreground/70">{index + 1}</span>
-            <span className="whitespace-pre-wrap wrap-break-word">{line.length > 0 ? line : " "}</span>
-          </div>
-        ))}
-      </div>
+      <pre className="whitespace-pre-wrap wrap-break-word font-mono text-xs leading-5 text-foreground/95">
+        {text}
+      </pre>
     );
   };
 
@@ -119,27 +80,32 @@ export function TrajectoryPage({
     <div className="fixed inset-0 w-full h-full">
       <div className={`absolute inset-x-0 bottom-0 ${topOffsetClassName} pb-4 sm:pb-6`}>
         <div className="mx-auto h-full w-full max-w-[1400px] px-4 sm:px-7 lg:px-10">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full rounded-xl border border-border/60 bg-card/40 backdrop-blur-sm shadow-sm">
-            <div className="border-b border-border/50 px-3 py-3 sm:px-4">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full rounded-xl border border-border/60 bg-background/70 backdrop-blur-sm shadow-sm">
+            <div className="border-b border-border/50 bg-background/50 px-3 py-3 sm:px-4">
               <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                <TabsList className="grid w-[300px] max-w-full grid-cols-3">
-                <TabsTrigger value="trajectory" className="w-full">Trajectory</TabsTrigger>
-                <TabsTrigger value="log" className="w-full">Log</TabsTrigger>
-                <TabsTrigger value="test" className="w-full">Test</TabsTrigger>
+                <TabsList className="grid h-11 w-[300px] max-w-full grid-cols-3 items-stretch border border-border/40 bg-background/60 p-1">
+                <TabsTrigger
+                  value="trajectory"
+                  className="h-full w-full cursor-pointer border border-transparent py-0 leading-none text-muted-foreground transition-colors hover:bg-primary/10 hover:text-foreground data-[state=active]:border-primary/35 data-[state=active]:bg-primary/18 data-[state=active]:text-foreground data-[state=active]:shadow-none"
+                >
+                  Trajectory
+                </TabsTrigger>
+                <TabsTrigger
+                  value="log"
+                  className="h-full w-full cursor-pointer border border-transparent py-0 leading-none text-muted-foreground transition-colors hover:bg-primary/10 hover:text-foreground data-[state=active]:border-primary/35 data-[state=active]:bg-primary/18 data-[state=active]:text-foreground data-[state=active]:shadow-none"
+                >
+                  Log
+                </TabsTrigger>
+                <TabsTrigger
+                  value="test"
+                  className="h-full w-full cursor-pointer border border-transparent py-0 leading-none text-muted-foreground transition-colors hover:bg-primary/10 hover:text-foreground data-[state=active]:border-primary/35 data-[state=active]:bg-primary/18 data-[state=active]:text-foreground data-[state=active]:shadow-none"
+                >
+                  Test
+                </TabsTrigger>
                 </TabsList>
 
                 {activeTab !== "trajectory" && (
                   <div className="flex items-center gap-2">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      className="h-8"
-                      onClick={() => setShowLineNumbers((prev) => !prev)}
-                    >
-                      {showLineNumbers ? <List className="h-3.5 w-3.5" /> : <ListOrdered className="h-3.5 w-3.5" />}
-                      {showLineNumbers ? "Hide Line Numbers" : "Show Line Numbers"}
-                    </Button>
                     <Button
                       type="button"
                       variant="outline"
@@ -178,24 +144,14 @@ export function TrajectoryPage({
             </TabsContent>
 
             <TabsContent value="log" className="h-[calc(100%-64px)] overflow-auto px-3 pb-3 sm:px-4 sm:pb-4" forceMount>
-              <div className="rounded-lg border border-border/50 bg-background/70 p-3 sm:p-4">
-                <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                  <span className="rounded-md border border-border/50 px-2 py-0.5">Lines: {stderrStats.lines}</span>
-                  <span className="rounded-md border border-border/50 px-2 py-0.5">Non-empty: {stderrStats.nonEmptyLines}</span>
-                  <span className="rounded-md border border-border/50 px-2 py-0.5">Chars: {stderrStats.chars}</span>
-                </div>
-                {renderLogContent(stderrText, "No stderr content available for this trial.", "text-red-500/90")}
+              <div className="pt-2 sm:pt-3">
+                {renderLogContent(stderrText, "No stderr content available for this trial.")}
               </div>
             </TabsContent>
 
             <TabsContent value="test" className="h-[calc(100%-64px)] overflow-auto px-3 pb-3 sm:px-4 sm:pb-4" forceMount>
-              <div className="rounded-lg border border-border/50 bg-background/70 p-3 sm:p-4">
-                <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                  <span className="rounded-md border border-border/50 px-2 py-0.5">Lines: {verifierStats.lines}</span>
-                  <span className="rounded-md border border-border/50 px-2 py-0.5">Non-empty: {verifierStats.nonEmptyLines}</span>
-                  <span className="rounded-md border border-border/50 px-2 py-0.5">Chars: {verifierStats.chars}</span>
-                </div>
-                {renderLogContent(verifierText, "No verifier test output available for this trial.", "text-foreground/95")}
+              <div className="pt-2 sm:pt-3">
+                {renderLogContent(verifierText, "No verifier test output available for this trial.")}
               </div>
             </TabsContent>
           </Tabs>

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import tasksData from "@/tasks.json";
 import { TrajectoryPage } from "./components/trajectory-page";
 import zealtConfig from "@/../zealt.json";
@@ -13,12 +14,42 @@ type TrialEntry = {
   trial_name: string;
   job_name: string;
   agent: string;
+  latency_sec?: number | null;
   trajectory_id?: string;
   stderr_text?: string | null;
   stderr_line_count?: number;
   verifier_text?: string | null;
   verifier_line_count?: number;
 };
+
+function formatStartTime(jobName: string): string {
+  const match = jobName.match(/^(\d{4})-(\d{2})-(\d{2})__(\d{2})-(\d{2})-(\d{2})$/);
+  if (!match) {
+    return "Unknown";
+  }
+
+  const [, year, month, day, hour, minute, second] = match;
+  const localDate = new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute), Number(second));
+  if (Number.isNaN(localDate.getTime())) {
+    return "Unknown";
+  }
+
+  return localDate.toLocaleString();
+}
+
+function formatDuration(durationSec: number | null | undefined): string {
+  if (durationSec == null || Number.isNaN(durationSec)) {
+    return "Unknown";
+  }
+
+  if (durationSec < 60) {
+    return `${durationSec.toFixed(1)}s`;
+  }
+
+  const minutes = Math.floor(durationSec / 60);
+  const seconds = durationSec % 60;
+  return `${minutes}m ${seconds.toFixed(1)}s`;
+}
 
 function buildFallbackUrl(jobName: string, trialName: string) {
   return `${zealtConfig.github_repo}/blob/main/jobs/${jobName}/${trialName}/result.json`
@@ -46,7 +77,7 @@ function getGithubOwnerRepo(): string {
   return match ? match[1] : repoUrl;
 }
 
-function buildClipUrl(clipId: string, jobName: string, trialName: string, title: string): string {
+function buildClipUrl(jobName: string, trialName: string, title: string): string {
   const ownerRepo = getGithubOwnerRepo();
   const url = new URL(`/f/raw.githubusercontent.com/${ownerRepo}/refs/heads/main/jobs/${jobName}/${trialName}/agent/pochi/trajectory.jsonl`, getServerBaseUrl());
   url.searchParams.set("title", title);
@@ -149,10 +180,12 @@ export default async function TrajectoryRoutePage({
     : null;
   const clipId = trialEntry?.trajectory_id?.trim() || null;
   const headerTitle = `${resolvedParams.name}__${resolvedParams.jobId}`;
-  const contentTopOffsetClassName = "top-20";
+  const startedAt = trialEntry ? formatStartTime(trialEntry.job_name) : "Unknown";
+  const durationLabel = formatDuration(trialEntry?.latency_sec ?? null);
+  const contentTopOffsetClassName = "top-28";
   
   const trajectoryUrl = clipId && trialEntry
-    ? buildClipUrl(clipId, trialEntry.job_name, trialEntry.trial_name, resolvedParams.name)
+    ? buildClipUrl(trialEntry.job_name, trialEntry.trial_name, resolvedParams.name)
     : null;
   
   // FIXME
@@ -161,17 +194,25 @@ export default async function TrajectoryRoutePage({
   }
   const stderrText = trialEntry?.stderr_text ?? null;
   const verifierText = trialEntry?.verifier_text ?? null;
+  const pageThemeVars = {
+    "--background": "oklch(0.268 0.004 106.643)",
+    "--border": "oklch(0.362 0.01 106.893)",
+  } as CSSProperties;
 
   return (
-    <div className="w-full h-screen bg-background text-foreground font-sans selection:bg-primary/20 overflow-hidden">
+    <div style={pageThemeVars} className="w-full h-screen bg-background text-foreground font-sans selection:bg-primary/20 overflow-hidden">
       <div className="fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#2a2a2a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 dark:opacity-40"></div>
       <div className="fixed inset-x-0 top-0 z-40 border-b border-border/50 bg-background/85 backdrop-blur-sm">
         <div className="mx-auto w-full max-w-[1400px] px-4 py-4 sm:px-7 lg:px-10">
-          <span className="flex items-center gap-1">
+          <div className="flex flex-col gap-1">
             <h1 className="truncate whitespace-nowrap font-bold text-2xl">
               {headerTitle}
             </h1>
-          </span>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground sm:text-sm mt-1.5">
+              <span>Started: {startedAt}</span>
+              <span>Duration: {durationLabel}</span>
+            </div>
+          </div>
         </div>
       </div>
       <TrajectoryPage
