@@ -70,6 +70,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "abandon_wip_revisions_revsets__c873QPZ",
+        "trajectory_id": "yfDFIb6c",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 265.819,
+        "latency_breakdown": {
+          "env_setup": 5.58,
+          "agent_setup": 17.355,
+          "agent_exec": 223.169,
+          "verifier": 12.503
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -138,6 +161,29 @@
           "agent_setup": 12.443,
           "agent_exec": 56.366,
           "verifier": 10.555
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "absorb_fixup_multi_target__tXE8pko",
+        "trajectory_id": "tB6rQLGY",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 152.117,
+        "latency_breakdown": {
+          "env_setup": 4.197,
+          "agent_setup": 12.5,
+          "agent_exec": 120.595,
+          "verifier": 9.835
         },
         "tokens": {
           "input": 0,
@@ -218,6 +264,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "amend_working_copy__pKbMm93",
+        "trajectory_id": "d2PLmnSE",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 127.095,
+        "latency_breakdown": {
+          "env_setup": 4.37,
+          "agent_setup": 13.727,
+          "agent_exec": 87.887,
+          "verifier": 14.089
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -285,6 +354,29 @@
           "agent_setup": 11.358,
           "agent_exec": 284.686,
           "verifier": 10.215
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "batch_squash_by_author__wNpusy4",
+        "trajectory_id": "u3ENJ6H9",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 146.476,
+        "latency_breakdown": {
+          "env_setup": 4.481,
+          "agent_setup": 12.916,
+          "agent_exec": 113.454,
+          "verifier": 10.428
         },
         "tokens": {
           "input": 0,
@@ -365,6 +457,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "bookmark_create_and_move__fb2FxW3",
+        "trajectory_id": "rKaR7qed",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 224.153,
+        "latency_breakdown": {
+          "env_setup": 4.944,
+          "agent_setup": 16.019,
+          "agent_exec": 183.459,
+          "verifier": 13.244
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -433,6 +548,29 @@
           "agent_setup": 22.539,
           "agent_exec": 98.58,
           "verifier": 11.103
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "bookmark_migration_7__7LrWTtC",
+        "trajectory_id": "fzUtWvRq",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 131.77,
+        "latency_breakdown": {
+          "env_setup": 4.184,
+          "agent_setup": 11.987,
+          "agent_exec": 99.784,
+          "verifier": 10.685
         },
         "tokens": {
           "input": 0,
@@ -513,6 +651,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "bookmark_sync_conflict__tXRakTS",
+        "trajectory_id": "aLVCrf0Q",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": true,
+        "latency_sec": 631.11,
+        "latency_breakdown": {
+          "env_setup": 3.785,
+          "agent_setup": 10.803,
+          "agent_exec": 600.001,
+          "verifier": 10.396
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -581,6 +742,29 @@
           "agent_setup": 10.541,
           "agent_exec": 123.28,
           "verifier": 9.779
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "commit_metadata_enforcement__rdGVJ7o",
+        "trajectory_id": "V5poZsb9",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": true,
+        "latency_sec": 634.228,
+        "latency_breakdown": {
+          "env_setup": 4.331,
+          "agent_setup": 12.988,
+          "agent_exec": 600.002,
+          "verifier": 10.952
         },
         "tokens": {
           "input": 0,
@@ -661,6 +845,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "create_move_bookmarks__EErWijC",
+        "trajectory_id": "JCbmkjle",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 147.78,
+        "latency_breakdown": {
+          "env_setup": 3.509,
+          "agent_setup": 11.876,
+          "agent_exec": 116.664,
+          "verifier": 10.893
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -729,6 +936,29 @@
           "agent_setup": 11.619,
           "agent_exec": 600.006,
           "verifier": 11.278
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "criss_cross_merge_resolve__Kktg2HP",
+        "trajectory_id": "ijcITtK4",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 107.037,
+        "latency_breakdown": {
+          "env_setup": 3.342,
+          "agent_setup": 10.795,
+          "agent_exec": 76.836,
+          "verifier": 9.949
         },
         "tokens": {
           "input": 0,
@@ -809,6 +1039,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "debug_divergence_behavior__nAc9ZBB",
+        "trajectory_id": "NQ6eZ5Qd",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 406.779,
+        "latency_breakdown": {
+          "env_setup": 3.97,
+          "agent_setup": 10.629,
+          "agent_exec": 376.801,
+          "verifier": 9.721
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -877,6 +1130,29 @@
           "agent_setup": 14.654,
           "agent_exec": 200.033,
           "verifier": 11.787
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_colocated_recovery__WbMTVWG",
+        "trajectory_id": "kre3fH34",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 540.432,
+        "latency_breakdown": {
+          "env_setup": 4.381,
+          "agent_setup": 14.396,
+          "agent_exec": 503.251,
+          "verifier": 11.709
         },
         "tokens": {
           "input": 0,
@@ -957,6 +1233,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_colocated_upstream_rebase__42Uxqtw",
+        "trajectory_id": "EZvbebVj",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 359.211,
+        "latency_breakdown": {
+          "env_setup": 3.65,
+          "agent_setup": 12.064,
+          "agent_exec": 326.628,
+          "verifier": 10.94
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -1025,6 +1324,29 @@
           "agent_setup": 12.654,
           "agent_exec": 131.99,
           "verifier": 11.898
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_export_patch_series__gzpdMDB",
+        "trajectory_id": "4k8u7qg3",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": true,
+        "latency_sec": 634.596,
+        "latency_breakdown": {
+          "env_setup": 4.028,
+          "agent_setup": 13.085,
+          "agent_exec": 600,
+          "verifier": 11.339
         },
         "tokens": {
           "input": 0,
@@ -1105,6 +1427,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_interop_colocate_13__VubWGms",
+        "trajectory_id": "O4VPuPU1",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 500.696,
+        "latency_breakdown": {
+          "env_setup": 3.356,
+          "agent_setup": 11.706,
+          "agent_exec": 469.99,
+          "verifier": 9.997
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -1170,6 +1515,28 @@
           "agent_setup": 12.69,
           "agent_exec": 2.49,
           "verifier": 11.501
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_interop_migration_checkpoint__NNsZFau",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 37.041,
+        "latency_breakdown": {
+          "env_setup": 4.332,
+          "agent_setup": 13.443,
+          "agent_exec": 2.573,
+          "verifier": 11.385
         },
         "tokens": {
           "input": 0,
@@ -1243,6 +1610,29 @@
           "agent_setup": 9.679,
           "agent_exec": 91.266,
           "verifier": 9.281
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_interop_migration_checkpoint__isYxguL",
+        "trajectory_id": "eiycUsaL",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": true,
+        "latency_sec": 631.203,
+        "latency_breakdown": {
+          "env_setup": 3.269,
+          "agent_setup": 11.198,
+          "agent_exec": 600.001,
+          "verifier": 10.483
         },
         "tokens": {
           "input": 0,
@@ -1323,6 +1713,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_migration_checkpoint_sync__qxAmija",
+        "trajectory_id": "YeG69M3R",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 305.132,
+        "latency_breakdown": {
+          "env_setup": 5.174,
+          "agent_setup": 14.933,
+          "agent_exec": 266.617,
+          "verifier": 12.093
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -1391,6 +1804,29 @@
           "agent_setup": 13.488,
           "agent_exec": 70.346,
           "verifier": 12.033
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_remote_migration__vBS5dk5",
+        "trajectory_id": "Q1tivSuG",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": true,
+        "latency_sec": 638.61,
+        "latency_breakdown": {
+          "env_setup": 4.903,
+          "agent_setup": 12.453,
+          "agent_exec": 600.002,
+          "verifier": 13.438
         },
         "tokens": {
           "input": 0,
@@ -1471,6 +1907,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_semantics_comparison_10__y6dhvjX",
+        "trajectory_id": "WpA2XdVB",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 263.274,
+        "latency_breakdown": {
+          "env_setup": 3.522,
+          "agent_setup": 11.667,
+          "agent_exec": 232.393,
+          "verifier": 9.402
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -1539,6 +1998,29 @@
           "agent_setup": 11.153,
           "agent_exec": 57.021,
           "verifier": 10.256
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "git_semantics_comparison_1772734__8W3vA2z",
+        "trajectory_id": "xmJq5RWl",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 350.548,
+        "latency_breakdown": {
+          "env_setup": 2.297,
+          "agent_setup": 11.67,
+          "agent_exec": 320.649,
+          "verifier": 10.311
         },
         "tokens": {
           "input": 0,
@@ -1619,6 +2101,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "gitignore_untrack__MCGZkb7",
+        "trajectory_id": "l88VNHyr",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 187.908,
+        "latency_breakdown": {
+          "env_setup": 2.353,
+          "agent_setup": 12.982,
+          "agent_exec": 155.93,
+          "verifier": 10.436
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -1687,6 +2192,29 @@
           "agent_setup": 11.818,
           "agent_exec": 77.161,
           "verifier": 10.564
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "init_user_config__mPsUBJ3",
+        "trajectory_id": "Ftrk5ElL",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 189.562,
+        "latency_breakdown": {
+          "env_setup": 3.374,
+          "agent_setup": 16.139,
+          "agent_exec": 147.86,
+          "verifier": 14.789
         },
         "tokens": {
           "input": 0,
@@ -1767,6 +2295,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "insert_commit_in_stack__LGGTWbd",
+        "trajectory_id": "Twb7GqNU",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 169.177,
+        "latency_breakdown": {
+          "env_setup": 2.142,
+          "agent_setup": 12.074,
+          "agent_exec": 139.872,
+          "verifier": 10.001
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -1835,6 +2386,29 @@
           "agent_setup": 14.922,
           "agent_exec": 73.641,
           "verifier": 6.578
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "multi_parent_octopus_merge__8doQ9Lu",
+        "trajectory_id": "XP6DASVY",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": true,
+        "latency_sec": 633.121,
+        "latency_breakdown": {
+          "env_setup": 3.772,
+          "agent_setup": 16.498,
+          "agent_exec": 600.002,
+          "verifier": 6.976
         },
         "tokens": {
           "input": 0,
@@ -1915,6 +2489,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "multi_parent_octopus_merge_9__dSy3JBY",
+        "trajectory_id": "V5yoZsb9",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": true,
+        "latency_sec": 633.691,
+        "latency_breakdown": {
+          "env_setup": 3.172,
+          "agent_setup": 12.476,
+          "agent_exec": 600.002,
+          "verifier": 11.379
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -1983,6 +2580,29 @@
           "agent_setup": 12.287,
           "agent_exec": 40.592,
           "verifier": 11.447
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "op_log_find_and_undo__Uf5e27V",
+        "trajectory_id": "0NdY8QN5",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 159.327,
+        "latency_breakdown": {
+          "env_setup": 2.26,
+          "agent_setup": 12.658,
+          "agent_exec": 127.23,
+          "verifier": 11.629
         },
         "tokens": {
           "input": 0,
@@ -2063,6 +2683,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "op_log_recover_interrupted_histo__SNY6CFa",
+        "trajectory_id": "GFM4G3Od",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": true,
+        "latency_sec": 638.554,
+        "latency_breakdown": {
+          "env_setup": 4.071,
+          "agent_setup": 14.637,
+          "agent_exec": 600.001,
+          "verifier": 13.118
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -2130,6 +2773,29 @@
           "agent_setup": 12.004,
           "agent_exec": 73.02,
           "verifier": 10.721
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "op_restore_from_history__ozuYYTa",
+        "trajectory_id": "qGhO5oIO",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 165.471,
+        "latency_breakdown": {
+          "env_setup": 2.809,
+          "agent_setup": 13.561,
+          "agent_exec": 131.592,
+          "verifier": 11.183
         },
         "tokens": {
           "input": 0,
@@ -2210,6 +2876,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "oplog_branch_diverge_recovery__nBBshga",
+        "trajectory_id": "C9syN9ze",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 197.339,
+        "latency_breakdown": {
+          "env_setup": 2.489,
+          "agent_setup": 12.812,
+          "agent_exec": 166.156,
+          "verifier": 10.304
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -2278,6 +2967,29 @@
           "agent_setup": 15.87,
           "agent_exec": 69.559,
           "verifier": 13.736
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "oplog_undo_recovery__AuxuvVj",
+        "trajectory_id": "3RbQM74Q",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 220.203,
+        "latency_breakdown": {
+          "env_setup": 3.121,
+          "agent_setup": 14.827,
+          "agent_exec": 182.726,
+          "verifier": 13.229
         },
         "tokens": {
           "input": 0,
@@ -2358,6 +3070,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "prune_stale_audit_revisions__VegDEW8",
+        "trajectory_id": "hWHddn15",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 236.462,
+        "latency_breakdown": {
+          "env_setup": 2.922,
+          "agent_setup": 15.856,
+          "agent_exec": 197.267,
+          "verifier": 13.933
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -2426,6 +3161,29 @@
           "agent_setup": 11.821,
           "agent_exec": 84.106,
           "verifier": 9.861
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "rebase_abandoned_branch_19__kAkbnAu",
+        "trajectory_id": "8nA5A4FS",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 129.151,
+        "latency_breakdown": {
+          "env_setup": 2.696,
+          "agent_setup": 11.606,
+          "agent_exec": 98.931,
+          "verifier": 10.72
         },
         "tokens": {
           "input": 0,
@@ -2506,6 +3264,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "rebase_onto_main__dZCSSaa",
+        "trajectory_id": "cISnYbH4",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 96.298,
+        "latency_breakdown": {
+          "env_setup": 2.477,
+          "agent_setup": 11.248,
+          "agent_exec": 65.892,
+          "verifier": 11.179
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -2574,6 +3355,29 @@
           "agent_setup": 12.293,
           "agent_exec": 77.299,
           "verifier": 11.978
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "rebase_stacked_service_patches__9LTjKwT",
+        "trajectory_id": "IA8Mh27j",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 522.887,
+        "latency_breakdown": {
+          "env_setup": 3.299,
+          "agent_setup": 16.118,
+          "agent_exec": 483.576,
+          "verifier": 13.389
         },
         "tokens": {
           "input": 0,
@@ -2654,6 +3458,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "recover_abandoned_changes_15__rZoJL3R",
+        "trajectory_id": "D0MHdFBA",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 514.699,
+        "latency_breakdown": {
+          "env_setup": 2.28,
+          "agent_setup": 12.739,
+          "agent_exec": 483.43,
+          "verifier": 10.856
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -2722,6 +3549,29 @@
           "agent_setup": 9.909,
           "agent_exec": 145.488,
           "verifier": 9.673
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "recover_abandoned_changes_suppor__PMN9FZB",
+        "trajectory_id": "2gyTlMtI",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 68.578,
+        "latency_breakdown": {
+          "env_setup": 2.295,
+          "agent_setup": 11.874,
+          "agent_exec": 39.846,
+          "verifier": 9.604
         },
         "tokens": {
           "input": 0,
@@ -2802,6 +3652,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "recover_hidden_commit__R5CEXDF",
+        "trajectory_id": "1Xhj7FtT",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 164.685,
+        "latency_breakdown": {
+          "env_setup": 3.389,
+          "agent_setup": 13.888,
+          "agent_exec": 128.158,
+          "verifier": 13.247
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -2870,6 +3743,29 @@
           "agent_setup": 11.206,
           "agent_exec": 30.414,
           "verifier": 9.733
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "resolve_merge_conflicts_16__MkwCu53",
+        "trajectory_id": "Pug0zd0n",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 64.22,
+        "latency_breakdown": {
+          "env_setup": 2.386,
+          "agent_setup": 11.67,
+          "agent_exec": 35.141,
+          "verifier": 9.951
         },
         "tokens": {
           "input": 0,
@@ -2950,6 +3846,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "revset_ancestry_report__j5NmsGv",
+        "trajectory_id": "l8vVNHyr",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 399.202,
+        "latency_breakdown": {
+          "env_setup": 2.784,
+          "agent_setup": 13.735,
+          "agent_exec": 362.956,
+          "verifier": 12.503
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -3018,6 +3937,29 @@
           "agent_setup": 11.252,
           "agent_exec": 257.027,
           "verifier": 10.758
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "revset_prune_audit_history__8FYrHVH",
+        "trajectory_id": "oUHZs8E1",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 83.214,
+        "latency_breakdown": {
+          "env_setup": 2.289,
+          "agent_setup": 10.316,
+          "agent_exec": 55.598,
+          "verifier": 10.05
         },
         "tokens": {
           "input": 0,
@@ -3098,6 +4040,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "restore_working_copy__sDthpiu",
+        "trajectory_id": "ZaDJoMPs",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 318.46,
+        "latency_breakdown": {
+          "env_setup": 2.062,
+          "agent_setup": 11.462,
+          "agent_exec": 286.634,
+          "verifier": 12.563
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -3172,6 +4137,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "split_squash_and_rebase_stack__LRSZogn",
+        "trajectory_id": "u3GNJ6H9",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 391.744,
+        "latency_breakdown": {
+          "env_setup": 2.504,
+          "agent_setup": 11.091,
+          "agent_exec": 363.5,
+          "verifier": 9.434
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -3234,6 +4222,28 @@
         "latency_sec": 4.554,
         "latency_breakdown": {
           "env_setup": 2.543,
+          "agent_setup": null,
+          "agent_exec": null,
+          "verifier": null
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "set_alias_and_ui_pager__WskmK2Q",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": null,
+        "error": true,
+        "latency_sec": 4.374,
+        "latency_breakdown": {
+          "env_setup": 2.341,
           "agent_setup": null,
           "agent_exec": null,
           "verifier": null
@@ -3317,6 +4327,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "split_squash_upstream_prep__8EmPKLD",
+        "trajectory_id": "5h8UBJxH",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 70.674,
+        "latency_breakdown": {
+          "env_setup": 2.767,
+          "agent_setup": 12.681,
+          "agent_exec": 38.338,
+          "verifier": 11.236
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -3384,6 +4417,29 @@
           "agent_setup": 12.297,
           "agent_exec": 184.899,
           "verifier": 13.036
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "squash_into_parent__PT2ZsMV",
+        "trajectory_id": "UdUa6upP",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 188.469,
+        "latency_breakdown": {
+          "env_setup": 2.495,
+          "agent_setup": 13.524,
+          "agent_exec": 154.364,
+          "verifier": 11.797
         },
         "tokens": {
           "input": 0,
@@ -3464,6 +4520,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "squash_split_amend_release__YVXPrS4",
+        "trajectory_id": "mF4GqgOT",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 94.079,
+        "latency_breakdown": {
+          "env_setup": 2.285,
+          "agent_setup": 13.149,
+          "agent_exec": 59.153,
+          "verifier": 12.662
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -3538,6 +4617,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "symmetric_merge_divergence__gd2kwux",
+        "trajectory_id": "H6VSoMnA",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 338.842,
+        "latency_breakdown": {
+          "env_setup": 2.755,
+          "agent_setup": 13.47,
+          "agent_exec": 303.254,
+          "verifier": 12.233
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -3603,6 +4705,28 @@
           "agent_setup": 15.47,
           "agent_exec": 3.235,
           "verifier": 12.433
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "template_author_metadata__j49uDw6",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 42.372,
+        "latency_breakdown": {
+          "env_setup": 2.942,
+          "agent_setup": 15.167,
+          "agent_exec": 3.618,
+          "verifier": 13.379
         },
         "tokens": {
           "input": 0,
@@ -3683,6 +4807,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "template_ci_build_metadata__tLSdWSW",
+        "trajectory_id": "MpzWBqD8",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 127.518,
+        "latency_breakdown": {
+          "env_setup": 2.524,
+          "agent_setup": 12.021,
+          "agent_exec": 98.076,
+          "verifier": 9.916
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -3751,6 +4898,29 @@
           "agent_setup": 13.612,
           "agent_exec": 66.482,
           "verifier": 12.978
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "template_changelog_and_release__LPzzubj",
+        "trajectory_id": "RXs10heI",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": true,
+        "latency_sec": 635.467,
+        "latency_breakdown": {
+          "env_setup": 3.387,
+          "agent_setup": 15.137,
+          "agent_exec": 600.002,
+          "verifier": 11.063
         },
         "tokens": {
           "input": 0,
@@ -3831,6 +5001,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "template_metadata_training__3PomPJV",
+        "trajectory_id": "S8mlmOAD",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 111.918,
+        "latency_breakdown": {
+          "env_setup": 2.254,
+          "agent_setup": 12.692,
+          "agent_exec": 82.655,
+          "verifier": 9.632
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -3899,6 +5092,29 @@
           "agent_setup": 11.334,
           "agent_exec": 152.867,
           "verifier": 13.213
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "template_patch_email_bundle__8JGX3RQ",
+        "trajectory_id": "L7j9QbtE",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 130.12,
+        "latency_breakdown": {
+          "env_setup": 2.881,
+          "agent_setup": 11.615,
+          "agent_exec": 98.718,
+          "verifier": 11.63
         },
         "tokens": {
           "input": 0,
@@ -3979,6 +5195,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "secure_config_isolation__oXkNZ8K",
+        "trajectory_id": "bJgxDsOz",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 283.404,
+        "latency_breakdown": {
+          "env_setup": 2.327,
+          "agent_setup": 10.214,
+          "agent_exec": 255.945,
+          "verifier": 9.992
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -4047,6 +5286,29 @@
           "agent_setup": 12.032,
           "agent_exec": 65.782,
           "verifier": 9.741
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "undo_accidental_abandon__ttBByiR",
+        "trajectory_id": "ZCnJoMPs",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 127.458,
+        "latency_breakdown": {
+          "env_setup": 2.238,
+          "agent_setup": 11.506,
+          "agent_exec": 98.707,
+          "verifier": 10.116
         },
         "tokens": {
           "input": 0,
@@ -4127,6 +5389,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "undo_mistaken_rebase__mo84hfZ",
+        "trajectory_id": "7bVz3yRS",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 139.395,
+        "latency_breakdown": {
+          "env_setup": 2.348,
+          "agent_setup": 11.414,
+          "agent_exec": 112.431,
+          "verifier": 8.285
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -4195,6 +5480,29 @@
           "agent_setup": 9.772,
           "agent_exec": 48.44,
           "verifier": 10.242
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "three_way_conflict_resolution__h8B4rcJ",
+        "trajectory_id": "Gkd4G3Od",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 83.251,
+        "latency_breakdown": {
+          "env_setup": 2.3,
+          "agent_setup": 11.676,
+          "agent_exec": 53.991,
+          "verifier": 10.371
         },
         "tokens": {
           "input": 0,
@@ -4275,6 +5583,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "verify_bookmarks_after_sync__rs54ik2",
+        "trajectory_id": "nWAhtPp8",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 113.113,
+        "latency_breakdown": {
+          "env_setup": 2.783,
+          "agent_setup": 11.599,
+          "agent_exec": 82.833,
+          "verifier": 9.812
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -4343,6 +5674,29 @@
           "agent_setup": 11.426,
           "agent_exec": 161.643,
           "verifier": 10.055
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "workspace_conflict_cross_boundar__mZWQEyM",
+        "trajectory_id": "6nM8n7Cv",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 97.66,
+        "latency_breakdown": {
+          "env_setup": 2.231,
+          "agent_setup": 11.254,
+          "agent_exec": 68.764,
+          "verifier": 9.996
         },
         "tokens": {
           "input": 0,
@@ -4423,6 +5777,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "workspace_corruption_recovery__4MaN25M",
+        "trajectory_id": "Jytmkjle",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 546.336,
+        "latency_breakdown": {
+          "env_setup": 3.629,
+          "agent_setup": 15.1,
+          "agent_exec": 507.99,
+          "verifier": 13.016
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -4491,6 +5868,29 @@
           "agent_setup": 12.562,
           "agent_exec": 49.797,
           "verifier": 9.5
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "rebase_branch_and_track_bookmark__e7y6Ap9",
+        "trajectory_id": "myzGqgOT",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 121.494,
+        "latency_breakdown": {
+          "env_setup": 2.162,
+          "agent_setup": 11.677,
+          "agent_exec": 92.761,
+          "verifier": 9.712
         },
         "tokens": {
           "input": 0,
@@ -4571,6 +5971,29 @@
           "output": 0,
           "cache": 0
         }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "working_copy_incident_recovery__WeQR4Mv",
+        "trajectory_id": "43ru7qg3",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 111.939,
+        "latency_breakdown": {
+          "env_setup": 2.522,
+          "agent_setup": 11.284,
+          "agent_exec": 82.86,
+          "verifier": 9.973
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
       }
     ]
   },
@@ -4639,6 +6062,29 @@
           "agent_setup": 11.119,
           "agent_exec": 66.208,
           "verifier": 9.342
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        }
+      },
+      {
+        "job_name": "2026-03-19__16-10-31",
+        "trial_name": "workspace_forget_and_restore__sjBwfrD",
+        "trajectory_id": "oafZs8E1",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 94.673,
+        "latency_breakdown": {
+          "env_setup": 2.143,
+          "agent_setup": 9.775,
+          "agent_exec": 68.408,
+          "verifier": 9.405
         },
         "tokens": {
           "input": 0,
