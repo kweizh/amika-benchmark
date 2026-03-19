@@ -37,8 +37,42 @@ async function getResultFiles(dir: string): Promise<string[]> {
   return files;
 }
 
+async function copyTaskInstructions(repoRoot: string, siteRoot: string) {
+  const tasksDir = path.join(repoRoot, 'tasks');
+  const outputRoot = path.join(siteRoot, 'public', 'task-instructions');
+
+  await fs.rm(outputRoot, { recursive: true, force: true });
+  await fs.mkdir(outputRoot, { recursive: true });
+
+  const entries = await fs.readdir(tasksDir, { withFileTypes: true });
+  let copied = 0;
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+
+    const taskName = entry.name;
+    const sourceInstruction = path.join(tasksDir, taskName, 'instruction.md');
+
+    try {
+      await fs.access(sourceInstruction);
+    } catch {
+      continue;
+    }
+
+    const targetDir = path.join(outputRoot, taskName);
+    const targetInstruction = path.join(targetDir, 'instruction.md');
+    await fs.mkdir(targetDir, { recursive: true });
+    await fs.copyFile(sourceInstruction, targetInstruction);
+    copied += 1;
+  }
+
+  console.log(`Copied ${copied} task instructions to ${outputRoot}`);
+}
+
 async function main() {
-  const jobsDir = path.join(process.cwd(), '..', 'jobs');
+  const siteRoot = process.cwd();
+  const repoRoot = path.join(siteRoot, '..');
+  const jobsDir = path.join(repoRoot, 'jobs');
   const resultFiles = await getResultFiles(jobsDir);
 
   const tasks: Record<string, any[]> = {};
@@ -114,10 +148,12 @@ async function main() {
     });
   }
 
-  const outputPath = path.join(process.cwd(), 'tasks.json');
+  const outputPath = path.join(siteRoot, 'tasks.json');
   
   await fs.writeFile(outputPath, JSON.stringify(tasks, null, 2));
   console.log(`Computed ${Object.keys(tasks).length} tasks into ${outputPath}`);
+
+  await copyTaskInstructions(repoRoot, siteRoot);
 }
 
 main().catch(console.error);

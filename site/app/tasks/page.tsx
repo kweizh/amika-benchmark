@@ -1,9 +1,22 @@
 "use client";
 
 import { useState, useMemo, useEffect, Suspense } from "react";
-import { Check, X as XIcon, Search, AlertTriangle, ArrowUpDown, ArrowUp, ArrowDown, Filter, X } from "lucide-react";
+import {
+  Check,
+  X as XIcon,
+  Search,
+  AlertTriangle,
+  ArrowUpDown,
+  ArrowUp,
+  ArrowDown,
+  Filter,
+  X,
+  ExternalLink,
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import tasksDataRaw from "../../tasks.json";
@@ -13,6 +26,22 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { MultiSelect } from "./components/multi-select";
 import { BackToTop } from "./components/back-to-top";
 
@@ -51,6 +80,23 @@ const allTrialsFlat = tasksData.flatMap(task =>
 const allModels = Array.from(new Set(allTrialsFlat.map(tr => tr.model)));
 const allAgents = Array.from(new Set(allTrialsFlat.map(tr => tr.agent)));
 const allCombos = Array.from(new Set(allTrialsFlat.map(tr => `${tr.model} (${tr.agent})`))).sort();
+const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || "").replace(/\/$/, "");
+
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    setMatches(media.matches);
+
+    const listener = (event: MediaQueryListEvent) => setMatches(event.matches);
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
+  }, [query]);
+
+  return matches;
+}
 
 function TasksContent() {
   const router = useRouter();
@@ -69,6 +115,12 @@ function TasksContent() {
   const selectedAgents = queryAgentStr ? queryAgentStr.split(",") : [];
 
   const [searchQuery, setSearchQuery] = useState(queryQ);
+  const [selectedTask, setSelectedTask] = useState<string | null>(null);
+  const [isInstructionOpen, setIsInstructionOpen] = useState(false);
+  const [instructionContent, setInstructionContent] = useState("");
+  const [instructionLoading, setInstructionLoading] = useState(false);
+  const [instructionError, setInstructionError] = useState<string | null>(null);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   const hasActiveFilters = selectedStatuses.length > 0 || selectedModels.length > 0 || selectedAgents.length > 0 || searchQuery !== "" || querySort !== "default";
 
@@ -79,6 +131,44 @@ function TasksContent() {
     }, 300);
     return () => clearTimeout(timer);
   }, [searchQuery]);
+
+  useEffect(() => {
+    if (!isInstructionOpen || !selectedTask) return;
+
+    const controller = new AbortController();
+    const taskName = selectedTask;
+
+    async function loadInstruction() {
+      try {
+        setInstructionLoading(true);
+        setInstructionError(null);
+        setInstructionContent("");
+
+        const response = await fetch(
+          `${basePath}/task-instructions/${encodeURIComponent(taskName)}/instruction.md`,
+          { signal: controller.signal }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to load instruction");
+        }
+
+        const markdown = await response.text();
+        setInstructionContent(markdown);
+      } catch {
+        if (controller.signal.aborted) return;
+        setInstructionError("Unable to load instruction.md for this task.");
+      } finally {
+        if (!controller.signal.aborted) {
+          setInstructionLoading(false);
+        }
+      }
+    }
+
+    loadInstruction();
+
+    return () => controller.abort();
+  }, [isInstructionOpen, selectedTask]);
 
   const updateParams = (updates: Record<string, string | null>) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -217,6 +307,52 @@ function TasksContent() {
     return queryOrder === "asc" ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />;
   };
 
+  const selectedTaskInstructionUrl = selectedTask
+    ? `${zealtConfig.github_repo}/tree/main/tasks/${selectedTask}/instruction.md`
+    : "";
+
+  const instructionBody = (
+    <>
+      <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-5 sm:px-7 py-4 sm:py-5">
+        {instructionLoading ? (
+          <div className="space-y-3 py-1">
+            <Skeleton className="h-6 w-[62%]" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-[94%]" />
+            <Skeleton className="h-4 w-[88%]" />
+            <div className="pt-3 space-y-2">
+              <Skeleton className="h-4 w-[70%]" />
+              <Skeleton className="h-24 w-full rounded-lg" />
+            </div>
+          </div>
+        ) : instructionError ? (
+          <div className="rounded-lg border border-red-500/30 bg-red-500/5 px-4 py-3 text-sm text-red-600 dark:text-red-400">
+            {instructionError}
+          </div>
+        ) : (
+          <article className="text-xs sm:text-sm leading-6 sm:leading-7 text-foreground/95 wrap-break-word [&_a]:text-primary [&_a]:underline [&_blockquote]:border-l-2 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-secondary/70 [&_code]:px-1 [&_code]:py-0.5 [&_h1]:mt-2 [&_h1]:mb-4 [&_h1]:text-xl [&_h1]:font-bold [&_h1]:leading-tight [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-base [&_h3]:font-semibold [&_li]:mt-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-secondary/35 [&_pre]:p-3 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:rounded-none [&_table]:my-4 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-border/50 [&_td]:px-2 [&_td]:py-1.5 [&_th]:border [&_th]:border-border/50 [&_th]:bg-secondary/40 [&_th]:px-2 [&_th]:py-1.5 [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-6">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {instructionContent || "No markdown content."}
+            </ReactMarkdown>
+          </article>
+        )}
+      </div>
+
+      <div className="shrink-0 border-t border-border/60 px-5 sm:px-7 py-3 bg-background/80 backdrop-blur-sm">
+        <Button variant="outline" asChild className="h-8 w-full text-xs sm:h-9 sm:w-auto sm:text-sm">
+          <a
+            href={selectedTaskInstructionUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <ExternalLink className="h-4 w-4" />
+            Open external instruction.md
+          </a>
+        </Button>
+      </div>
+    </>
+  );
+
   return (
     <div className="container mx-auto px-4 sm:px-8 lg:px-12 py-8 max-w-screen-2xl h-[100dvh] flex flex-col overflow-hidden">
       {/* Header Section */}
@@ -326,23 +462,25 @@ function TasksContent() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
-                {filteredAndSortedTasks.map((task, index) => (
+                {filteredAndSortedTasks.map((task) => (
                   <tr
                     key={task.taskName}
                     className="hover:bg-secondary/30 even:bg-secondary/5 transition-colors duration-200 group"
                   >
                     <td className="md:sticky left-0 z-20 bg-background border-r border-border/50 p-0 font-mono w-[200px] min-w-[200px] max-w-[200px] md:w-[350px] md:min-w-[350px] md:max-w-[350px] md:shadow-[1px_0_0_rgba(0,0,0,0.05)]">
-                      <a
-                        href={`${zealtConfig.github_repo}/tree/main/tasks/${task.taskName}/instruction.md`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/task flex items-center gap-2 px-3 sm:px-6 py-2 w-full h-full text-foreground hover:text-primary transition-colors focus:outline-none bg-transparent group-even:bg-secondary/5 group-hover:bg-secondary/30"
-                        title={`View ${task.taskName} instruction on GitHub`}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedTask(task.taskName);
+                          setIsInstructionOpen(true);
+                        }}
+                        className="group/task flex items-center gap-2 px-3 sm:px-6 py-2 w-full h-full text-foreground hover:text-primary transition-colors focus:outline-none bg-transparent group-even:bg-secondary/5 group-hover:bg-secondary/30 cursor-pointer text-left"
+                        title={`View ${task.taskName} instruction`}
                       >
                         <span className="truncate w-full block group-hover/task:underline text-xs md:text-sm">
                           {task.taskName}
                         </span>
-                      </a>
+                      </button>
                     </td>
                     {activeCombos.map(combo => {
                       const trial = task.comboMap[combo];
@@ -420,6 +558,42 @@ function TasksContent() {
           </div>
         )}
       </div>
+
+      {isDesktop ? (
+        <Sheet open={isInstructionOpen} onOpenChange={setIsInstructionOpen}>
+          <SheetContent
+            side="right"
+            className="h-full min-h-0 w-[640px] lg:w-[680px] xl:w-[760px] 2xl:w-[820px] max-w-[90vw] border-l border-border/70 bg-card/95 p-0 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-md data-[state=open]:duration-320 data-[state=closed]:duration-220 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95"
+          >
+            <div className="flex h-full min-h-0 flex-col">
+              <SheetHeader className="border-b border-border/60 bg-background/60 px-7 py-5 pr-14">
+                <SheetTitle className="text-base">{selectedTask || "Task Instruction"}</SheetTitle>
+                <SheetDescription>
+                  Task instruction
+                </SheetDescription>
+              </SheetHeader>
+              {instructionBody}
+            </div>
+          </SheetContent>
+        </Sheet>
+      ) : (
+        <Drawer open={isInstructionOpen} onOpenChange={setIsInstructionOpen} direction="bottom">
+          <DrawerContent className="inset-x-0 bottom-0 h-[76dvh] max-h-[76dvh] rounded-t-2xl border-t border-border/70 bg-card/95 p-0">
+            <div className="mx-auto mt-3 h-1.5 w-14 rounded-full bg-muted-foreground/40" />
+            <div className="flex h-full min-h-0 flex-col">
+              <DrawerHeader className="border-b border-border/60 px-5 pb-4">
+                <DrawerTitle className="text-base">
+                  {selectedTask || "Task Instruction"}
+                </DrawerTitle>
+                <DrawerDescription className="sr-only">
+                  {selectedTask}
+                </DrawerDescription>
+              </DrawerHeader>
+              {instructionBody}
+            </div>
+          </DrawerContent>
+        </Drawer>
+      )}
 
       <BackToTop />
     </div>
