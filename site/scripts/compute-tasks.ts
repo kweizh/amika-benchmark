@@ -1,6 +1,55 @@
 import fs from 'fs/promises';
 import path from 'path';
 
+type TaskTrial = {
+  job_name: string;
+  trial_name: string;
+  trajectory_id?: string;
+  agent: string;
+  model: string;
+  provider: string;
+  passed: boolean;
+  reward: number | null;
+  error: boolean;
+  latency_sec: number | null;
+  latency_breakdown: {
+    env_setup: number | null;
+    agent_setup: number | null;
+    agent_exec: number | null;
+    verifier: number | null;
+  };
+  tokens: {
+    input: number;
+    output: number;
+    cache: number;
+  };
+};
+
+type TaskRecord = {
+  instruction: string;
+  trials: TaskTrial[];
+};
+
+type ParsedResult = {
+  task_name?: string;
+  started_at?: string;
+  finished_at?: string;
+  environment_setup?: { started_at?: string; finished_at?: string };
+  agent_setup?: { started_at?: string; finished_at?: string };
+  agent_execution?: { started_at?: string; finished_at?: string };
+  verifier?: { started_at?: string; finished_at?: string };
+  verifier_result?: { rewards?: { reward?: number } };
+  exception_info?: unknown;
+  config?: { agent?: { model_name?: string; name?: string } };
+  agent_info?: { model_info?: { name?: string; provider?: string }; name?: string };
+  trial_name?: string;
+  agent_result?: {
+    n_input_tokens?: number;
+    n_output_tokens?: number;
+    n_cache_tokens?: number;
+  };
+};
+
 async function readTrajectoryId(jobsDir: string, jobName: string, trialName: string): Promise<string | null> {
   const trajectoryIdPath = path.join(jobsDir, jobName, trialName, 'agent', 'pochi', 'trajectory-id.txt');
   try {
@@ -26,7 +75,7 @@ async function getResultFiles(dir: string): Promise<string[]> {
         try {
           await fs.access(path.join(dir, resultPath));
           files.push(resultPath);
-        } catch (e) {
+        } catch {
           // result.json doesn't exist in this trial dir
         }
       }
@@ -37,36 +86,13 @@ async function getResultFiles(dir: string): Promise<string[]> {
   return files;
 }
 
-async function copyTaskInstructions(repoRoot: string, siteRoot: string) {
-  const tasksDir = path.join(repoRoot, 'tasks');
-  const outputRoot = path.join(siteRoot, 'public', 'task-instructions');
-
-  await fs.rm(outputRoot, { recursive: true, force: true });
-  await fs.mkdir(outputRoot, { recursive: true });
-
-  const entries = await fs.readdir(tasksDir, { withFileTypes: true });
-  let copied = 0;
-
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-
-    const taskName = entry.name;
-    const sourceInstruction = path.join(tasksDir, taskName, 'instruction.md');
-
-    try {
-      await fs.access(sourceInstruction);
-    } catch {
-      continue;
-    }
-
-    const targetDir = path.join(outputRoot, taskName);
-    const targetInstruction = path.join(targetDir, 'instruction.md');
-    await fs.mkdir(targetDir, { recursive: true });
-    await fs.copyFile(sourceInstruction, targetInstruction);
-    copied += 1;
+async function readTaskInstruction(repoRoot: string, taskName: string): Promise<string> {
+  const instructionPath = path.join(repoRoot, 'tasks', taskName, 'instruction.md');
+  try {
+    return await fs.readFile(instructionPath, 'utf-8');
+  } catch (_e) {
+    return '';
   }
-
-  console.log(`Copied ${copied} task instructions to ${outputRoot}`);
 }
 
 async function main() {
@@ -75,14 +101,14 @@ async function main() {
   const jobsDir = path.join(repoRoot, 'jobs');
   const resultFiles = await getResultFiles(jobsDir);
 
-  const tasks: Record<string, any[]> = {};
+  const tasks: Record<string, TaskRecord> = {};
 
   for (const file of resultFiles) {
     const fullPath = path.join(jobsDir, file);
     const content = await fs.readFile(fullPath, 'utf-8');
-    let data: any;
+    let data: ParsedResult;
     try {
-      data = JSON.parse(content);
+      data = JSON.parse(content) as ParsedResult;
     } catch (e) {
       console.error(`Error parsing ${fullPath}:`, e);
       continue;
@@ -92,7 +118,10 @@ async function main() {
     if (!taskName) continue;
 
     if (!tasks[taskName]) {
-      tasks[taskName] = [];
+      tasks[taskName] = {
+        instruction: await readTaskInstruction(repoRoot, taskName),
+        trials: [],
+      };
     }
 
     const startedAt = data.started_at ? new Date(data.started_at).getTime() : 0;
@@ -114,16 +143,16 @@ async function main() {
     const hasError = !!data.exception_info;
 
     const model = data.config?.agent?.model_name || data.agent_info?.model_info?.name || 'unknown';
-    const provider = data.agent_info?.model_info?.provider;
+    const provider = data.agent_info?.model_info?.provider || 'unknown';
     
     const agentName = data.config?.agent?.name || data.agent_info?.name || 'unknown';
 
     // Extract job directory name (e.g., 2026-03-08__16-54-33)
     const jobName = file.split('/')[0] || file.split('\\')[0];
-    const trialName = data.trial_name;
+    const trialName = data.trial_name || 'unknown-trial';
     const trajectoryId = trialName ? await readTrajectoryId(jobsDir, jobName, trialName) : null;
 
-    tasks[taskName].push({
+    tasks[taskName].trials.push({
       job_name: jobName,
       trial_name: trialName,
       ...(trajectoryId ? { trajectory_id: trajectoryId } : {}),
@@ -152,8 +181,6 @@ async function main() {
   
   await fs.writeFile(outputPath, JSON.stringify(tasks, null, 2));
   console.log(`Computed ${Object.keys(tasks).length} tasks into ${outputPath}`);
-
-  await copyTaskInstructions(repoRoot, siteRoot);
 }
 
 main().catch(console.error);

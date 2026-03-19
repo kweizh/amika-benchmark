@@ -84,7 +84,12 @@ export const dynamicParams = false;
 export function generateStaticParams(): RouteParams[] {
   const params: RouteParams[] = [];
 
-  for (const trials of Object.values(tasksData as Record<string, unknown>)) {
+  for (const task of Object.values(tasksData as Record<string, unknown>)) {
+    if (typeof task !== "object" || task === null) {
+      continue;
+    }
+
+    const trials = (task as { trials?: unknown }).trials;
     if (!Array.isArray(trials)) {
       continue;
     }

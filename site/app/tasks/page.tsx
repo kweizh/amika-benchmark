@@ -15,8 +15,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import tasksDataRaw from "../../tasks.json";
@@ -45,8 +43,77 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MultiSelect } from "./components/multi-select";
 import { BackToTop } from "./components/back-to-top";
 
+type TaskTrial = {
+  job_name: string;
+  trial_name: string;
+  trajectory_id?: string;
+  agent: string;
+  model: string;
+  provider: string;
+  passed: boolean;
+  reward: number | null;
+  error: boolean;
+  latency_sec: number | null;
+  latency_breakdown?: {
+    env_setup?: number | null;
+    agent_setup?: number | null;
+    agent_exec?: number | null;
+    verifier?: number | null;
+  };
+  tokens: {
+    input: number;
+    output: number;
+    cache: number;
+  };
+};
+
+type TaskEntry = {
+  instruction: string;
+  trials: TaskTrial[];
+};
+
+type NormalizedTrial = TaskTrial & {
+  exec_duration: number;
+};
+
+type NormalizedTask = {
+  taskName: string;
+  instruction: string;
+  trials: NormalizedTrial[];
+};
+
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+function normalizeTasksData(raw: unknown): NormalizedTask[] {
+  if (typeof raw !== "object" || raw === null) {
+    return [];
+  }
+
+  return Object.entries(raw as Record<string, unknown>).map(([taskName, value]) => {
+    let instruction = "";
+    let trials: TaskTrial[] = [];
+
+    if (Array.isArray(value)) {
+      trials = value as TaskTrial[];
+    } else if (typeof value === "object" && value !== null) {
+      const taskEntry = value as Partial<TaskEntry>;
+      instruction = typeof taskEntry.instruction === "string" ? taskEntry.instruction : "";
+      trials = Array.isArray(taskEntry.trials) ? taskEntry.trials : [];
+    }
+
+    return {
+      taskName,
+      instruction,
+      trials: trials.map((t) => ({
+        ...t,
+        model: t.model.split('/').pop() || t.model,
+        agent: t.agent.charAt(0).toUpperCase() + t.agent.slice(1),
+        exec_duration: t.latency_breakdown?.agent_exec || t.latency_sec || 0,
+      })),
+    };
+  }).sort((a, b) => a.taskName.localeCompare(b.taskName));
 }
 
 // Convert object to array and sort by task name
@@ -78,9 +145,7 @@ const allTrialsFlat = tasksData.flatMap(task =>
 );
 
 const allModels = Array.from(new Set(allTrialsFlat.map(tr => tr.model)));
-const allAgents = Array.from(new Set(allTrialsFlat.map(tr => tr.agent)));
 const allCombos = Array.from(new Set(allTrialsFlat.map(tr => `${tr.model} (${tr.agent})`))).sort();
-const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || "").replace(/\/$/, "");
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
@@ -117,9 +182,6 @@ function TasksContent() {
   const [searchQuery, setSearchQuery] = useState(queryQ);
   const [selectedTask, setSelectedTask] = useState<string | null>(null);
   const [isInstructionOpen, setIsInstructionOpen] = useState(false);
-  const [instructionContent, setInstructionContent] = useState("");
-  const [instructionLoading, setInstructionLoading] = useState(false);
-  const [instructionError, setInstructionError] = useState<string | null>(null);
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   const hasActiveFilters = selectedStatuses.length > 0 || selectedModels.length > 0 || selectedAgents.length > 0 || searchQuery !== "" || querySort !== "default";
@@ -131,44 +193,6 @@ function TasksContent() {
     }, 300);
     return () => clearTimeout(timer);
   }, [searchQuery]);
-
-  useEffect(() => {
-    if (!isInstructionOpen || !selectedTask) return;
-
-    const controller = new AbortController();
-    const taskName = selectedTask;
-
-    async function loadInstruction() {
-      try {
-        setInstructionLoading(true);
-        setInstructionError(null);
-        setInstructionContent("");
-
-        const response = await fetch(
-          `${basePath}/task-instructions/${encodeURIComponent(taskName)}/instruction.md`,
-          { signal: controller.signal }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to load instruction");
-        }
-
-        const markdown = await response.text();
-        setInstructionContent(markdown);
-      } catch {
-        if (controller.signal.aborted) return;
-        setInstructionError("Unable to load instruction.md for this task.");
-      } finally {
-        if (!controller.signal.aborted) {
-          setInstructionLoading(false);
-        }
-      }
-    }
-
-    loadInstruction();
-
-    return () => controller.abort();
-  }, [isInstructionOpen, selectedTask]);
 
   const updateParams = (updates: Record<string, string | null>) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -213,7 +237,7 @@ function TasksContent() {
 
   const filteredAndSortedTasks = useMemo(() => {
     const result = tasksData.map(task => {
-      const comboMap: Record<string, any> = {};
+      const comboMap: Record<string, NormalizedTrial> = {};
       let hasMatchingTrial = false;
       let selectedModelMatchesStatus = false;
       let hasSelectedModelTrial = false;
@@ -261,7 +285,7 @@ function TasksContent() {
       }
 
       const avgDuration = Object.values(comboMap).length > 0
-        ? Object.values(comboMap).reduce((sum: number, t: any) => sum + t.exec_duration, 0) / Object.values(comboMap).length
+        ? Object.values(comboMap).reduce((sum, t) => sum + t.exec_duration, 0) / Object.values(comboMap).length
         : 0;
 
       return {
@@ -311,30 +335,25 @@ function TasksContent() {
     ? `${zealtConfig.github_repo}/tree/main/tasks/${selectedTask}/instruction.md`
     : "";
 
+  const selectedTaskInstruction = selectedTask
+    ? tasksData.find(task => task.taskName === selectedTask)?.instruction || ""
+    : "";
+
   const instructionBody = (
     <>
       <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-5 sm:px-7 py-4 sm:py-5">
-        {instructionLoading ? (
-          <div className="space-y-3 py-1">
-            <Skeleton className="h-6 w-[62%]" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-[94%]" />
-            <Skeleton className="h-4 w-[88%]" />
-            <div className="pt-3 space-y-2">
-              <Skeleton className="h-4 w-[70%]" />
-              <Skeleton className="h-24 w-full rounded-lg" />
+        {selectedTask ? (
+          selectedTaskInstruction ? (
+            <pre className="m-0 p-0 text-xs sm:text-sm leading-6 sm:leading-7 text-foreground/95 whitespace-pre-wrap wrap-break-word font-mono">
+              {selectedTaskInstruction}
+            </pre>
+          ) : (
+            <div className="rounded-lg border border-border/60 bg-secondary/20 px-4 py-3 text-sm text-muted-foreground">
+              This task has no instruction content.
             </div>
-          </div>
-        ) : instructionError ? (
-          <div className="rounded-lg border border-red-500/30 bg-red-500/5 px-4 py-3 text-sm text-red-600 dark:text-red-400">
-            {instructionError}
-          </div>
+          )
         ) : (
-          <article className="text-xs sm:text-sm leading-6 sm:leading-7 text-foreground/95 wrap-break-word [&_a]:text-primary [&_a]:underline [&_blockquote]:border-l-2 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-secondary/70 [&_code]:px-1 [&_code]:py-0.5 [&_h1]:mt-2 [&_h1]:mb-4 [&_h1]:text-xl [&_h1]:font-bold [&_h1]:leading-tight [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-base [&_h3]:font-semibold [&_li]:mt-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-secondary/35 [&_pre]:p-3 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:rounded-none [&_pre_code]:shadow-none [&_table]:my-4 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-border/50 [&_td]:px-2 [&_td]:py-1.5 [&_th]:border [&_th]:border-border/50 [&_th]:bg-secondary/40 [&_th]:px-2 [&_th]:py-1.5 [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-6">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {instructionContent || "No markdown content."}
-            </ReactMarkdown>
-          </article>
+          <Skeleton className="h-28 w-full" />
         )}
       </div>
 
