@@ -3,6 +3,7 @@ import tasksData from "@/tasks.json";
 import { TrajectoryPage } from "./components/trajectory-page";
 import zealtConfig from "@/../zealt.json";
 import { redirect } from "next/navigation";
+import { AlertTriangle, Check, HelpCircle, X as XIcon } from "lucide-react";
 
 
 type RouteParams = {
@@ -14,7 +15,15 @@ type TrialEntry = {
   trial_name: string;
   job_name: string;
   agent: string;
+  passed?: boolean;
+  error?: boolean;
   latency_sec?: number | null;
+  latency_breakdown?: {
+    env_setup?: number | null;
+    agent_setup?: number | null;
+    agent_exec?: number | null;
+    verifier?: number | null;
+  };
   trajectory_id?: string;
   stderr_text?: string | null;
   stderr_line_count?: number;
@@ -49,6 +58,58 @@ function formatDuration(durationSec: number | null | undefined): string {
   const minutes = Math.floor(durationSec / 60);
   const seconds = durationSec % 60;
   return `${minutes}m ${seconds.toFixed(1)}s`;
+}
+
+function getTrialStatus(trial: TrialEntry | null): "error" | "passed" | "failed" | "unknown" {
+  if (!trial) {
+    return "unknown";
+  }
+
+  if (trial.error) {
+    return "error";
+  }
+
+  if (trial.passed) {
+    return "passed";
+  }
+
+  if (trial.passed === false) {
+    return "failed";
+  }
+
+  return "unknown";
+}
+
+function getStatusMeta(status: "error" | "passed" | "failed" | "unknown") {
+  if (status === "error") {
+    return {
+      label: "Error",
+      className: "text-red-400",
+      Icon: AlertTriangle,
+    };
+  }
+
+  if (status === "passed") {
+    return {
+      label: "Passed",
+      className: "text-emerald-400",
+      Icon: Check,
+    };
+  }
+
+  if (status === "failed") {
+    return {
+      label: "Failed",
+      className: "text-amber-400",
+      Icon: XIcon,
+    };
+  }
+
+  return {
+    label: "Unknown",
+    className: "text-muted-foreground",
+    Icon: HelpCircle,
+  };
 }
 
 function buildFallbackUrl(jobName: string, trialName: string) {
@@ -181,8 +242,12 @@ export default async function TrajectoryRoutePage({
   const clipId = trialEntry?.trajectory_id?.trim() || null;
   const headerTitle = `${resolvedParams.name}__${resolvedParams.jobId}`;
   const startedAt = trialEntry ? formatStartTime(trialEntry.job_name) : "Unknown";
-  const durationLabel = formatDuration(trialEntry?.latency_sec ?? null);
-  const contentTopOffsetClassName = "top-28";
+  const executionDurationLabel = formatDuration(trialEntry?.latency_breakdown?.agent_exec ?? null);
+  const verifyDurationLabel = formatDuration(trialEntry?.latency_breakdown?.verifier ?? null);
+  const trialStatus = getTrialStatus(trialEntry);
+  const statusMeta = getStatusMeta(trialStatus);
+  const StatusIcon = statusMeta.Icon;
+  const contentTopOffsetClassName = "top-36 sm:top-32 lg:top-28";
   
   const trajectoryUrl = clipId && trialEntry
     ? buildClipUrl(trialEntry.job_name, trialEntry.trial_name, resolvedParams.name)
@@ -208,9 +273,30 @@ export default async function TrajectoryRoutePage({
             <h1 className="truncate whitespace-nowrap font-bold text-2xl">
               {headerTitle}
             </h1>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground sm:text-sm mt-1.5">
-              <span>Started: {startedAt}</span>
-              <span>Duration: {durationLabel}</span>
+            <div className="mt-2 text-xs sm:text-sm">
+              <div className="space-y-1.5 sm:hidden">
+                <div className="flex items-center gap-3">
+                  <span className={`inline-flex shrink-0 items-center gap-1.5 font-medium ${statusMeta.className}`}>
+                    <StatusIcon className="h-3.5 w-3.5" />
+                    <span>Status: {statusMeta.label}</span>
+                  </span>
+                  <span className="min-w-0 truncate text-muted-foreground">Started: {startedAt}</span>
+                </div>
+                <div className="grid grid-cols-2 gap-x-3 text-muted-foreground">
+                  <span className="truncate">Execution: {executionDurationLabel}</span>
+                  <span className="truncate">Verify: {verifyDurationLabel}</span>
+                </div>
+              </div>
+
+              <div className="hidden items-center gap-4 sm:flex">
+                <span className={`inline-flex shrink-0 items-center gap-1.5 font-medium ${statusMeta.className}`}>
+                  <StatusIcon className="h-3.5 w-3.5" />
+                  <span>Status: {statusMeta.label}</span>
+                </span>
+                <span className="text-muted-foreground">Started: {startedAt}</span>
+                <span className="text-muted-foreground truncate">Execution: {executionDurationLabel}</span>
+                <span className="text-muted-foreground truncate">Verify: {verifyDurationLabel}</span>
+              </div>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Check, Copy, Loader2 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 type TrajectoryPageProps = {
   trajectoryUrl: string;
@@ -78,9 +79,9 @@ export function TrajectoryPage({
 
   return (
     <div className="fixed inset-0 w-full h-full">
-      <div className={`absolute inset-x-0 bottom-0 ${topOffsetClassName} pb-4 sm:pb-6`}>
+      <div className={`absolute inset-x-0 ${topOffsetClassName} bottom-4 sm:bottom-6`}>
         <div className="mx-auto h-full w-full max-w-[1400px] px-4 sm:px-7 lg:px-10">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full rounded-xl border border-border/60 bg-background/70 backdrop-blur-sm shadow-sm">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full gap-0 overflow-hidden rounded-xl border border-border/60 bg-background/70 backdrop-blur-sm shadow-sm">
             <div className="border-b border-border/50 bg-background/50 px-3 py-3 sm:px-4">
               <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <TabsList className="grid h-11 w-[300px] max-w-full grid-cols-3 items-stretch border border-border/40 bg-background/60 p-1">
@@ -122,7 +123,7 @@ export function TrajectoryPage({
               </div>
             </div>
 
-            <TabsContent value="trajectory" className="relative h-[calc(100%-64px)] overflow-hidden" forceMount>
+            <TabsContent value="trajectory" className="relative min-h-0 overflow-hidden" forceMount>
               {iframeLoading && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-center space-y-6 bg-background/80 backdrop-blur-sm">
                   <div className="relative flex items-center justify-center">
@@ -143,16 +144,20 @@ export function TrajectoryPage({
               />
             </TabsContent>
 
-            <TabsContent value="log" className="h-[calc(100%-64px)] overflow-auto px-3 pb-3 sm:px-4 sm:pb-4" forceMount>
-              <div className="pt-2 sm:pt-3">
-                {renderLogContent(stderrText, "No stderr content available for this trial.")}
-              </div>
+            <TabsContent value="log" className="min-h-0 overflow-hidden" forceMount>
+              <ScrollArea className="h-full w-full">
+                <div className="px-3 pb-4 pt-2 sm:px-4 sm:pb-5 sm:pt-3">
+                  {renderLogContent(stderrText, "No stderr content available for this trial.")}
+                </div>
+              </ScrollArea>
             </TabsContent>
 
-            <TabsContent value="test" className="h-[calc(100%-64px)] overflow-auto px-3 pb-3 sm:px-4 sm:pb-4" forceMount>
-              <div className="pt-2 sm:pt-3">
-                {renderLogContent(verifierText, "No verifier test output available for this trial.")}
-              </div>
+            <TabsContent value="test" className="min-h-0 overflow-hidden" forceMount>
+              <ScrollArea className="h-full w-full">
+                <div className="px-3 pb-4 pt-2 sm:px-4 sm:pb-5 sm:pt-3">
+                  {renderLogContent(verifierText, "No verifier test output available for this trial.")}
+                </div>
+              </ScrollArea>
             </TabsContent>
           </Tabs>
         </div>
