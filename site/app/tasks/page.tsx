@@ -330,7 +330,7 @@ function TasksContent() {
             {instructionError}
           </div>
         ) : (
-          <article className="text-xs sm:text-sm leading-6 sm:leading-7 text-foreground/95 wrap-break-word [&_a]:text-primary [&_a]:underline [&_blockquote]:border-l-2 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-secondary/70 [&_code]:px-1 [&_code]:py-0.5 [&_h1]:mt-2 [&_h1]:mb-4 [&_h1]:text-xl [&_h1]:font-bold [&_h1]:leading-tight [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-base [&_h3]:font-semibold [&_li]:mt-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-secondary/35 [&_pre]:p-3 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:rounded-none [&_table]:my-4 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-border/50 [&_td]:px-2 [&_td]:py-1.5 [&_th]:border [&_th]:border-border/50 [&_th]:bg-secondary/40 [&_th]:px-2 [&_th]:py-1.5 [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-6">
+          <article className="text-xs sm:text-sm leading-6 sm:leading-7 text-foreground/95 wrap-break-word [&_a]:text-primary [&_a]:underline [&_blockquote]:border-l-2 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-secondary/70 [&_code]:px-1 [&_code]:py-0.5 [&_h1]:mt-2 [&_h1]:mb-4 [&_h1]:text-xl [&_h1]:font-bold [&_h1]:leading-tight [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-base [&_h3]:font-semibold [&_li]:mt-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-secondary/35 [&_pre]:p-3 [&_table]:my-4 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-border/50 [&_td]:px-2 [&_td]:py-1.5 [&_th]:border [&_th]:border-border/50 [&_th]:bg-secondary/40 [&_th]:px-2 [&_th]:py-1.5 [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-6">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {instructionContent || "No markdown content."}
             </ReactMarkdown>
@@ -338,7 +338,7 @@ function TasksContent() {
         )}
       </div>
 
-      <div className="shrink-0 border-t border-border/60 px-5 sm:px-7 py-3 bg-background/80 backdrop-blur-sm">
+      <div className="shrink-0 border-t border-border/60 px-5 sm:px-7 py-3 bg-card/80">
         <Button variant="outline" asChild className="h-8 w-full text-xs sm:h-9 sm:w-auto sm:text-sm">
           <a
             href={selectedTaskInstructionUrl}
@@ -563,10 +563,10 @@ function TasksContent() {
         <Sheet open={isInstructionOpen} onOpenChange={setIsInstructionOpen}>
           <SheetContent
             side="right"
-            className="h-full min-h-0 w-[640px] lg:w-[680px] xl:w-[760px] 2xl:w-[820px] max-w-[90vw] border-l border-border/70 bg-card/95 p-0 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-md data-[state=open]:duration-320 data-[state=closed]:duration-220 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95"
+            className="h-full min-h-0 w-[640px] lg:w-[680px] xl:w-[760px] 2xl:w-[820px] max-w-[90vw] border-l border-border/70 bg-card/80 p-0 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-md data-[state=open]:duration-320 data-[state=closed]:duration-220 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95"
           >
             <div className="flex h-full min-h-0 flex-col">
-              <SheetHeader className="border-b border-border/60 bg-background/60 px-7 py-5 pr-14">
+              <SheetHeader className="border-b border-border/60 bg-card/80 px-7 py-5 pr-14">
                 <SheetTitle className="text-base">{selectedTask || "Task Instruction"}</SheetTitle>
                 <SheetDescription>
                   Task instruction
@@ -578,7 +578,7 @@ function TasksContent() {
         </Sheet>
       ) : (
         <Drawer open={isInstructionOpen} onOpenChange={setIsInstructionOpen} direction="bottom">
-          <DrawerContent className="inset-x-0 bottom-0 h-[76dvh] max-h-[76dvh] rounded-t-2xl border-t border-border/70 bg-background/60 p-0">
+          <DrawerContent className="inset-x-0 bottom-0 h-[76dvh] max-h-[76dvh] rounded-t-2xl border-t border-border/70 bg-card/95 p-0">
             <div className="mx-auto mt-3 h-1.5 w-14 rounded-full bg-muted-foreground/40" />
             <div className="flex h-full min-h-0 flex-col">
               <DrawerHeader className="border-b border-border/60 px-5 pb-4">
