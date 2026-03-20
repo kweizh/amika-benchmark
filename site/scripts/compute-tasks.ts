@@ -218,7 +218,7 @@ async function main() {
     });
   }
 
-  const outputPath = path.join(siteRoot, 'tasks.json');
+  const outputPath = path.join(siteRoot, '../.zealt/tasks.json');
   
   await fs.writeFile(outputPath, JSON.stringify(tasks, null, 2));
   console.log(`Computed ${Object.keys(tasks).length} tasks into ${outputPath}`);

@@ -1,6 +1,6 @@
 import { Github, Terminal } from "lucide-react";
-import tasksData from "../../tasks.json";
-import zealtConfig from "../../../zealt.json";
+import tasksData from "@/zealt/tasks.json";
+import zealtConfig from "@/zealt/config.json";
 import LeaderboardTable, { type LeaderboardEntry } from "./components/leaderboard-table";
 
 type TaskTrial = {
