@@ -1,9 +1,8 @@
-import type { CSSProperties } from "react";
 import tasksData from "@/zealt/tasks.json";
 import { TrajectoryPage } from "./components/trajectory-page";
 import zealtConfig from "@/zealt/config.json";
 import { redirect } from "next/navigation";
-import { AlertTriangle, Check, HelpCircle, X as XIcon } from "lucide-react";
+import { AlertTriangle, Check, ExternalLink, HelpCircle, X as XIcon } from "lucide-react";
 
 
 type RouteParams = {
@@ -135,6 +134,10 @@ function buildFallbackUrl(jobName: string, trialName: string) {
   return `${zealtConfig.github_repo}/blob/main/jobs/${jobName}/${trialName}/result.json`
 }
 
+function buildTaskDirUrl(taskName: string) {
+  return `${zealtConfig.github_repo}/tree/main/tasks/${encodeURIComponent(taskName)}`;
+}
+
 function splitTrialName(trialName: string): { taskName: string; jobId: string } | null {
   const separatorIndex = trialName.lastIndexOf("__");
   if (separatorIndex <= 0 || separatorIndex >= trialName.length - 2) {
@@ -148,7 +151,7 @@ function splitTrialName(trialName: string): { taskName: string; jobId: string } 
 }
 
 function getServerBaseUrl() {
-  return process.env.CLIPS_BASE_URL || 'https://cc.getpochi.com';
+  return process.env.CLIPS_BASE_URL || 'https://fletch.getpochi.com';
 }
 
 function getGithubOwnerRepo(): string {
@@ -267,32 +270,40 @@ export default async function TrajectoryRoutePage({
   const trialStatus = getTrialStatus(trialEntry);
   const statusMeta = getStatusMeta(trialStatus);
   const StatusIcon = statusMeta.Icon;
-  const contentTopOffsetClassName = "top-36 sm:top-32 lg:top-28";
+  const taskDirUrl = buildTaskDirUrl(resolvedParams.name);
   
   const trajectoryUrl = clipId && trialEntry
     ? buildClipUrl(trialEntry.job_name, trialEntry.trial_name, resolvedParams.name)
     : null;
   
-  // FIXME
-  if (!trajectoryUrl) {
+  // Redirect
+  if (!trajectoryUrl || !trialEntry) {
     redirect(fallbackUrl ?? '/tasks');
   }
+
   const stderrText = trialEntry?.stderr_text ?? null;
   const verifierText = trialEntry?.verifier_text ?? null;
-  const pageThemeVars = {
-    "--background": "oklch(0.268 0.004 106.643)",
-    "--border": "oklch(0.362 0.01 106.893)",
-  } as CSSProperties;
 
   return (
-    <div style={pageThemeVars} className="w-full h-screen bg-background text-foreground font-sans selection:bg-primary/20 overflow-hidden">
+    <div className="flex h-screen w-full flex-col overflow-hidden bg-background text-foreground font-sans selection:bg-primary/20">
       <div className="fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#2a2a2a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 dark:opacity-40"></div>
-      <div className="fixed inset-x-0 top-0 z-40 border-b border-border/50 bg-background/85 backdrop-blur-sm">
+      <div className="z-40 shrink-0 bg-background/85 backdrop-blur-sm">
         <div className="mx-auto w-full max-w-[1400px] px-4 py-4 sm:px-7 lg:px-10">
           <div className="flex flex-col gap-1">
-            <h1 className="truncate whitespace-nowrap font-bold text-2xl">
-              {headerTitle}
-            </h1>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+              <h1 className="min-w-0 truncate whitespace-nowrap font-bold text-2xl sm:flex-1 sm:pr-4">
+                {headerTitle}
+              </h1>
+              <a
+                href={taskDirUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex w-fit shrink-0 items-center gap-1.5 whitespace-nowrap rounded-md border border-border/70 bg-background/40 px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary/45 hover:text-foreground sm:text-sm"
+              >
+                <ExternalLink className="h-4 w-4" />
+                <span>Task</span>
+              </a>
+            </div>
             <div className="mt-2 text-xs sm:text-sm">
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
                 <span className={`inline-flex shrink-0 items-center gap-0 font-medium`}>
@@ -306,13 +317,14 @@ export default async function TrajectoryRoutePage({
           </div>
         </div>
       </div>
-      <TrajectoryPage
-        trajectoryUrl={trajectoryUrl}
-        fallbackUrl={fallbackUrl ?? ''}
-        stderrText={stderrText}
-        verifierText={verifierText}
-        topOffsetClassName={contentTopOffsetClassName}
-      />
+      <div className="min-h-0 flex-1">
+        <TrajectoryPage
+          trajectoryUrl={trajectoryUrl}
+          fallbackUrl={fallbackUrl ?? ''}
+          stderrText={stderrText}
+          verifierText={verifierText}
+        />
+      </div>
     </div>
   );
 }
