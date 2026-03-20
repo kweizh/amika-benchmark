@@ -1,4 +1,4 @@
-import tasksDataRaw from "../../tasks.json";
+import tasksDataRaw from "@/zealt/tasks.json";
 import { TasksPageClient, type CompactTask, type CompactTrial } from "./components/tasks-page-client";
 
 type RawTaskTrial = {
