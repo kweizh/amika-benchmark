@@ -103,7 +103,28 @@ export default function TasksPage() {
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/20">
       <div className="fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#2a2a2a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 dark:opacity-40"></div>
 
-      <TasksPageClient tasksData={compactTasksData} />
+      {compactTasksData.length === 0 ? (
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12 py-8 max-w-screen-2xl h-[100dvh] flex flex-col overflow-hidden">
+          <div className="mb-6 space-y-4 shrink-0">
+            <div className="flex items-center gap-4">
+              <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                &larr; Back to Leaderboard
+              </a>
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
+                Task
+              </h1>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-dashed border-border bg-card/40 backdrop-blur-sm px-8 py-14 text-center">
+            <h2 className="text-2xl font-semibold tracking-tight">No tasks available yet</h2>
+          </div>
+        </div>
+      ) : (
+        <TasksPageClient tasksData={compactTasksData} />
+      )}
     </div>
   );
 }

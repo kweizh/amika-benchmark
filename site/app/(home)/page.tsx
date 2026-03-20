@@ -17,6 +17,7 @@ type TaskValue = {
 
 export default function Home() {
   const totalTasks = Object.keys(tasksData as Record<string, unknown>).length;
+  const hasTasks = Object.keys(tasksData as Record<string, unknown>).length > 0;
 
   // Process tasks.json to compute leaderboard stats directly on the server
   const statsMap = new Map<string, {
@@ -134,7 +135,11 @@ export default function Home() {
           </div>
         </div>
 
-        {data.length === 0 ? (
+        {!hasTasks ? (
+          <div className="rounded-2xl border border-dashed border-border bg-card/40 backdrop-blur-sm px-8 py-14 text-center">
+            <h2 className="text-2xl font-semibold tracking-tight">No tasks available yet</h2>
+          </div>
+        ) : data.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-border bg-card/40 backdrop-blur-sm px-8 py-14 text-center">
             <h2 className="text-2xl font-semibold tracking-tight">No evaluation data yet</h2>
             <div className="mt-6 flex justify-center">
