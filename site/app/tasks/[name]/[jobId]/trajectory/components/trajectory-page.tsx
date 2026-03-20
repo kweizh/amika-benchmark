@@ -97,14 +97,14 @@ export function TrajectoryPage({
 
             <TabsContent value="trajectory" className="relative min-h-0 flex-1 overflow-hidden px-2" forceMount>
               <div
-                className={`absolute inset-0 z-10 overflow-auto bg-background/80 backdrop-blur-sm transition-opacity duration-500 delay-150 ${!mounted || iframeLoading ? "opacity-100" : "pointer-events-none opacity-0"}`}
+                className={`absolute inset-0 z-10 overflow-auto bg-background/80 transition-opacity duration-420 ease-out delay-220 ${!mounted || iframeLoading ? "opacity-100" : "pointer-events-none opacity-0"}`}
               >
                 <TrajectorySkeleton />
               </div>
               {mounted && (
                 <iframe
                   src={iframeUrl}
-                  className={`h-full w-full border-0 transition-opacity duration-300 ${iframeLoading ? "opacity-0" : "opacity-100"}`}
+                  className={`h-full w-full border-0 transition-opacity duration-260 ease-out ${iframeLoading ? "opacity-0" : "opacity-100"}`}
                   title="Trial Details"
                   onLoad={handleIframeLoad}
                   onError={handleIframeError}
