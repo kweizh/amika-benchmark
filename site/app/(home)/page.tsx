@@ -1,6 +1,7 @@
 import { Github, Terminal, ClipboardList, ListTree } from "lucide-react";
 import Link from "next/link";
 import tasksData from "@/zealt/tasks.json";
+import pendingTasksData from "@/zealt/pending-tasks.json";
 import zealtConfig from "@/zealt/config.json";
 import LeaderboardTable, { type LeaderboardEntry } from "./components/leaderboard-table";
 
@@ -15,9 +16,17 @@ type TaskValue = {
   trials?: TaskTrial[];
 };
 
+type PendingTasksValue = {
+  'pending-tasks'?: number;
+};
+
 export default function Home() {
   const totalTasks = Object.keys(tasksData as Record<string, unknown>).length;
   const hasTasks = Object.keys(tasksData as Record<string, unknown>).length > 0;
+  const pendingSampleCases = Math.max(
+    0,
+    Number((pendingTasksData as PendingTasksValue)['pending-tasks'] ?? 0),
+  );
 
   // Process tasks.json to compute leaderboard stats directly on the server
   const statsMap = new Map<string, {
@@ -136,8 +145,36 @@ export default function Home() {
         </div>
 
         {!hasTasks ? (
-          <div className="rounded-2xl border border-dashed border-border bg-card/40 backdrop-blur-sm px-8 py-14 text-center">
-            <h2 className="text-2xl font-semibold tracking-tight">No tasks available yet</h2>
+          <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/90 to-background/90 px-8 py-14 text-center shadow-[0_0_0_1px_hsl(var(--primary)/0.18),0_28px_72px_-32px_hsl(var(--foreground)/0.45)] backdrop-blur-sm">
+            <div className="pointer-events-none absolute -right-14 -top-14 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
+            <div className="pointer-events-none absolute -left-20 bottom-0 h-36 w-36 rounded-full bg-foreground/10 blur-3xl" />
+            <div className="relative mx-auto mb-4 inline-flex items-center rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold tracking-[0.16em] text-foreground">
+              🚀 PIPELINE IN PROGRESS
+            </div>
+            <h2 className="relative text-2xl md:text-[1.75rem] font-semibold tracking-tight text-foreground">
+              Generated {pendingSampleCases} sample cases.
+            </h2>
+            <p className="relative mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Great progress. This stage is complete, and you are very close to a full evaluation result. Continue the remaining steps to finish the workflow.
+            </p>
+            <p className="relative mt-2 text-sm text-muted-foreground">
+              Need help with data processing or evaluation execution? Contact {" "}
+              <a
+                href="mailto:zealtdev@tabbyml.com"
+                className="font-medium text-foreground underline decoration-primary/60 underline-offset-4 hover:text-primary transition-colors"
+              >
+                zealtdev@tabbyml.com
+              </a>
+              .
+            </p>
+            <div className="relative mt-7 flex items-center justify-center">
+              <a
+                href="mailto:zealtdev@tabbyml.com"
+                className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary/60"
+              >
+                Contact Support
+              </a>
+            </div>
           </div>
         ) : data.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-border bg-card/40 backdrop-blur-sm px-8 py-14 text-center">
