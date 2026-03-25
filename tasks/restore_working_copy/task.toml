@@ -10,7 +10,6 @@ tags = ["trivial"]
 [verifier]
 
 [agent]
-env = {ANTHRPIC_API_KEY= "REDACTED" }
 
 [solution]
 
