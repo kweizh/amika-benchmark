@@ -24,10 +24,6 @@ type TrialEntry = {
     verifier?: number | null;
   };
   trajectory_id?: string;
-  stderr_text?: string | null;
-  stderr_line_count?: number;
-  verifier_text?: string | null;
-  verifier_line_count?: number;
 };
 
 function formatStartTime(jobName: string): string {
@@ -111,13 +107,17 @@ function getStatusMeta(status: "error" | "passed" | "failed" | "unknown") {
   };
 }
 
+function getGithubBranchName(): string {
+  return process.env.GITHUB_HEAD_REF || "main";
+}
+
 function buildFallbackUrl(jobName: string, trialName: string) {
-  const branch = getGitBranch();
+  const branch = getGithubBranchName();
   return `${zealtConfig.github_repo}/blob/${branch}/jobs/${jobName}/${trialName}/result.json`
 }
 
 function buildTaskDirUrl(taskName: string) {
-  const branch = getGitBranch();
+  const branch = getGithubBranchName();
   return `${zealtConfig.github_repo}/tree/${branch}/tasks/${encodeURIComponent(taskName)}`;
 }
 
@@ -143,16 +143,18 @@ function getGithubOwnerRepo(): string {
   return match ? match[1] : repoUrl;
 }
 
-function getGitBranch(): string {
-  return process.env.GITHUB_HEAD_REF || 'main';
-}
-
 function buildClipUrl(jobName: string, trialName: string, title: string): string {
   const ownerRepo = getGithubOwnerRepo();
-  const branch = getGitBranch();
+  const branch = getGithubBranchName();
   const url = new URL(`/f/raw.githubusercontent.com/${ownerRepo}/refs/heads/${branch}/jobs/${jobName}/${trialName}/agent/pochi/trajectory.jsonl`, getServerBaseUrl());
   url.searchParams.set("title", title);
   return url.toString();
+}
+
+function buildRawGithubContentUrl(jobName: string, trialName: string, filePath: string): string {
+  const ownerRepo = getGithubOwnerRepo();
+  const branch = getGithubBranchName();
+  return `https://raw.githubusercontent.com/${ownerRepo}/refs/heads/${branch}/jobs/${jobName}/${trialName}/${filePath}`;
 }
 
 function isTrialEntry(value: unknown): value is TrialEntry {
@@ -270,8 +272,12 @@ export default async function TrajectoryRoutePage({
     redirect(fallbackUrl ?? '/tasks');
   }
 
-  const stderrText = trialEntry?.stderr_text ?? null;
-  const verifierText = trialEntry?.verifier_text ?? null;
+  const stderrLogUrl = trialEntry
+    ? buildRawGithubContentUrl(trialEntry.job_name, trialEntry.trial_name, `agent/${trialEntry.agent}/stderr.txt`)
+    : null;
+  const verifierLogUrl = trialEntry
+    ? buildRawGithubContentUrl(trialEntry.job_name, trialEntry.trial_name, "verifier/test-stdout.txt")
+    : null;
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden bg-background text-foreground font-sans selection:bg-primary/20">
@@ -310,8 +316,8 @@ export default async function TrajectoryRoutePage({
         <TrajectoryPage
           trajectoryUrl={trajectoryUrl}
           fallbackUrl={fallbackUrl ?? ''}
-          stderrText={stderrText}
-          verifierText={verifierText}
+          stderrLogUrl={stderrLogUrl}
+          verifierLogUrl={verifierLogUrl}
         />
       </div>
     </div>
