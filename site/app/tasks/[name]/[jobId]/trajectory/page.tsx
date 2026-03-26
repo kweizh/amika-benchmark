@@ -112,11 +112,13 @@ function getStatusMeta(status: "error" | "passed" | "failed" | "unknown") {
 }
 
 function buildFallbackUrl(jobName: string, trialName: string) {
-  return `${zealtConfig.github_repo}/blob/main/jobs/${jobName}/${trialName}/result.json`
+  const branch = getGitBranch();
+  return `${zealtConfig.github_repo}/blob/${branch}/jobs/${jobName}/${trialName}/result.json`
 }
 
 function buildTaskDirUrl(taskName: string) {
-  return `${zealtConfig.github_repo}/tree/main/tasks/${encodeURIComponent(taskName)}`;
+  const branch = getGitBranch();
+  return `${zealtConfig.github_repo}/tree/${branch}/tasks/${encodeURIComponent(taskName)}`;
 }
 
 function splitTrialName(trialName: string): { taskName: string; jobId: string } | null {
@@ -141,9 +143,14 @@ function getGithubOwnerRepo(): string {
   return match ? match[1] : repoUrl;
 }
 
+function getGitBranch(): string {
+  return process.env.GITHUB_HEAD_REF || 'main';
+}
+
 function buildClipUrl(jobName: string, trialName: string, title: string): string {
   const ownerRepo = getGithubOwnerRepo();
-  const url = new URL(`/f/raw.githubusercontent.com/${ownerRepo}/refs/heads/main/jobs/${jobName}/${trialName}/agent/pochi/trajectory.jsonl`, getServerBaseUrl());
+  const branch = getGitBranch();
+  const url = new URL(`/f/raw.githubusercontent.com/${ownerRepo}/refs/heads/${branch}/jobs/${jobName}/${trialName}/agent/pochi/trajectory.jsonl`, getServerBaseUrl());
   url.searchParams.set("title", title);
   return url.toString();
 }
