@@ -55,10 +55,13 @@ export function TrajectoryPage({
   const [iframeLoading, setIframeLoading] = useState(true);
 
   const validTabs = tabsConfig.map((t) => t.value);
-  const queryTab = searchParams.get("tab");
-  const activeTab = queryTab && validTabs.includes(queryTab) ? queryTab : validTabs[0];
+  const [activeTab, setActiveTab] = useState(() => {
+    const queryTab = searchParams.get("tab");
+    return queryTab && validTabs.includes(queryTab) ? queryTab : validTabs[0];
+  });
 
   const handleTabChange = (value: string) => {
+    setActiveTab(value);
     const params = new URLSearchParams(searchParams.toString());
     params.set("tab", value);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
