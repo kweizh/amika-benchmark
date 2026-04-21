@@ -1,0 +1,40 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 17ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py .F                                             [100%]
+
+=================================== FAILURES ===================================
+________________ test_output_file_exists_and_content_is_correct ________________
+
+    def test_output_file_exists_and_content_is_correct():
+        output_path = os.path.join(PROJECT_DIR, "output.txt")
+>       assert os.path.isfile(output_path), f"File {output_path} does not exist on the host. The mount mode may not be 'rw'."
+E       AssertionError: File /home/user/myproject/output.txt does not exist on the host. The mount mode may not be 'rw'.
+E       assert False
+E        +  where False = <function isfile at 0x783c4afe4220>('/home/user/myproject/output.txt')
+E        +    where <function isfile at 0x783c4afe4220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:17: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_sandbox_created
+FAILED tests/test_final_state.py::test_output_file_exists_and_content_is_correct
+========================= 1 failed, 1 passed in 1.15s ==========================

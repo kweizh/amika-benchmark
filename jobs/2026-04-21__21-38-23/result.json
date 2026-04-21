@@ -1,0 +1,70 @@
+{
+    "id": "568841a3-f6be-481d-a419-04ae5a5a98a7",
+    "started_at": "2026-04-21T21:38:27.323974",
+    "finished_at": "2026-04-21T22:10:20.765353",
+    "n_total_trials": 27,
+    "stats": {
+        "n_trials": 27,
+        "n_errors": 14,
+        "evals": {
+            "pochi__gemini-3-flash__tasks": {
+                "n_trials": 21,
+                "n_errors": 14,
+                "metrics": [
+                    {
+                        "mean": 0.4074074074074074
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "cli_auth__c9cPmEc",
+                            "materialize_workflow__WxmtsUX",
+                            "env_setup__6Rb6Hqj",
+                            "init_repo__iPpuE3r",
+                            "amika_cli_auth__WMS6LJ5",
+                            "amika_env_setup__kZCTcd7",
+                            "amika_fullstack_preview__BLsLF29",
+                            "amika_init_repo__T7LezxJ",
+                            "amika_materialize_large_output__zXJBd2b",
+                            "amika_materialize_workflow__dVGD7qe",
+                            "amika_parallel_codegen__pGd9HNM"
+                        ],
+                        "0.0": [
+                            "secret_push__MZW4BvT",
+                            "mount_modes__RJuVAFL",
+                            "port_collision_fix__5S7Dq9Z",
+                            "materialize_basic__wSeLSGv",
+                            "agent_send__4tfTQfw",
+                            "sandbox_create__aVR9WM3",
+                            "amika_agent_send_parallel__ovN9VqW",
+                            "amika_materialize_basic__BV9RLGc",
+                            "amika_mount_modes__bX8Y7cr",
+                            "amika_parallel_agents__Zomfuwk"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "secret_push__MZW4BvT",
+                        "mount_modes__RJuVAFL",
+                        "materialize_basic__wSeLSGv",
+                        "agent_send__4tfTQfw",
+                        "sandbox_create__aVR9WM3",
+                        "amika_materialize_basic__BV9RLGc",
+                        "amika_materialize_large_output__zXJBd2b",
+                        "amika_mount_modes__bX8Y7cr"
+                    ],
+                    "NonZeroAgentExitCodeError": [
+                        "fullstack_preview__Uuumiam",
+                        "secret_resolution__J8cs2kv",
+                        "parallel_codegen__pCCqReQ",
+                        "amika_agent_send__V8tZ3y5",
+                        "amika_port_collision_fix__6odLv6e",
+                        "amika_sandbox_create__RJG33DN"
+                    ]
+                }
+            }
+        }
+    }
+}

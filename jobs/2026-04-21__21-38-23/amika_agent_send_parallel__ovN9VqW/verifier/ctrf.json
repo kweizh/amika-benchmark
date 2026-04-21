@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776780000.502666,
+            "stop": 1776780000.5283442
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_sandboxes_created",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0038475210312753916,
+                "start": 1776780000.5102308,
+                "stop": 1776780000.528084,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_sandboxes_created():\n        \"\"\"Priority 1: Use Amika CLI to verify the sandboxes were created locally.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"list\", \"--local\"],\n            capture_output=True, text=True, cwd=\"/home/user/myproject\"\n        )\n        assert result.returncode == 0, \\\n            f\"'amika sandbox list --local' failed: {result.stderr}\"\n    \n>       assert \"task-1\" in result.stdout, \\\n            f\"Expected 'task-1' in local sandboxes list, got: {result.stdout}\"\nE       AssertionError: Expected 'task-1' in local sandboxes list, got: No sandboxes found.\nE         \nE       assert 'task-1' in 'No sandboxes found.\\n'\nE        +  where 'No sandboxes found.\\n' = CompletedProcess(args=['amika', 'sandbox', 'list', '--local'], returncode=0, stdout='No sandboxes found.\\n', stderr='').stdout\n\ntests/test_final_state.py:13: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

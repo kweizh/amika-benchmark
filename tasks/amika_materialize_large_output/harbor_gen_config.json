@@ -1,0 +1,7 @@
+{
+  "library_name": "Amika",
+  "complexity_level": "multi-step sequential commands sets",
+  "deep_research_path": "../../plan.md",
+  "task_name": "amika_materialize_large_output",
+  "output_dir": "."
+}

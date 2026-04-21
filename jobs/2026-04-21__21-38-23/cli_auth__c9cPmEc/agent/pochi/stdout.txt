@@ -1,0 +1,33 @@
+- Initializing MCP connections...
+You
+# Install and Authenticate Amika CLI ## Background Amika is an infrastructure tool for building software factories. To use it, developers must first install the CLI and authenticate. ## Requirements 1. Install the Amika CLI using the official installation script. 2. Authenticate the CLI. Since this is a headless environment, you must simulate the WorkOS Device Authorization Flow by manually writing a mock session file. ## Implementation Guide 1. Run the installation script: `curl -fsSL https://raw.githubusercontent.com/gofixpoint/amika/main/install.sh | sh` 2. Create the configuration directory: `mkdir -p /root/.config/amika` 3. Create the WorkOS session file at `/root/.config/amika/workos-session.json` with the exact content: `{"access_token": "mock_token_123"}` ## Constraints * Project path: /home/user/project * The session file must be valid JSON.   
+
+Pochi
+💭 Thinking for 656 characters   
+📋 Updating todo list (3 items) ✔ 
+💭 Thinking for 238 characters   
+📋 Updating todo list (3 items) ✔ 
+💫 Executing curl -fsSL https://raw.githubusercontent.com/gofixpoint/amika/main/install.sh | sh ✔ 
+💭 Thinking for 265 characters   
+📋 Updating todo list (3 items) ✔ 
+💫 Executing mkdir -p /root/.config/amika ✔ 
+💭 Thinking for 169 characters   
+📋 Updating todo list (3 items) ✔ 
+✏️  Writing /root/.config/amika/workos-session.json ✔ 
+💭 Thinking for 223 characters   
+💫 Executing amika --version && cat /root/.config/amika/workos-session.json ✔ 
+💭 Thinking for 242 characters   
+📋 Updating todo list (3 items) ✔ 
+💭 Thinking for 249 characters   
+🎉 Task Completed
+I have successfully installed and authenticated the Amika CLI.
+
+### Summary of Actions
+1.  **Installed Amika CLI**: Executed the official installation script, which installed `amika` version `v0.5.3` to `/usr/local/bin/amika`.
+2.  **Created Configuration Directory**: Created the directory `/root/.config/amika`.
+3.  **Authenticated CLI**: Created the mock WorkOS session file at `/root/.config/amika/workos-session.json` with the required access token.
+
+### Verification
+*   `amika --version` returns `v0.5.3`.
+*   `/root/.config/amika/workos-session.json` contains `{"access_token": "mock_token_123"}`.   
+  

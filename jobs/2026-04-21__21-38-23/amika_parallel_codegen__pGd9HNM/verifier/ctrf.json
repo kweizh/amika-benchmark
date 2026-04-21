@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776780249.628129,
+            "stop": 1776780249.6419337
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists_and_executable",
+                "status": "passed",
+                "duration": 0.00047301308950409293,
+                "start": 1776780249.6390371,
+                "stop": 1776780249.6397064,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_creates_sandboxes",
+                "status": "passed",
+                "duration": 0.00042309198761358857,
+                "start": 1776780249.639891,
+                "stop": 1776780249.6404445,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_sends_agent_prompts",
+                "status": "passed",
+                "duration": 0.0003779269754886627,
+                "start": 1776780249.6406105,
+                "stop": 1776780249.6411078,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_parallel_and_waits",
+                "status": "passed",
+                "duration": 0.00040584889939054847,
+                "start": 1776780249.6412752,
+                "stop": 1776780249.6417956,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

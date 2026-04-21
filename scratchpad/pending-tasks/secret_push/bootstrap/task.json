@@ -1,5 +1,0 @@
-{
-  "task_name": "secret_push",
-  "task_description": "# Store a Secret in Amika\n\n## Background\nYou are using Amika, an infrastructure tool for building software factories. You need to store a secret API key so that it can be used by sandboxes created in your workspace.\n\n## Requirements\n- Use the Amika CLI to store a secret named `OPENAI_API_KEY`.\n- The value of the secret must be `sk-1234567890abcdef`.\n\n## Implementation Guide\n1. Use the `amika secret push` command to store the secret.\n2. Ensure the secret is stored successfully.\n\n## Constraints\n- Project path: /home/user/workspace\n- The secret must be available for use in sandboxes.",
-  "truth": "# Verification Plan\n\n## Setup\n1. `cd /home/user/workspace`\n\n## Verification Steps\n1. Run `amika secret list` and verify that `OPENAI_API_KEY` is present in the output, or check the amika state directory for the stored secret."
-}

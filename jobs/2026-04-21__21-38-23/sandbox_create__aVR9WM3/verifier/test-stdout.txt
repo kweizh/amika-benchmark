@@ -1,0 +1,46 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 20ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py F.                                             [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_sandbox_created_via_cli _________________________
+
+    def test_sandbox_created_via_cli():
+        """Priority 1: Use Amika CLI to verify the sandbox exists locally."""
+        # amika sandbox list --local might output a table or JSON.
+        # We check if 'test-sandbox' is in the output.
+        result = subprocess.run(
+            ["amika", "sandbox", "list", "--local"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+        assert result.returncode == 0, f"'amika sandbox list --local' failed: {result.stderr}"
+>       assert "test-sandbox" in result.stdout, f"Expected 'test-sandbox' in local sandboxes, got: {result.stdout}"
+E       AssertionError: Expected 'test-sandbox' in local sandboxes, got: No sandboxes found.
+E         
+E       assert 'test-sandbox' in 'No sandboxes found.\n'
+E        +  where 'No sandboxes found.\n' = CompletedProcess(args=['amika', 'sandbox', 'list', '--local'], returncode=0, stdout='No sandboxes found.\n', stderr='').stdout
+
+tests/test_final_state.py:17: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_log_file_exists
+FAILED tests/test_final_state.py::test_sandbox_created_via_cli - AssertionErr...
+========================= 1 failed, 1 passed in 0.04s ==========================

@@ -1,0 +1,79 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo amika_parallel_codegen__pGd9HNM > /logs/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Parallel Code Generation with Amika
+
+## Background
+You need to automate a parallel code generation workflow using the `amika` CLI. You have a git repository at `/home/user/project`.
+
+## Requirements
+Write a bash script at `/home/user/project/run_parallel.sh` that does the following:
+1. Creates two sandboxes named `feature-a` and `feature-b` from the current git repository.
+2. Sends a prompt to the `feature-a` sandbox: `"Generate frontend components"`
+3. Sends a prompt to the `feature-b` sandbox: `"Generate backend API"`
+4. The two `agent-send` commands must be run in parallel (e.g., in the background).
+5. The script must wait for both parallel agent commands to complete before exiting.
+
+## Implementation Guide
+- Use `amika sandbox create --name <name> --git` to create the sandboxes.
+- Use `amika sandbox agent-send <name> "<prompt>"` to send the prompts.
+- Run the `agent-send` commands in the background using `&` and use `wait` to ensure both finish.
+- Ensure the script is executable (`chmod +x`).
+
+## Constraints
+- Project path: `/home/user/project`
+- The script must be named `run_parallel.sh`.
+
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured

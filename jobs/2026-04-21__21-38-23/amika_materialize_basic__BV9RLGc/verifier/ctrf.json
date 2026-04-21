@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776780539.9815845,
+            "stop": 1776780540.005604
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_output_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005924130091443658,
+                "start": 1776780539.9895763,
+                "stop": 1776780540.0034437,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_output_file_exists():\n>       assert os.path.isfile(OUTPUT_FILE), f\"Expected output file {OUTPUT_FILE} does not exist.\"\nE       AssertionError: Expected output file /workspace/output/report.json does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x785222368220>('/workspace/output/report.json')\nE        +    where <function isfile at 0x785222368220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:9: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_output_file_content",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.000429367006290704,
+                "start": 1776780540.003639,
+                "stop": 1776780540.0054538,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_output_file_content():\n>       with open(OUTPUT_FILE, \"r\") as f:\n             ^^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/workspace/output/report.json'\n\ntests/test_final_state.py:12: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}
