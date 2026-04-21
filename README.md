@@ -1,8 +1,8 @@
-# Jujutsu Benchmark
+# Amika Benchmark
 
-This repository contains benchmarks for [Jujutsu (jj)](https://github.com/martinvonz/jj), a next-generation version control system.
+This repository contains benchmarks for [Amika](https://docs.amika.dev/).
 
-You can view the evaluation reports at [tabbyml.github.io/jj-benchmark](https://tabbyml.github.io/jj-benchmark/).
+You can view the evaluation reports at [kweizh.github.io/amika-benchmark](https://kweizh.github.io/amika-benchmark/).
 
 ## Project Structure
 
