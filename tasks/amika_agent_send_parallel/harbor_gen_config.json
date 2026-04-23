@@ -1,7 +1,0 @@
-{
-  "library_name": "Amika",
-  "complexity_level": "multi-step parallel commands set",
-  "deep_research_path": "../../plan.md",
-  "task_name": "amika_agent_send_parallel",
-  "output_dir": "."
-}
