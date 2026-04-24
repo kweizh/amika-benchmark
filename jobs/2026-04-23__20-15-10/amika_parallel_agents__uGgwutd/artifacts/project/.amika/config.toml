@@ -1,0 +1,13 @@
+[project]
+name = "parallel-codegen"
+version = "0.1.0"
+
+[sandbox]
+# Default sandbox settings
+provider = "local"
+base_image = "ubuntu:22.04"
+
+[agent]
+# Default agent configuration
+model = "default"
+timeout = 300

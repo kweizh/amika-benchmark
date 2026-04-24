@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776947606.9345353,
+            "stop": 1776947608.02305
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_sandbox_created",
+                "status": "passed",
+                "duration": 1.0360856149345636,
+                "start": 1776947606.9429784,
+                "stop": 1776947607.9796934,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_output_file_exists_and_content_is_correct",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0020756140584126115,
+                "start": 1776947607.9806232,
+                "stop": 1776947608.0228012,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_output_file_exists_and_content_is_correct():\n        output_path = os.path.join(PROJECT_DIR, \"output.txt\")\n>       assert os.path.isfile(output_path), f\"File {output_path} does not exist on the host. The mount mode may not be 'rw'.\"\nE       AssertionError: File /home/user/myproject/output.txt does not exist on the host. The mount mode may not be 'rw'.\nE       assert False\nE        +  where False = <function isfile at 0x73b2826a8220>('/home/user/myproject/output.txt')\nE        +    where <function isfile at 0x73b2826a8220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:17: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

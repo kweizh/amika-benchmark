@@ -1,0 +1,57 @@
+- Initializing MCP connections...
+You
+# Preserving your work Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable. --- # Parallel Code-Gen with Amika Sandboxes ## Background Amika allows spinning up multiple sandboxes to run agents on different tasks simultaneously. You need to create a script that automates the creation of two separate sandboxes from the current repository, sends a unique code-generation task to each using `amika sandbox agent-send`, and waits for both tasks to complete. ## Requirements - Initialize an Amika repository configuration in `/home/user/project`. - Write a bash script `/home/user/project/run_agents.sh` that: 1. Creates two sandboxes named `task-1` and `task-2` from the current git repository. 2. Sends a prompt to `task-1` to create a file `hello.txt` containing "Hello from task 1". 3. Sends a prompt to `task-2` to create a file `hello.txt` containing "Hello from task 2". 4. Runs these agent tasks in parallel. 5. Waits for both agent tasks to complete. ## Implementation Guide 1. Navigate to `/home/user/project` and initialize a git repository if one does not exist. 2. Create a basic `.amika/config.toml` file. 3. Create `run_agents.sh` with the required commands. - Use `amika sandbox create --name task-1 --git` and `amika sandbox create --name task-2 --git`. - Use `amika sandbox agent-send task-1 "Create a file named hello.txt containing exactly 'Hello from task 1'" &` to run in background. - Use `amika sandbox agent-send task-2 "Create a file named hello.txt containing exactly 'Hello from task 2'" &` to run in background. - Use `wait` to ensure the script blocks until both background jobs finish. 4. Make the script executable with `chmod +x run_agents.sh`. ## Constraints - Project path: `/home/user/project` - The script must use `&` and `wait` to run the `agent-send` commands in parallel. - The script must exit with a 0 status code upon successful completion of both agents.   
+
+Pochi
+💭 Thinking for 329 characters   
+📋 Updating todo list (5 items) ✔ 
+💫 Executing ls /home/user/project 2>/dev/null || echo "Directory does not exist" ✔ 
+📋 Updating todo list (5 items) ✔ 
+The `/home/user/project` directory exists (empty). Now initializing the git repo and creating all required files.   
+💫 Executing cd /home/user/project && git init && git status ✔ 
+📋 Updating todo list (5 items) ✔ 
+✏️  Writing /home/user/project/.amika/config.toml ✔ 
+📋 Updating todo list (5 items) ✔ 
+✏️  Writing /home/user/project/run_agents.sh ✔ 
+📋 Updating todo list (5 items) ✔ 
+💫 Executing chmod +x /home/user/project/run_agents.sh && ls -la /home/user/project/run_agents.sh ✔ 
+📋 Updating todo list (5 items) ✔ 
+💫 Executing mkdir -p /logs/artifacts/project/.amika && cp /home/user/project/run_agents.sh /logs/artifacts/project/ && cp /home/user/project/.amika/config.toml /logs/artifacts/project/.amika/ && echo "Artifacts saved successfully" ✔ 
+💫 Executing # Verify the final project layout
+find /home/user/project -not -path '*/.git/*' | sort && echo "---" && bash -n /home/user/project/run_agents.sh && echo "Syntax OK" ✔ 
+📋 Updating todo list (5 items) ✔ 
+🎉 Task Completed
+All required files have been created and verified. Here is a summary of what was done:
+
+---
+
+### `/home/user/project` — project layout
+```
+/home/user/project
+├── .amika/
+│   └── config.toml      ← Amika repository configuration
+├── .git/                ← Initialized git repository
+└── run_agents.sh        ← Executable parallel-agent script
+```
+
+---
+
+### `.amika/config.toml`
+A minimal Amika config declaring the project name, a local sandbox provider, and a default agent timeout of 300 s.
+
+---
+
+### `run_agents.sh` — key steps
+| Step | Command |
+|------|---------|
+| Create sandbox 1 | `amika sandbox create --name task-1 --git` |
+| Create sandbox 2 | `amika sandbox create --name task-2 --git` |
+| Fire agent task 1 in background | `amika sandbox agent-send task-1 "…Hello from task 1…" &` |
+| Fire agent task 2 in background | `amika sandbox agent-send task-2 "…Hello from task 2…" &` |
+| Block until both finish | `wait "$PID_TASK1"; wait "$PID_TASK2"` |
+| Exit cleanly | `exit 0` on success, `exit 1` if either agent fails |
+
+The script uses `set -euo pipefail` for strict error handling, captures each background PID explicitly, and checks their exit codes individually so a failure in either task is clearly reported. `bash -n` syntax validation confirms the script is well-formed.
+
+Artifact copies are saved to `/logs/artifacts/project/`.   
+  

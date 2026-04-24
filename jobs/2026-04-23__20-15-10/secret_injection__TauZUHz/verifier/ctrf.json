@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 0,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776948074.3189094,
+            "stop": 1776948074.3590996
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_secret_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.003348379861563444,
+                "start": 1776948074.3321607,
+                "stop": 1776948074.3503547,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_secret_exists():\n        \"\"\"Priority 1: Use Amika CLI to verify the secret was pushed.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"secret\", \"list\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n        assert result.returncode == 0, f\"'amika secret list' failed: {result.stderr}\"\n>       assert \"OPENAI_API_KEY\" in result.stdout, \\\n            f\"Expected 'OPENAI_API_KEY' in secret list, got: {result.stdout}\"\nE       AssertionError: Expected 'OPENAI_API_KEY' in secret list, got: Discover local credentials and push them to the Amika remote secrets store.\nE         \nE         Usage:\nE           amika secret [command]\nE         \nE         Available Commands:\nE           claude      Manage Claude Code credentials\nE           codex       Manage Codex credentials\nE           extract     Extract and optionally push local credentials as secrets\nE           push        Push secrets to the remote Amika secrets store\nE         \nE         Flags:\nE           -h, --help   help for secret\nE         \nE         Use \"amika secret [command] --help\" for more information about a command.\nE         \nE       assert 'OPENAI_API_KEY' in 'Discover local credentials and push them to the Amika remote secrets store.\\n\\nUsage:\\n  amika secret [command]\\n\\nAv...nFlags:\\n  -h, --help   help for secret\\n\\nUse \"amika secret [command] --help\" for more information about a command.\\n'\nE        +  where 'Discover local credentials and push them to the Amika remote secrets store.\\n\\nUsage:\\n  amika secret [command]\\n\\nAv...nFlags:\\n  -h, --help   help for secret\\n\\nUse \"amika secret [command] --help\" for more information about a command.\\n' = CompletedProcess(args=['amika', 'secret', 'list'], returncode=0, stdout='Discover local credentials and push them to t...h, --help   help for secret\\n\\nUse \"amika secret [command] --help\" for more information about a command.\\n', stderr='').stdout\n\ntests/test_final_state.py:15: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_sandbox_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0031981549691408873,
+                "start": 1776948074.3505836,
+                "stop": 1776948074.3559165,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_sandbox_exists():\n        \"\"\"Priority 1: Use Amika CLI to verify the sandbox was created.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"list\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"'amika sandbox list' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox list' failed: Error: not logged in; run \"amika auth login\" or use --local\nE         Usage:\nE           amika sandbox list [flags]\nE         \nE         Aliases:\nE           list, ls\nE         \nE         Flags:\nE           -h, --help   help for list\nE         \nE         Global Flags:\nE               --local    Only operate on local sandboxes\nE               --remote   Only operate on remote sandboxes\nE         \nE         not logged in; run \"amika auth login\" or use --local\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'list'], returncode=1, stdout='', stderr='Error: not logged in; run \"amika ...andboxes\\n      --remote   Only operate on remote sandboxes\\n\\nnot logged in; run \"amika auth login\" or use --local\\n').returncode\n\ntests/test_final_state.py:24: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_config_file_contains_env_mapping",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00078597292304039,
+                "start": 1776948074.356123,
+                "stop": 1776948074.358826,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_config_file_contains_env_mapping():\n        \"\"\"Priority 3 fallback: basic file check for config.toml.\"\"\"\n        assert os.path.isfile(CONFIG_FILE), f\"config.toml not found at {CONFIG_FILE}\"\n    \n        with open(CONFIG_FILE, \"r\") as f:\n            content = f.read()\n    \n        # Check for [env] section and the secret mapping\n>       assert \"[env]\" in content, \"Expected '[env]' section in config.toml\"\nE       AssertionError: Expected '[env]' section in config.toml\nE       assert '[env]' in '[sandbox]\\nname = \"secret-sandbox\"\\n\\n[[sandbox.secret]]\\nname = \"OPENAI_API_KEY\"\\nenv = \"OPENAI_API_KEY\"\\n'\n\ntests/test_final_state.py:36: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "id": "2aa76918-103e-47c8-a819-833fce623035",
+    "started_at": "2026-04-23T20:15:13.720337",
+    "finished_at": "2026-04-23T20:44:40.614607",
+    "n_total_trials": 14,
+    "stats": {
+        "n_trials": 14,
+        "n_errors": 11,
+        "evals": {
+            "pochi__claude-4-6-sonnet__tasks": {
+                "n_trials": 14,
+                "n_errors": 11,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "secret_push__rmtgTXC",
+                            "agent_send__qBoCUNC",
+                            "secret_resolution__jG2kVWJ",
+                            "amika_materialize_basic__egwnWzS",
+                            "amika_materialize_large_output__NXEwCbv",
+                            "amika_materialize_workflow__cYiUwgA",
+                            "amika_mount_modes__JB9nz7k",
+                            "amika_parallel_agents__uGgwutd",
+                            "amika_sandbox_create__jFBWmoP",
+                            "amika_setup_script_failure__HioRBmz",
+                            "sandbox_node_setup__9dbp2Tt",
+                            "secret_injection__TauZUHz",
+                            "setup_script_failure__NZvMNGe",
+                            "setup_script_failure_fix__ASez2uS"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "NonZeroAgentExitCodeError": [
+                        "secret_push__rmtgTXC"
+                    ],
+                    "AgentTimeoutError": [
+                        "secret_resolution__jG2kVWJ",
+                        "amika_materialize_basic__egwnWzS",
+                        "amika_materialize_large_output__NXEwCbv",
+                        "amika_materialize_workflow__cYiUwgA",
+                        "amika_mount_modes__JB9nz7k",
+                        "amika_sandbox_create__jFBWmoP",
+                        "amika_setup_script_failure__HioRBmz",
+                        "sandbox_node_setup__9dbp2Tt",
+                        "secret_injection__TauZUHz",
+                        "setup_script_failure__NZvMNGe"
+                    ]
+                }
+            }
+        }
+    }
+}

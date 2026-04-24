@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776947994.762312,
+            "stop": 1776947994.7973714
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_sandbox_is_running",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.003631839877925813,
+                "start": 1776947994.7731547,
+                "stop": 1776947994.7906735,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_sandbox_is_running():\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"list\"],\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"'amika sandbox list' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox list' failed: not logged in; run \"amika auth login\" or use --local\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'list'], returncode=1, stdout='', stderr='not logged in; run \"amika auth login\" or use --local\\n').returncode\n\ntests/test_final_state.py:13: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_service_is_exposed",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0033152488758787513,
+                "start": 1776947994.7908854,
+                "stop": 1776947994.7963881,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_service_is_exposed():\n        result = subprocess.run(\n            [\"amika\", \"service\", \"list\", \"--sandbox-name\", \"node-sandbox\"],\n            capture_output=True,\n            text=True\n        )\n        assert result.returncode == 0, f\"'amika service list' failed: {result.stderr}\"\n>       assert \"web\" in result.stdout, f\"Expected 'web' service in output, got: {result.stdout}\"\nE       AssertionError: Expected 'web' service in output, got: No services found.\nE         \nE       assert 'web' in 'No services found.\\n'\nE        +  where 'No services found.\\n' = CompletedProcess(args=['amika', 'service', 'list', '--sandbox-name', 'node-sandbox'], returncode=0, stdout='No services found.\\n', stderr='').stdout\n\ntests/test_final_state.py:27: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_config_toml_exists_and_valid",
+                "status": "passed",
+                "duration": 0.0004729019710794091,
+                "start": 1776947994.7965894,
+                "stop": 1776947994.7971914,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}
