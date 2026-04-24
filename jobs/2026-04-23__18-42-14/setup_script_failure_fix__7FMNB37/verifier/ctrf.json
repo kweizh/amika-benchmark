@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776942136.682594,
+            "stop": 1776942136.7188501
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_setup_script_is_executable",
+                "status": "passed",
+                "duration": 0.0004905620589852333,
+                "start": 1776942136.6915731,
+                "stop": 1776942136.6923208,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_amika_sandbox_create_succeeds",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.006105126929469407,
+                "start": 1776942136.6925123,
+                "stop": 1776942136.712724,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_amika_sandbox_create_succeeds():\n        \"\"\"Priority 1: Run amika sandbox create to validate the setup script executes successfully.\"\"\"\n        # Run the sandbox creation locally to test the setup script\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"create\", \"--name\", \"test-sandbox\", \"--git\", \"--local\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n    \n>       assert result.returncode == 0, \\\n            f\"'amika sandbox create' failed with exit code {result.returncode}.\\nStdout: {result.stdout}\\nStderr: {result.stderr}\"\nE       AssertionError: 'amika sandbox create' failed with exit code 1.\nE         Stdout: Building \"coder\" preset image (this may take a few minutes)...\nE         \nE         Stderr: failed to build image \"amika/base:latest\": exec: \"docker\": executable file not found in $PATH\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'create', '--name', 'test-sandbox', '--git', '--local'], returncode=1, stdo...nutes)...\\n', stderr='failed to build image \"amika/base:latest\": exec: \"docker\": executable file not found in $PATH\\n').returncode\n\ntests/test_final_state.py:20: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_amika_sandbox_list_contains_test_sandbox",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0035355238942429423,
+                "start": 1776942136.7129295,
+                "stop": 1776942136.7186809,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_amika_sandbox_list_contains_test_sandbox():\n        \"\"\"Priority 1: Verify the sandbox was created by checking the list.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"list\", \"--local\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n    \n        assert result.returncode == 0, \\\n            f\"'amika sandbox list' failed: {result.stderr}\"\n>       assert \"test-sandbox\" in result.stdout, \\\n            f\"Expected 'test-sandbox' in local sandboxes list, got: {result.stdout}\"\nE       AssertionError: Expected 'test-sandbox' in local sandboxes list, got: No sandboxes found.\nE         \nE       assert 'test-sandbox' in 'No sandboxes found.\\n'\nE        +  where 'No sandboxes found.\\n' = CompletedProcess(args=['amika', 'sandbox', 'list', '--local'], returncode=0, stdout='No sandboxes found.\\n', stderr='').stdout\n\ntests/test_final_state.py:32: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

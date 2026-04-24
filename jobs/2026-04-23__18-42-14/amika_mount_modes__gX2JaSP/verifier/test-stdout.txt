@@ -1,0 +1,59 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 17ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py FF                                             [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_sandbox_created _____________________________
+
+    def test_sandbox_created():
+        result = subprocess.run(
+            ["amika", "sandbox", "list"],
+            capture_output=True, text=True
+        )
+        assert result.returncode == 0, f"'amika sandbox list' failed: {result.stderr}"
+>       assert "dev-sandbox" in result.stdout, f"Expected 'dev-sandbox' in 'amika sandbox list' output, got: {result.stdout}"
+E       AssertionError: Expected 'dev-sandbox' in 'amika sandbox list' output, got: NAME            STATE    LOCATION  PROVIDER  IMAGE  BRANCH            PORTS  CREATED
+E         test-sandbox6   started  remote    daytona                            -      2026-04-23T10:52:23.393Z
+E         test-sandbox-5  started  remote    daytona                            -      2026-04-23T10:51:27.197Z
+E         test-sandbox3   started  remote    daytona                            -      2026-04-23T10:50:05.849Z
+E         test-sandbox    started  remote    daytona                            -      2026-04-23T10:49:02.726Z
+E         teal-panda      stopped  remote    daytona          amika/teal-panda  -      2026-04-21T13:32:15.004Z
+E         
+E       assert 'dev-sandbox' in 'NAME            STATE    LOCATION  PROVIDER  IMAGE  BRANCH            PORTS  CREATED\ntest-sandbox6   started  remote...10:49:02.726Z\nteal-panda      stopped  remote    daytona          amika/teal-panda  -      2026-04-21T13:32:15.004Z\n'
+E        +  where 'NAME            STATE    LOCATION  PROVIDER  IMAGE  BRANCH            PORTS  CREATED\ntest-sandbox6   started  remote...10:49:02.726Z\nteal-panda      stopped  remote    daytona          amika/teal-panda  -      2026-04-21T13:32:15.004Z\n' = CompletedProcess(args=['amika', 'sandbox', 'list'], returncode=0, stdout='NAME            STATE    LOCATION  PROVIDER ...Z\nteal-panda      stopped  remote    daytona          amika/teal-panda  -      2026-04-21T13:32:15.004Z\n', stderr='').stdout
+
+tests/test_final_state.py:13: AssertionError
+________________ test_output_file_exists_and_content_is_correct ________________
+
+    def test_output_file_exists_and_content_is_correct():
+        output_path = os.path.join(PROJECT_DIR, "output.txt")
+>       assert os.path.isfile(output_path), f"File {output_path} does not exist on the host. The mount mode may not be 'rw'."
+E       AssertionError: File /home/user/myproject/output.txt does not exist on the host. The mount mode may not be 'rw'.
+E       assert False
+E        +  where False = <function isfile at 0x74d6463bc220>('/home/user/myproject/output.txt')
+E        +    where <function isfile at 0x74d6463bc220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:17: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_sandbox_created - AssertionError: Expe...
+FAILED tests/test_final_state.py::test_output_file_exists_and_content_is_correct
+============================== 2 failed in 1.19s ===============================

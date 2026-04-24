@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776941707.457482,
+            "stop": 1776941707.4872031
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists_and_executable",
+                "status": "passed",
+                "duration": 0.0004742409801110625,
+                "start": 1776941707.467156,
+                "stop": 1776941707.467829,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_execution_and_sandbox_results",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.005168560077436268,
+                "start": 1776941707.4680195,
+                "stop": 1776941707.486996,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_execution_and_sandbox_results():\n        # Run the script\n        result = subprocess.run(\n            [\"./run_agents.sh\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\\n{result.stdout}\"\nE       AssertionError: Script execution failed: Error: not logged in; run \"amika auth login\" or use --local\nE         not logged in; run \"amika auth login\" or use --local\nE         \nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['./run_agents.sh'], returncode=1, stdout='', stderr='Error: not logged in; run \"amika auth login\" or use --local\\nnot logged in; run \"amika auth login\" or use --local\\n').returncode\n\ntests/test_final_state.py:20: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

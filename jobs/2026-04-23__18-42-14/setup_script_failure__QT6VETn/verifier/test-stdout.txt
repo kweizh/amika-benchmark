@@ -1,0 +1,93 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 12ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py .FF                                            [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_sandbox_is_running ____________________________
+
+    def test_sandbox_is_running():
+        """Priority 1: Use Amika CLI to verify the sandbox state."""
+        # Run amika sandbox status to get the status of test-sandbox
+        result = subprocess.run(
+            ["amika", "sandbox", "status", "test-sandbox", "--json"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+        # Note: If --json is not supported, we can fallback to checking stdout text.
+        # But assuming it outputs JSON or at least text we can parse.
+        # For safety, let's just check the text output if it's not strictly json.
+>       assert result.returncode == 0, f"'amika sandbox status' failed: {result.stderr}"
+E       AssertionError: 'amika sandbox status' failed: Error: unknown flag: --json
+E         Usage:
+E           amika sandbox [command]
+E         
+E         Available Commands:
+E           agent-send  Send a message to an agent in a sandbox
+E           code        Open a remote sandbox in an editor via SSH
+E           connect     Connect to a sandbox console
+E           create      Create a new sandbox
+E           delete      Delete one or more sandboxes
+E           list        List all sandboxes
+E           ssh         SSH into a remote sandbox
+E           start       Start one or more stopped sandboxes
+E           stop        Stop one or more sandboxes
+E         
+E         Flags:
+E           -h, --help     help for sandbox
+E               --local    Only operate on local sandboxes
+E               --remote   Only operate on remote sandboxes
+E         
+E         Use "amika sandbox [command] --help" for more information about a command.
+E         
+E         unknown flag: --json
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'status', 'test-sandbox', '--json'], returncode=1, stdout='', stderr='Error...ote sandboxes\n\nUse "amika sandbox [command] --help" for more information about a command.\n\nunknown flag: --json\n').returncode
+
+tests/test_final_state.py:28: AssertionError
+___________________________ test_service_accessible ____________________________
+
+    def test_service_accessible():
+        """Priority 3: Verify the service is accessible on the mapped port."""
+        # Since amika connects the service to localhost:3000, we can try to fetch it.
+        # We will retry a few times to allow the service to start up in the sandbox.
+        max_retries = 5
+        success = False
+        for _ in range(max_retries):
+            try:
+                response = urllib.request.urlopen("http://localhost:3000", timeout=5)
+                if response.getcode() == 200:
+                    success = True
+                    break
+            except Exception:
+                pass
+            time.sleep(2)
+    
+>       assert success, "Failed to reach the web service on http://localhost:3000. It may not be running or the port mapping failed."
+E       AssertionError: Failed to reach the web service on http://localhost:3000. It may not be running or the port mapping failed.
+E       assert False
+
+tests/test_final_state.py:50: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_setup_script_fixed
+FAILED tests/test_final_state.py::test_sandbox_is_running - AssertionError: '...
+FAILED tests/test_final_state.py::test_service_accessible - AssertionError: F...
+========================= 2 failed, 1 passed in 10.08s =========================
