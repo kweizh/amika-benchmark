@@ -1,0 +1,56 @@
+{
+    "id": "80fe23aa-130e-4abc-ba23-c1a63ad6ff12",
+    "started_at": "2026-04-27T01:40:13.308687",
+    "finished_at": "2026-04-27T02:08:55.521913",
+    "n_total_trials": 14,
+    "stats": {
+        "n_trials": 14,
+        "n_errors": 9,
+        "evals": {
+            "pochi__gemini-3.1-pro__tasks": {
+                "n_trials": 14,
+                "n_errors": 9,
+                "metrics": [
+                    {
+                        "mean": 0.2857142857142857
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "secret_push__pb2zuRn",
+                            "agent_send__9YeGLzn",
+                            "secret_resolution__KS5WVcz",
+                            "amika_parallel_agents__pVWbTLD",
+                            "amika_sandbox_create__2tY2CqE",
+                            "amika_setup_script_failure__aX2Xz55",
+                            "sandbox_node_setup__piH4c5E",
+                            "secret_injection__KKTGMBv",
+                            "setup_script_failure__RMCt6Fy",
+                            "setup_script_failure_fix__QGLFiAt"
+                        ],
+                        "1.0": [
+                            "amika_materialize_basic__AbWqWzy",
+                            "amika_materialize_large_output__q75QMfA",
+                            "amika_materialize_workflow__qH4VfwV",
+                            "amika_mount_modes__qgMxvs4"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "secret_push__pb2zuRn",
+                        "agent_send__9YeGLzn",
+                        "secret_resolution__KS5WVcz",
+                        "amika_materialize_workflow__qH4VfwV",
+                        "amika_sandbox_create__2tY2CqE",
+                        "amika_setup_script_failure__aX2Xz55",
+                        "sandbox_node_setup__piH4c5E",
+                        "secret_injection__KKTGMBv",
+                        "setup_script_failure__RMCt6Fy"
+                    ]
+                }
+            }
+        }
+    }
+}

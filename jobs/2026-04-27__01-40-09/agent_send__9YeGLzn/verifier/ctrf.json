@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777225854.3097465,
+            "stop": 1777225854.4385831
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_amika_agent_send_output",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.07832109788432717,
+                "start": 1777225854.318818,
+                "stop": 1777225854.438378,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_amika_agent_send_output():\n        \"\"\"Priority 1: Use amika CLI to materialize the file and verify content.\"\"\"\n        # Ensure the output directory exists\n        output_dir = os.path.join(PROJECT_DIR, \"output\")\n        os.makedirs(output_dir, exist_ok=True)\n    \n        # Materialize the file created by the agent\n        result = subprocess.run(\n            [\"amika\", \"materialize\", \"--cmd\", \"cat hello.txt\", \"--destdir\", output_dir],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"'amika materialize' failed: {result.stderr}\"\nE       AssertionError: 'amika materialize' failed: DEPRECATED: The legacy builder is deprecated and will be removed in a future release.\nE                     Install the buildx component to build images with BuildKit:\nE                     https://docs.docker.com/go/buildx/\nE         \nE         Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?\nE         failed to build image \"amika/base:latest\": exit status 1\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'materialize', '--cmd', 'cat hello.txt', '--destdir', '/home/user/myproject/output'], ...nix:///var/run/docker.sock. Is the docker daemon running?\\nfailed to build image \"amika/base:latest\": exit status 1\\n').returncode\n\ntests/test_final_state.py:18: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

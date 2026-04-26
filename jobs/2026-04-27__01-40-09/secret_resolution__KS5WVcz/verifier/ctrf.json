@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777225854.9683714,
+            "stop": 1777225855.019483
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_api_token_injected_correctly",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.011959902942180634,
+                "start": 1777225854.9827576,
+                "stop": 1777225855.019245,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_api_token_injected_correctly():\n        \"\"\"Priority 1: Use Amika CLI to run a command in the sandbox and verify output.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"agent-send\", \"my-sandbox\", \"echo $API_TOKEN\"],\n            capture_output=True, text=True, cwd=\"/home/user/myproject\"\n        )\n>       assert result.returncode == 0, \\\n            f\"'amika sandbox agent-send' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox agent-send' failed: not logged in; run \"amika auth login\" or use --local\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'agent-send', 'my-sandbox', 'echo $API_TOKEN'], returncode=1, stdout='', stderr='not logged in; run \"amika auth login\" or use --local\\n').returncode\n\ntests/test_final_state.py:11: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
