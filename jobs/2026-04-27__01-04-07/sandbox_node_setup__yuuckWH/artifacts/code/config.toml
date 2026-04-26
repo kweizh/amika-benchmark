@@ -1,0 +1,4 @@
+setup_script = "npm install"
+
+[services.web]
+port = 3000

@@ -1,0 +1,54 @@
+{
+    "id": "0b994465-eb4d-489b-82ad-c3df441062cc",
+    "started_at": "2026-04-27T01:04:11.528253",
+    "finished_at": "2026-04-27T01:32:27.547665",
+    "n_total_trials": 14,
+    "stats": {
+        "n_trials": 14,
+        "n_errors": 7,
+        "evals": {
+            "pochi__gemini-3-flash__tasks": {
+                "n_trials": 14,
+                "n_errors": 7,
+                "metrics": [
+                    {
+                        "mean": 0.21428571428571427
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "secret_push__U2fsFUf",
+                            "agent_send__Epccjjx",
+                            "secret_resolution__RUtTV2e",
+                            "amika_materialize_basic__A4yEyeW",
+                            "amika_mount_modes__msCwKfz",
+                            "amika_parallel_agents__gBqKV6F",
+                            "amika_setup_script_failure__WeDkztp",
+                            "sandbox_node_setup__yuuckWH",
+                            "secret_injection__zPJLf5c",
+                            "setup_script_failure__CxcrDHA",
+                            "setup_script_failure_fix__w43T58L"
+                        ],
+                        "1.0": [
+                            "amika_materialize_large_output__PaoEaCh",
+                            "amika_materialize_workflow__jRYkGLD",
+                            "amika_sandbox_create__5Gs46xb"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "secret_push__U2fsFUf",
+                        "secret_resolution__RUtTV2e",
+                        "amika_materialize_basic__A4yEyeW",
+                        "amika_mount_modes__msCwKfz",
+                        "amika_setup_script_failure__WeDkztp",
+                        "secret_injection__zPJLf5c",
+                        "setup_script_failure__CxcrDHA"
+                    ]
+                }
+            }
+        }
+    }
+}

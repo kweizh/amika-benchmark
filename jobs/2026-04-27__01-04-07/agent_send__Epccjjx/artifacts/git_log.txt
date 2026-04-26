@@ -1,0 +1,5 @@
+commit f14b03c38dfa46d8bd3d070b1eb565301a3a4140
+Author: Pochi <pochi@example.com>
+Date:   Sun Apr 26 17:06:07 2026 +0000
+
+    Initial commit with amika config

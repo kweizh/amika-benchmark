@@ -1,0 +1,42 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 19ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 1 item
+
+tests/test_final_state.py F                                              [100%]
+
+=================================== FAILURES ===================================
+______________________ test_api_token_injected_correctly _______________________
+
+    def test_api_token_injected_correctly():
+        """Priority 1: Use Amika CLI to run a command in the sandbox and verify output."""
+        result = subprocess.run(
+            ["amika", "sandbox", "agent-send", "my-sandbox", "echo $API_TOKEN"],
+            capture_output=True, text=True, cwd="/home/user/myproject"
+        )
+>       assert result.returncode == 0, \
+            f"'amika sandbox agent-send' failed: {result.stderr}"
+E       AssertionError: 'amika sandbox agent-send' failed: not logged in; run "amika auth login" or use --local
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'agent-send', 'my-sandbox', 'echo $API_TOKEN'], returncode=1, stdout='', stderr='not logged in; run "amika auth login" or use --local\n').returncode
+
+tests/test_final_state.py:11: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_api_token_injected_correctly - Asserti...
+============================== 1 failed in 0.03s ===============================

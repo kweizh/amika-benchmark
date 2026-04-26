@@ -1,0 +1,3 @@
+[sandbox]
+name = "secret-sandbox"
+secrets = ["env:OPENAI_API_KEY"]

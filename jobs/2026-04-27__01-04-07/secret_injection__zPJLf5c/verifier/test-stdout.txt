@@ -1,0 +1,103 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 19ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py FFF                                            [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_secret_exists ______________________________
+
+    def test_secret_exists():
+        """Priority 1: Use Amika CLI to verify the secret was pushed."""
+        result = subprocess.run(
+            ["amika", "secret", "list"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+        assert result.returncode == 0, f"'amika secret list' failed: {result.stderr}"
+>       assert "OPENAI_API_KEY" in result.stdout, \
+            f"Expected 'OPENAI_API_KEY' in secret list, got: {result.stdout}"
+E       AssertionError: Expected 'OPENAI_API_KEY' in secret list, got: Discover local credentials and push them to the Amika remote secrets store.
+E         
+E         Usage:
+E           amika secret [command]
+E         
+E         Available Commands:
+E           claude      Manage Claude Code credentials
+E           codex       Manage Codex credentials
+E           extract     Extract and optionally push local credentials as secrets
+E           push        Push secrets to the remote Amika secrets store
+E         
+E         Flags:
+E           -h, --help   help for secret
+E         
+E         Use "amika secret [command] --help" for more information about a command.
+E         
+E       assert 'OPENAI_API_KEY' in 'Discover local credentials and push them to the Amika remote secrets store.\n\nUsage:\n  amika secret [command]\n\nAv...nFlags:\n  -h, --help   help for secret\n\nUse "amika secret [command] --help" for more information about a command.\n'
+E        +  where 'Discover local credentials and push them to the Amika remote secrets store.\n\nUsage:\n  amika secret [command]\n\nAv...nFlags:\n  -h, --help   help for secret\n\nUse "amika secret [command] --help" for more information about a command.\n' = CompletedProcess(args=['amika', 'secret', 'list'], returncode=0, stdout='Discover local credentials and push them to t...h, --help   help for secret\n\nUse "amika secret [command] --help" for more information about a command.\n', stderr='').stdout
+
+tests/test_final_state.py:15: AssertionError
+_____________________________ test_sandbox_exists ______________________________
+
+    def test_sandbox_exists():
+        """Priority 1: Use Amika CLI to verify the sandbox was created."""
+        result = subprocess.run(
+            ["amika", "sandbox", "list"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+>       assert result.returncode == 0, f"'amika sandbox list' failed: {result.stderr}"
+E       AssertionError: 'amika sandbox list' failed: Error: not logged in; run "amika auth login" or use --local
+E         Usage:
+E           amika sandbox list [flags]
+E         
+E         Aliases:
+E           list, ls
+E         
+E         Flags:
+E           -h, --help   help for list
+E         
+E         Global Flags:
+E               --local    Only operate on local sandboxes
+E               --remote   Only operate on remote sandboxes
+E         
+E         not logged in; run "amika auth login" or use --local
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'list'], returncode=1, stdout='', stderr='Error: not logged in; run "amika ...andboxes\n      --remote   Only operate on remote sandboxes\n\nnot logged in; run "amika auth login" or use --local\n').returncode
+
+tests/test_final_state.py:24: AssertionError
+____________________ test_config_file_contains_env_mapping _____________________
+
+    def test_config_file_contains_env_mapping():
+        """Priority 3 fallback: basic file check for config.toml."""
+        assert os.path.isfile(CONFIG_FILE), f"config.toml not found at {CONFIG_FILE}"
+    
+        with open(CONFIG_FILE, "r") as f:
+            content = f.read()
+    
+        # Check for [env] section and the secret mapping
+>       assert "[env]" in content, "Expected '[env]' section in config.toml"
+E       AssertionError: Expected '[env]' section in config.toml
+E       assert '[env]' in '[sandbox]\nname = "secret-sandbox"\nsecrets = ["env:OPENAI_API_KEY"]\n'
+
+tests/test_final_state.py:36: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_secret_exists - AssertionError: Expect...
+FAILED tests/test_final_state.py::test_sandbox_exists - AssertionError: 'amik...
+FAILED tests/test_final_state.py::test_config_file_contains_env_mapping - Ass...
+============================== 3 failed in 0.04s ===============================

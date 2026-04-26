@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777224723.9551787,
+            "stop": 1777224734.0429287
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_setup_script_fixed",
+                "status": "passed",
+                "duration": 0.0005941250128671527,
+                "start": 1777224723.97703,
+                "stop": 1777224723.9778388,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_sandbox_is_running",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0040543939685449,
+                "start": 1777224723.9780324,
+                "stop": 1777224723.9977596,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_sandbox_is_running():\n        \"\"\"Priority 1: Use Amika CLI to verify the sandbox state.\"\"\"\n        # Run amika sandbox status to get the status of test-sandbox\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"status\", \"test-sandbox\", \"--json\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n        # Note: If --json is not supported, we can fallback to checking stdout text.\n        # But assuming it outputs JSON or at least text we can parse.\n        # For safety, let's just check the text output if it's not strictly json.\n>       assert result.returncode == 0, f\"'amika sandbox status' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox status' failed: Error: unknown flag: --json\nE         Usage:\nE           amika sandbox [command]\nE         \nE         Available Commands:\nE           agent-send  Send a message to an agent in a sandbox\nE           code        Open a remote sandbox in an editor via SSH\nE           connect     Connect to a sandbox console\nE           create      Create a new sandbox\nE           delete      Delete one or more sandboxes\nE           list        List all sandboxes\nE           ssh         SSH into a remote sandbox\nE           start       Start one or more stopped sandboxes\nE           stop        Stop one or more sandboxes\nE         \nE         Flags:\nE           -h, --help     help for sandbox\nE               --local    Only operate on local sandboxes\nE               --remote   Only operate on remote sandboxes\nE         \nE         Use \"amika sandbox [command] --help\" for more information about a command.\nE         \nE         unknown flag: --json\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'status', 'test-sandbox', '--json'], returncode=1, stdout='', stderr='Error...ote sandboxes\\n\\nUse \"amika sandbox [command] --help\" for more information about a command.\\n\\nunknown flag: --json\\n').returncode\n\ntests/test_final_state.py:28: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_service_accessible",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 10.041662805946544,
+                "start": 1777224723.9979746,
+                "stop": 1777224734.0427563,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_service_accessible():\n        \"\"\"Priority 3: Verify the service is accessible on the mapped port.\"\"\"\n        # Since amika connects the service to localhost:3000, we can try to fetch it.\n        # We will retry a few times to allow the service to start up in the sandbox.\n        max_retries = 5\n        success = False\n        for _ in range(max_retries):\n            try:\n                response = urllib.request.urlopen(\"http://localhost:3000\", timeout=5)\n                if response.getcode() == 200:\n                    success = True\n                    break\n            except Exception:\n                pass\n            time.sleep(2)\n    \n>       assert success, \"Failed to reach the web service on http://localhost:3000. It may not be running or the port mapping failed.\"\nE       AssertionError: Failed to reach the web service on http://localhost:3000. It may not be running or the port mapping failed.\nE       assert False\n\ntests/test_final_state.py:50: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
