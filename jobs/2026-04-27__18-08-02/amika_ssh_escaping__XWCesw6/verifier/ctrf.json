@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777286066.0075018,
+            "stop": 1777286067.497198
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_execution",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.4583999060560018,
+                "start": 1777286066.0198412,
+                "stop": 1777286067.4930062,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_execution():\n        \"\"\"Priority 1: Run the script and verify it succeeds.\"\"\"\n        result = subprocess.run([\"bash\", \"run_agent.sh\"], cwd=PROJECT_DIR, capture_output=True, text=True)\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\"\nE       AssertionError: Script execution failed: Using Claude credential \"mock-key\" (api_key)\nE         Error: remote create sandbox: HTTP 404: {\"type\":\"error\",\"error_code\":\"repository_not_found\",\"message\":\"Repository not found. Check the URL and that your GitHub token has access.\"}\nE         remote create sandbox: HTTP 404: {\"type\":\"error\",\"error_code\":\"repository_not_found\",\"message\":\"Repository not found. Check the URL and that your GitHub token has access.\"}\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['bash', 'run_agent.sh'], returncode=1, stdout='', stderr='Using Claude credential \"mock-key\" (a...ode\":\"repository_not_found\",\"message\":\"Repository not found. Check the URL and that your GitHub token has access.\"}\\n').returncode\n\ntests/test_final_state.py:12: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_log_file_contains_correct_cwd",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006787270540371537,
+                "start": 1777286067.4932714,
+                "stop": 1777286067.4961543,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_log_file_contains_correct_cwd():\n        \"\"\"Priority 3: Verify the log file contains the guest-side CWD.\"\"\"\n        assert os.path.isfile(LOG_FILE), f\"Log file {LOG_FILE} was not created.\"\n        with open(LOG_FILE) as f:\n            content = f.read().strip()\n    \n        # If the variable was evaluated on the host, it would be empty (or host's value).\n        # The expected guest-side CWD should be a non-empty path, likely /workspace or /home/user/workspace.\n        # We check that it's not just \"CWD: \"\n>       assert \"CWD: /\" in content, f\"Expected log file to contain a valid path, got: {content}\"\nE       AssertionError: Expected log file to contain a valid path, got: \nE       assert 'CWD: /' in ''\n\ntests/test_final_state.py:23: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_script_content_fixed",
+                "status": "passed",
+                "duration": 0.0004881360800936818,
+                "start": 1777286067.4963827,
+                "stop": 1777286067.4970186,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

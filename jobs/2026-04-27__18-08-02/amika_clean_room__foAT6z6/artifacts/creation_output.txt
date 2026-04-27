@@ -1,0 +1,30 @@
+Error: unknown command "/home/user/repo" for "amika sandbox create"
+Usage:
+  amika sandbox create [flags]
+
+Flags:
+      --branch string         Git branch to clone (defaults to repo's default branch)
+      --connect               Connect to the sandbox shell immediately after creation
+      --env stringArray       Set environment variable (KEY=VALUE)
+      --git string[="."]      Mount the current git repo root (or repo containing PATH) into /home/amika/workspace/{repo}
+  -h, --help                  help for create
+      --image string          Docker image to use (default "amika/coder:latest")
+      --mount stringArray     Mount a host directory (source:target[:mode], mode defaults to rwcopy)
+      --name string           Name for the sandbox (auto-generated if not set)
+      --no-clean              With --git, include untracked files from working tree instead of a clean clone
+      --no-setup              Skip the setup script (uses a no-op script instead)
+      --port stringArray      Publish a container port (hostPort:containerPort[/protocol], protocol defaults to tcp)
+      --port-host-ip string   Host IP address to bind published ports (default "127.0.0.1")
+      --preset string         Use a preset environment ("coder" or "coder-dind")
+      --provider string       Sandbox provider (default "docker")
+      --secret stringArray    Inject a remote secret (env:FOO=SECRET_NAME or env:SECRET_NAME)
+      --setup-script string   Mount a local script file to /usr/local/etc/amikad/setup/setup.sh in the container (read-only)
+      --size string           Sandbox size: "xs" or "m" (default "m", remote only)
+      --volume stringArray    Mount an existing named volume (name:target[:mode], mode defaults to rw)
+      --yes                   Skip mount confirmation prompt
+
+Global Flags:
+      --local    Only operate on local sandboxes
+      --remote   Only operate on remote sandboxes
+
+unknown command "/home/user/repo" for "amika sandbox create"

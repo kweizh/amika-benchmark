@@ -1,0 +1,48 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 28ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py FF                                             [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_output_file_exists ____________________________
+
+    def test_output_file_exists():
+        """Priority 3 fallback: basic file existence check."""
+>       assert os.path.isfile(OUTPUT_FILE), f"Output file not found at {OUTPUT_FILE}"
+E       AssertionError: Output file not found at /home/user/project/results/output.json
+E       assert False
+E        +  where False = <function isfile at 0x7ba03673c220>('/home/user/project/results/output.json')
+E        +    where <function isfile at 0x7ba03673c220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:10: AssertionError
+__________________________ test_output_file_contents ___________________________
+
+    def test_output_file_contents():
+        """Priority 3 fallback: file content check."""
+>       with open(OUTPUT_FILE, "r") as f:
+             ^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/project/results/output.json'
+
+tests/test_final_state.py:14: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_output_file_exists - AssertionError: O...
+FAILED tests/test_final_state.py::test_output_file_contents - FileNotFoundErr...
+============================== 2 failed in 0.02s ===============================

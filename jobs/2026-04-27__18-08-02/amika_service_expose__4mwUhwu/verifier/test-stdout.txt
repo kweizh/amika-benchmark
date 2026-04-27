@@ -1,0 +1,66 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 28ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py FFF                                            [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_config_file_exists ____________________________
+
+    def test_config_file_exists():
+        assert os.path.isfile(CONFIG_FILE), f"Config file {CONFIG_FILE} does not exist."
+        with open(CONFIG_FILE) as f:
+            content = f.read()
+>       assert "8080" in content, f"Expected port 8080 in {CONFIG_FILE}, got: {content}"
+E       AssertionError: Expected port 8080 in /home/user/project/.amika/config.toml, got: [invalid_section]
+E         this_is_wrong = true
+E         
+E       assert '8080' in '[invalid_section]\nthis_is_wrong = true\n'
+
+tests/test_final_state.py:15: AssertionError
+___________________ test_sandbox_service_accessible_via_ssh ____________________
+
+    def test_sandbox_service_accessible_via_ssh():
+        result = subprocess.run(
+            ["amika", "sandbox", "ssh", "service-sandbox", "--", "curl", "-s", "localhost:8080"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+>       assert result.returncode == 0, f"'amika sandbox ssh' failed: {result.stderr}"
+E       AssertionError: 'amika sandbox ssh' failed: ssh not found: exec: "ssh": executable file not found in $PATH
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'service-sandbox', '--', 'curl', '-s', 'localhost:8080'], returncode=1, stdout='', stderr='ssh not found: exec: "ssh": executable file not found in $PATH\n').returncode
+
+tests/test_final_state.py:22: AssertionError
+___________________ test_output_log_exists_and_contains_url ____________________
+
+    def test_output_log_exists_and_contains_url():
+>       assert os.path.isfile(LOG_FILE), f"Log file {LOG_FILE} does not exist."
+E       AssertionError: Log file /home/user/project/output.log does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x726ec6d18220>('/home/user/project/output.log')
+E        +    where <function isfile at 0x726ec6d18220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:26: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_config_file_exists - AssertionError: E...
+FAILED tests/test_final_state.py::test_sandbox_service_accessible_via_ssh - A...
+FAILED tests/test_final_state.py::test_output_log_exists_and_contains_url - A...
+============================== 3 failed in 0.97s ===============================

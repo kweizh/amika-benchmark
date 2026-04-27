@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777285783.185445,
+            "stop": 1777285784.249512
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_log_file_exists",
+                "status": "passed",
+                "duration": 0.0005513880169019103,
+                "start": 1777285783.1939917,
+                "stop": 1777285783.1947675,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_ssh_command_execution",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.0398622270440683,
+                "start": 1777285783.1949773,
+                "stop": 1777285784.2493112,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_ssh_command_execution():\n        \"\"\"Priority 1: Use amika CLI to verify the file was created on the remote sandbox.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"ssh\", \"test-box\", \"--\", \"cat\", \"/home/user/hello.txt\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"'amika sandbox ssh' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox ssh' failed: Connection closed by 198.18.8.20 port 22\nE         \nE       assert 255 == 0\nE        +  where 255 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'test-box', '--', 'cat', '/home/user/hello.txt'], returncode=255, stdout='', stderr='Connection closed by 198.18.8.20 port 22\\n').returncode\n\ntests/test_final_state.py:18: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

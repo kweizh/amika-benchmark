@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 0,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777286506.6877666,
+            "stop": 1777286507.6509023
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_config_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007501731161028147,
+                "start": 1777286506.7087636,
+                "stop": 1777286506.7246168,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_config_file_exists():\n        assert os.path.isfile(CONFIG_FILE), f\"Config file {CONFIG_FILE} does not exist.\"\n        with open(CONFIG_FILE) as f:\n            content = f.read()\n>       assert \"8080\" in content, f\"Expected port 8080 in {CONFIG_FILE}, got: {content}\"\nE       AssertionError: Expected port 8080 in /home/user/project/.amika/config.toml, got: [invalid_section]\nE         this_is_wrong = true\nE         \nE       assert '8080' in '[invalid_section]\\nthis_is_wrong = true\\n'\n\ntests/test_final_state.py:15: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_sandbox_service_accessible_via_ssh",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.9070978249656036,
+                "start": 1777286506.7248359,
+                "stop": 1777286507.640457,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_sandbox_service_accessible_via_ssh():\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"ssh\", \"service-sandbox\", \"--\", \"curl\", \"-s\", \"localhost:8080\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"'amika sandbox ssh' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox ssh' failed: ssh not found: exec: \"ssh\": executable file not found in $PATH\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'service-sandbox', '--', 'curl', '-s', 'localhost:8080'], returncode=1, stdout='', stderr='ssh not found: exec: \"ssh\": executable file not found in $PATH\\n').returncode\n\ntests/test_final_state.py:22: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_output_log_exists_and_contains_url",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0020183930173516273,
+                "start": 1777286507.6413183,
+                "stop": 1777286507.65045,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_output_log_exists_and_contains_url():\n>       assert os.path.isfile(LOG_FILE), f\"Log file {LOG_FILE} does not exist.\"\nE       AssertionError: Log file /home/user/project/output.log does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x726ec6d18220>('/home/user/project/output.log')\nE        +    where <function isfile at 0x726ec6d18220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:26: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

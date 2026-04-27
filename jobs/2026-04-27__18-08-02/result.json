@@ -1,0 +1,63 @@
+{
+    "id": "b32aae26-4445-45cb-9c12-910f9bb0b277",
+    "started_at": "2026-04-27T18:08:06.557977",
+    "finished_at": "2026-04-27T18:43:19.160337",
+    "n_total_trials": 19,
+    "stats": {
+        "n_trials": 19,
+        "n_errors": 11,
+        "evals": {
+            "pochi__gemini-3-flash__tasks": {
+                "n_trials": 19,
+                "n_errors": 11,
+                "metrics": [
+                    {
+                        "mean": 0.2631578947368421
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "amika_auth_login__Ri6w3Zp",
+                            "amika_git_workflow__qQiGJNz",
+                            "amika_config_toml__ANnyBis",
+                            "amika_materialize_transform__9WXSAWt",
+                            "amika_clean_room__foAT6z6",
+                            "amika_materialize_ls__FLx5L5o",
+                            "amika_sandbox_ssh__oVHRxEE",
+                            "amika_secret_inject__pMddN6L",
+                            "amika_materialize_logs__FYafZUU",
+                            "amika_sandbox_agent_send__oBVrLDg",
+                            "amika_multiplayer_share__KErrh2W",
+                            "amika_service_expose__4mwUhwu",
+                            "amika_ssh_escaping__XWCesw6",
+                            "amika_ssh_heredoc__CizAnzH"
+                        ],
+                        "1.0": [
+                            "amika_credential_shadow__iSiK4zQ",
+                            "amika_auth_status__kxQVArS",
+                            "amika_mcp_config__RT73EGy",
+                            "amika_secret_push__YUaDkSj",
+                            "amika_volume_cleanup__Kt9fW4P"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "amika_auth_login__Ri6w3Zp",
+                        "amika_git_workflow__qQiGJNz",
+                        "amika_materialize_transform__9WXSAWt",
+                        "amika_clean_room__foAT6z6",
+                        "amika_materialize_ls__FLx5L5o",
+                        "amika_sandbox_ssh__oVHRxEE",
+                        "amika_secret_inject__pMddN6L",
+                        "amika_materialize_logs__FYafZUU",
+                        "amika_sandbox_agent_send__oBVrLDg",
+                        "amika_multiplayer_share__KErrh2W",
+                        "amika_service_expose__4mwUhwu"
+                    ]
+                }
+            }
+        }
+    }
+}

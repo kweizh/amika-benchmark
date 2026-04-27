@@ -1,0 +1,13 @@
+Pushing mock Claude API key to Amika Cloud Vault.
+
+Command executed:
+amika secret claude push --name mock-key --value sk-ant-api03-mock-key-123 --type api_key
+
+Output:
+Created Claude credential "mock-key"
+
+Verification:
+amika secret claude list
+ID                                            NAME           TYPE
+specsec_b32e9f52-2109-4f08-8282-4fe8258299a4  mock-key       api_key
+...

@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777285130.0356739,
+            "stop": 1777285130.0589867
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_output_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006132419221103191,
+                "start": 1777285130.0430014,
+                "stop": 1777285130.0568275,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_output_file_exists():\n        \"\"\"Priority 3 fallback: basic file existence check.\"\"\"\n>       assert os.path.isfile(OUTPUT_FILE), f\"Output file not found at {OUTPUT_FILE}\"\nE       AssertionError: Output file not found at /home/user/project/results/output.json\nE       assert False\nE        +  where False = <function isfile at 0x7ba03673c220>('/home/user/project/results/output.json')\nE        +    where <function isfile at 0x7ba03673c220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:10: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_output_file_contents",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00047189113683998585,
+                "start": 1777285130.0570333,
+                "stop": 1777285130.0588312,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_output_file_contents():\n        \"\"\"Priority 3 fallback: file content check.\"\"\"\n>       with open(OUTPUT_FILE, \"r\") as f:\n             ^^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/project/results/output.json'\n\ntests/test_final_state.py:14: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

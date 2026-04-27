@@ -1,0 +1,44 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 17ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py .F                                             [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_config_contents _____________________________
+
+    def test_config_contents():
+        """Priority 3 fallback: check config.toml contents."""
+        with open(CONFIG_FILE, "rb") as f:
+            try:
+                config = tomllib.load(f)
+            except tomllib.TOMLDecodeError as e:
+                pytest.fail(f"Failed to parse TOML file: {e}")
+    
+        # Verify lifecycle.setup_script
+>       assert "lifecycle" in config, "Missing [lifecycle] section in config.toml"
+E       AssertionError: Missing [lifecycle] section in config.toml
+E       assert 'lifecycle' in {'env': {'NODE_ENV': 'development'}, 'preset': 'coder', 'services': [{'name': 'web', 'port': 3000, 'scheme': 'http'}], 'setup': {'script': 'scripts/setup.sh'}}
+
+tests/test_final_state.py:22: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_config_file_exists
+FAILED tests/test_final_state.py::test_config_contents - AssertionError: Miss...
+========================= 1 failed, 1 passed in 0.03s ==========================

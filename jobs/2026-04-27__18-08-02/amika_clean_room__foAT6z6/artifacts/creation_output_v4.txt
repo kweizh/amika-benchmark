@@ -1,0 +1,2 @@
+Error: no origin remote found in "/home/user/repo"; specify a git HTTP(S) or SSH URL directly with --git <url>
+no origin remote found in "/home/user/repo"; specify a git HTTP(S) or SSH URL directly with --git <url>

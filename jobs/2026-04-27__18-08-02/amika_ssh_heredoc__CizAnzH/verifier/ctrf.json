@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777286584.2737558,
+            "stop": 1777286585.4897478
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_sandbox_exists_and_file_content_correct",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.1865142000606284,
+                "start": 1777286584.2819047,
+                "stop": 1777286585.4861333,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_sandbox_exists_and_file_content_correct():\n        \"\"\"Priority 1: Use Amika CLI to verify the file content inside the sandbox.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"ssh\", SANDBOX_NAME, \"--\", \"cat\", FILE_PATH],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, \\\n            f\"'amika sandbox ssh' failed to read {FILE_PATH}: {result.stderr}\"\nE       AssertionError: 'amika sandbox ssh' failed to read /workspace/test_dir/result.txt: remote ssh: HTTP 404: {\"error\":\"Sandbox not found\"}\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'heredoc-sandbox', '--', 'cat', '/workspace/test_dir/result.txt'], returncode=1, stdout='', stderr='remote ssh: HTTP 404: {\"error\":\"Sandbox not found\"}\\n').returncode\n\ntests/test_final_state.py:15: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_sandbox_status",
+                "status": "passed",
+                "duration": 0.002991860150359571,
+                "start": 1777286585.4863775,
+                "stop": 1777286585.4895594,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

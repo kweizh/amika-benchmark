@@ -1,0 +1,38 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 2,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777284590.4920013,
+            "stop": 1777284590.5135114
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_wrapper_prioritizes_session_file",
+                "status": "passed",
+                "duration": 0.006046010064892471,
+                "start": 1777284590.5010595,
+                "stop": 1777284590.5073836,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_wrapper_uses_api_key_when_no_session",
+                "status": "passed",
+                "duration": 0.005496852099895477,
+                "start": 1777284590.507631,
+                "stop": 1777284590.5133283,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

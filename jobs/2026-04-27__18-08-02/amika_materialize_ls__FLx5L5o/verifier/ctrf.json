@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777285241.0016463,
+            "stop": 1777285241.0260215
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_logs_dir_exists",
+                "status": "passed",
+                "duration": 0.0005011868197470903,
+                "start": 1777285241.0096254,
+                "stop": 1777285241.0103772,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_logs_dir_not_empty",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006078779697418213,
+                "start": 1777285241.0105789,
+                "stop": 1777285241.0258393,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_logs_dir_not_empty():\n        files = os.listdir(LOGS_DIR)\n>       assert len(files) > 0, f\"Logs directory {LOGS_DIR} is empty, expected output files from amika materialize.\"\nE       AssertionError: Logs directory /home/user/logs is empty, expected output files from amika materialize.\nE       assert 0 > 0\nE        +  where 0 = len([])\n\ntests/test_final_state.py:11: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

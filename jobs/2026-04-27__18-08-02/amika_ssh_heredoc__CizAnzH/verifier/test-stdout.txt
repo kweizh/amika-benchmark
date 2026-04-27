@@ -1,0 +1,44 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 38ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py F.                                             [100%]
+
+=================================== FAILURES ===================================
+_________________ test_sandbox_exists_and_file_content_correct _________________
+
+    def test_sandbox_exists_and_file_content_correct():
+        """Priority 1: Use Amika CLI to verify the file content inside the sandbox."""
+        result = subprocess.run(
+            ["amika", "sandbox", "ssh", SANDBOX_NAME, "--", "cat", FILE_PATH],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+>       assert result.returncode == 0, \
+            f"'amika sandbox ssh' failed to read {FILE_PATH}: {result.stderr}"
+E       AssertionError: 'amika sandbox ssh' failed to read /workspace/test_dir/result.txt: remote ssh: HTTP 404: {"error":"Sandbox not found"}
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'heredoc-sandbox', '--', 'cat', '/workspace/test_dir/result.txt'], returncode=1, stdout='', stderr='remote ssh: HTTP 404: {"error":"Sandbox not found"}\n').returncode
+
+tests/test_final_state.py:15: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_sandbox_status
+FAILED tests/test_final_state.py::test_sandbox_exists_and_file_content_correct
+========================= 1 failed, 1 passed in 1.22s ==========================

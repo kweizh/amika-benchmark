@@ -1,0 +1,2 @@
+Error: could not find git repo at "file:///home/user/repo": no git repository root found from "/file:/home/user/repo"
+could not find git repo at "file:///home/user/repo": no git repository root found from "/file:/home/user/repo"

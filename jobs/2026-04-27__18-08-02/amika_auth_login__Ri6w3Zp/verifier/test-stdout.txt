@@ -1,0 +1,45 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 49ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 1 item
+
+tests/test_final_state.py F                                              [100%]
+
+=================================== FAILURES ===================================
+________________________ test_amika_auth_status_via_cli ________________________
+
+    def test_amika_auth_status_via_cli():
+        """Priority 1: Use Amika CLI to verify the authentication state."""
+        result = subprocess.run(
+            ["amika", "auth", "status"],
+            capture_output=True, text=True, cwd="/home/user"
+        )
+        assert result.returncode == 0, \
+            f"'amika auth status' failed: {result.stderr}"
+>       assert "Authenticated via stored API key" in result.stdout or "Authenticated via stored API key" in result.stderr, \
+            f"Expected 'Authenticated via stored API key' in output, got stdout: {result.stdout}, stderr: {result.stderr}"
+E       AssertionError: Expected 'Authenticated via stored API key' in output, got stdout: Not logged in
+E         , stderr: 
+E       assert ('Authenticated via stored API key' in 'Not logged in\n' or 'Authenticated via stored API key' in '')
+E        +  where 'Not logged in\n' = CompletedProcess(args=['amika', 'auth', 'status'], returncode=0, stdout='Not logged in\n', stderr='').stdout
+E        +  and   '' = CompletedProcess(args=['amika', 'auth', 'status'], returncode=0, stdout='Not logged in\n', stderr='').stderr
+
+tests/test_final_state.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_amika_auth_status_via_cli - AssertionE...
+============================== 1 failed in 0.03s ===============================

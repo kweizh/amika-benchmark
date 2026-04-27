@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777286054.63764,
+            "stop": 1777286055.6943114
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_sandbox_running_via_cli",
+                "status": "passed",
+                "duration": 0.9755470139207318,
+                "start": 1777286054.6673062,
+                "stop": 1777286055.6435018,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_service_exposed_via_cli",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.010067253024317324,
+                "start": 1777286055.6444526,
+                "stop": 1777286055.6907556,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_service_exposed_via_cli():\n        \"\"\"Priority 1: Use Amika CLI to verify the exposed service.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"service\", \"list\", \"--sandbox-name\", \"multiplayer-box\"],\n            capture_output=True, text=True\n        )\n        assert result.returncode == 0, f\"'amika service list' failed: {result.stderr}\"\n>       assert \"8080\" in result.stdout, f\"Expected port 8080 to be exposed, got: {result.stdout}\"\nE       AssertionError: Expected port 8080 to be exposed, got: No services found.\nE         \nE       assert '8080' in 'No services found.\\n'\nE        +  where 'No services found.\\n' = CompletedProcess(args=['amika', 'service', 'list', '--sandbox-name', 'multiplayer-box'], returncode=0, stdout='No services found.\\n', stderr='').stdout\n\ntests/test_final_state.py:26: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_share_url_file_exists_and_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.000724637066014111,
+                "start": 1777286055.6910565,
+                "stop": 1777286055.694099,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_share_url_file_exists_and_valid():\n        \"\"\"Priority 3: Verify the output file contains a valid URL.\"\"\"\n>       assert os.path.isfile(SHARE_URL_FILE), f\"share_url.txt not found at {SHARE_URL_FILE}\"\nE       AssertionError: share_url.txt not found at /home/user/frontend-app/share_url.txt\nE       assert False\nE        +  where False = <function isfile at 0x767193998220>('/home/user/frontend-app/share_url.txt')\nE        +    where <function isfile at 0x767193998220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:30: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

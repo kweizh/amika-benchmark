@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777285783.1987367,
+            "stop": 1777285783.2225075
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_log_file_exists",
+                "status": "passed",
+                "duration": 0.00046648201532661915,
+                "start": 1777285783.2073143,
+                "stop": 1777285783.207983,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_secret_injected",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006308960728347301,
+                "start": 1777285783.2081873,
+                "stop": 1777285783.2223334,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_secret_injected():\n        \"\"\"Priority 3: Check the contents of the log file for the mock key.\"\"\"\n        with open(LOG_FILE, \"r\") as f:\n            content = f.read()\n>       assert MOCK_KEY in content, f\"Expected mock key {MOCK_KEY} in {LOG_FILE}.\"\nE       AssertionError: Expected mock key sk-ant-api03-mock-key in /home/user/project/env.txt.\nE       assert 'sk-ant-api03-mock-key' in ''\n\ntests/test_final_state.py:16: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

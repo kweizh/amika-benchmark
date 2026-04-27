@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 0,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777285872.5822368,
+            "stop": 1777285872.6090062
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_log_dir_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006440050201490521,
+                "start": 1777285872.5906126,
+                "stop": 1777285872.604522,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_log_dir_exists():\n        \"\"\"Priority 3 fallback: basic directory existence check.\"\"\"\n>       assert os.path.isdir(LOG_DIR), f\"Log directory {LOG_DIR} does not exist.\"\nE       AssertionError: Log directory /home/user/app/logs does not exist.\nE       assert False\nE        +  where False = <function isdir at 0x714780ef02c0>('/home/user/app/logs')\nE        +    where <function isdir at 0x714780ef02c0> = <module 'posixpath' (frozen)>.isdir\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:9: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_log_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005369251593947411,
+                "start": 1777285872.6047306,
+                "stop": 1777285872.6068895,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_log_file_exists():\n        \"\"\"Priority 3 fallback: basic file existence check.\"\"\"\n>       assert os.path.isfile(LOG_FILE), f\"Log file {LOG_FILE} does not exist.\"\nE       AssertionError: Log file /home/user/app/logs/output.log does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x714780ef0220>('/home/user/app/logs/output.log')\nE        +    where <function isfile at 0x714780ef0220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:13: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_log_file_content",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00043230794835835695,
+                "start": 1777285872.6070688,
+                "stop": 1777285872.6088414,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_log_file_content():\n        \"\"\"Priority 3 fallback: file content check.\"\"\"\n>       with open(LOG_FILE, \"r\") as f:\n             ^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/app/logs/output.log'\n\ntests/test_final_state.py:17: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

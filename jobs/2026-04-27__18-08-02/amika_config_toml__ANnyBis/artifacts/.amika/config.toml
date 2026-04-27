@@ -1,0 +1,12 @@
+preset = "coder"
+
+[setup]
+script = "scripts/setup.sh"
+
+[env]
+NODE_ENV = "development"
+
+[[services]]
+name = "web"
+port = 3000
+scheme = "http"

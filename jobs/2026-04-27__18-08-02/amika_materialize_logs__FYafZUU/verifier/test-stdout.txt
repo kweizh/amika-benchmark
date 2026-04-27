@@ -1,0 +1,61 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 19ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py FFF                                            [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_log_dir_exists ______________________________
+
+    def test_log_dir_exists():
+        """Priority 3 fallback: basic directory existence check."""
+>       assert os.path.isdir(LOG_DIR), f"Log directory {LOG_DIR} does not exist."
+E       AssertionError: Log directory /home/user/app/logs does not exist.
+E       assert False
+E        +  where False = <function isdir at 0x714780ef02c0>('/home/user/app/logs')
+E        +    where <function isdir at 0x714780ef02c0> = <module 'posixpath' (frozen)>.isdir
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:9: AssertionError
+_____________________________ test_log_file_exists _____________________________
+
+    def test_log_file_exists():
+        """Priority 3 fallback: basic file existence check."""
+>       assert os.path.isfile(LOG_FILE), f"Log file {LOG_FILE} does not exist."
+E       AssertionError: Log file /home/user/app/logs/output.log does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x714780ef0220>('/home/user/app/logs/output.log')
+E        +    where <function isfile at 0x714780ef0220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:13: AssertionError
+____________________________ test_log_file_content _____________________________
+
+    def test_log_file_content():
+        """Priority 3 fallback: file content check."""
+>       with open(LOG_FILE, "r") as f:
+             ^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/app/logs/output.log'
+
+tests/test_final_state.py:17: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_log_dir_exists - AssertionError: Log d...
+FAILED tests/test_final_state.py::test_log_file_exists - AssertionError: Log ...
+FAILED tests/test_final_state.py::test_log_file_content - FileNotFoundError: ...
+============================== 3 failed in 0.03s ===============================

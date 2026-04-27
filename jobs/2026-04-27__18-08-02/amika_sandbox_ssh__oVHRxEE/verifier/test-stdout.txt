@@ -1,0 +1,43 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 21ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py .F                                             [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_ssh_command_execution __________________________
+
+    def test_ssh_command_execution():
+        """Priority 1: Use amika CLI to verify the file was created on the remote sandbox."""
+        result = subprocess.run(
+            ["amika", "sandbox", "ssh", "test-box", "--", "cat", "/home/user/hello.txt"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+>       assert result.returncode == 0, f"'amika sandbox ssh' failed: {result.stderr}"
+E       AssertionError: 'amika sandbox ssh' failed: Connection closed by 198.18.8.20 port 22
+E         
+E       assert 255 == 0
+E        +  where 255 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'test-box', '--', 'cat', '/home/user/hello.txt'], returncode=255, stdout='', stderr='Connection closed by 198.18.8.20 port 22\n').returncode
+
+tests/test_final_state.py:18: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_log_file_exists
+FAILED tests/test_final_state.py::test_ssh_command_execution - AssertionError...
+========================= 1 failed, 1 passed in 1.06s ==========================

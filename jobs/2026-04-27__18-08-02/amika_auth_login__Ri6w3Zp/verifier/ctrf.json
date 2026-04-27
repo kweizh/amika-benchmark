@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777285127.644003,
+            "stop": 1777285127.6774452
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_amika_auth_status_via_cli",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00452501408290118,
+                "start": 1777285127.653813,
+                "stop": 1777285127.6769052,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_amika_auth_status_via_cli():\n        \"\"\"Priority 1: Use Amika CLI to verify the authentication state.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"auth\", \"status\"],\n            capture_output=True, text=True, cwd=\"/home/user\"\n        )\n        assert result.returncode == 0, \\\n            f\"'amika auth status' failed: {result.stderr}\"\n>       assert \"Authenticated via stored API key\" in result.stdout or \"Authenticated via stored API key\" in result.stderr, \\\n            f\"Expected 'Authenticated via stored API key' in output, got stdout: {result.stdout}, stderr: {result.stderr}\"\nE       AssertionError: Expected 'Authenticated via stored API key' in output, got stdout: Not logged in\nE         , stderr: \nE       assert ('Authenticated via stored API key' in 'Not logged in\\n' or 'Authenticated via stored API key' in '')\nE        +  where 'Not logged in\\n' = CompletedProcess(args=['amika', 'auth', 'status'], returncode=0, stdout='Not logged in\\n', stderr='').stdout\nE        +  and   '' = CompletedProcess(args=['amika', 'auth', 'status'], returncode=0, stdout='Not logged in\\n', stderr='').stderr\n\ntests/test_final_state.py:12: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

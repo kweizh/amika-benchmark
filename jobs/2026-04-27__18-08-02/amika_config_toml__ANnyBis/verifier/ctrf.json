@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777284590.9460588,
+            "stop": 1777284590.977443
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_config_file_exists",
+                "status": "passed",
+                "duration": 0.0004813360283151269,
+                "start": 1777284590.9617162,
+                "stop": 1777284590.9623992,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_config_contents",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007920709904283285,
+                "start": 1777284590.9625883,
+                "stop": 1777284590.9772499,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_config_contents():\n        \"\"\"Priority 3 fallback: check config.toml contents.\"\"\"\n        with open(CONFIG_FILE, \"rb\") as f:\n            try:\n                config = tomllib.load(f)\n            except tomllib.TOMLDecodeError as e:\n                pytest.fail(f\"Failed to parse TOML file: {e}\")\n    \n        # Verify lifecycle.setup_script\n>       assert \"lifecycle\" in config, \"Missing [lifecycle] section in config.toml\"\nE       AssertionError: Missing [lifecycle] section in config.toml\nE       assert 'lifecycle' in {'env': {'NODE_ENV': 'development'}, 'preset': 'coder', 'services': [{'name': 'web', 'port': 3000, 'scheme': 'http'}], 'setup': {'script': 'scripts/setup.sh'}}\n\ntests/test_final_state.py:22: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
