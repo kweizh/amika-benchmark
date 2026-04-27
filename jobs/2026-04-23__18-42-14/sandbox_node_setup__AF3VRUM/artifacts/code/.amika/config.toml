@@ -1,4 +1,0 @@
-setup_script = "setup.sh"
-
-[services.web]
-port = 3000

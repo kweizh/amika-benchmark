@@ -1,0 +1,5 @@
+{
+  "task_name": "secret_injection",
+  "task_description": "# Amika Secret Injection\n\n## Background\nAmika sandboxes can have secrets injected into their environment from a remote encrypted store. This is useful for providing API keys and tokens securely.\n\n## Requirements\n- Initialize an amika repository in `/home/user/myproject`.\n- Push a secret named `OPENAI_API_KEY` with the value `sk-test-secret-12345` using `amika secret push`.\n- Configure the `.amika/config.toml` to map the `OPENAI_API_KEY` secret to the environment variable `OPENAI_API_KEY`.\n- Create a sandbox named `secret-sandbox` from the git repository using `amika sandbox create`.\n\n## Constraints\n- Project path: `/home/user/myproject`",
+  "truth": "# Verification Plan\n\n## Setup\nNone\n\n## Test Cases\n1. **Secret Exists**: Run `amika secret list`. Expected: Output contains `OPENAI_API_KEY`.\n2. **Sandbox Exists**: Run `amika sandbox list`. Expected: Output contains `secret-sandbox`.\n3. **Config File**: The file `/home/user/myproject/.amika/config.toml` must contain an `[env]` section that maps `OPENAI_API_KEY` to the secret `OPENAI_API_KEY`."
+}
