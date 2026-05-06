@@ -1,2 +1,0 @@
-Error: origin remote "/home/user/repo" is a local path; specify a git HTTP(S) or SSH URL directly with --git <url>
-origin remote "/home/user/repo" is a local path; specify a git HTTP(S) or SSH URL directly with --git <url>
