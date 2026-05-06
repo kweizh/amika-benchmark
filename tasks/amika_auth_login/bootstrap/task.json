@@ -1,0 +1,5 @@
+{
+  "task_name": "amika_auth_login",
+  "task_description": "# Authenticate Amika via API Key File\n\n## Background\nYou have the Amika CLI installed. You need to authenticate Amika using an API key stored in a file.\n\n## Requirements\n- Authenticate the Amika CLI using the API key file located at `/home/user/amika_key.txt`.\n\n## Constraints\n- Project path: /home/user\n- Use the Amika CLI to authenticate via the API key file.\n- Do not use environment variables for authentication.",
+  "truth": "# Verification Plan\n\n## Setup\n1. `cd /home/user`\n\n## Verification Steps\n1. Run `amika auth status` and verify that the output indicates authentication via a stored API key.\n\n## Specific Test Data\n- The API key file is `/home/user/amika_key.txt`.\n\n## Expected Results\n- The command `amika auth status` succeeds (exit code 0).\n- The output of `amika auth status` contains the text \"Authenticated via stored API key\".\n\n## Integrations\n- None"
+}

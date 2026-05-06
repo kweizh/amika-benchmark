@@ -1,0 +1,5 @@
+{
+  "task_name": "amika_auth_status",
+  "task_description": "# Verify Amika Auth Status\n\n## Background\nAmika provides a CLI for managing sandboxes. Users must be authenticated to interact with Amika Cloud. A valid API key is already configured in the environment.\n\n## Requirements\n- Run the `amika auth status` command to check the current authentication status.\n- Save the exact output of the command to `/home/user/output.log`.\n\n## Constraints\n- Log file: `/home/user/output.log`\n- Project path: `/home/user`",
+  "truth": "# Verification Plan\n\n## Setup\n1. `cd /home/user`\n\n## Verification Steps\n1. Verify that `/home/user/output.log` exists.\n2. Read `/home/user/output.log` and verify it contains the output of `amika auth status`.\n\n## Expected Results\n- The file `/home/user/output.log` exists.\n- The file `/home/user/output.log` contains the expected output format of `amika auth status`."
+}

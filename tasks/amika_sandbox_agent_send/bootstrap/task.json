@@ -1,0 +1,5 @@
+{
+  "task_name": "amika_sandbox_agent_send",
+  "task_description": "# Amika Sandbox Agent Send\n\n## Background\nYou have the Amika CLI installed and are authenticated. Amika allows you to send instructions directly to an agent CLI inside a persistent sandbox.\n\n## Requirements\n- Create a remote sandbox named `agent-box` from the current directory.\n- Send a prompt to the agent inside `agent-box` to create a file named `hello.txt` with the content `Hello, Amika!` in the current directory.\n\n## Constraints\n- Project path: /home/user/project\n- Use Amika CLI for all operations.",
+  "truth": "# Verification Plan\n\n## Setup\n1. `cd /home/user/project`\n\n## Verification Steps\n1. Run `amika sandbox ssh agent-box -- cat hello.txt` and verify the output contains `Hello, Amika!`.\n2. Run `amika sandbox list` and verify `agent-box` exists.\n\n## Specific Test Data\n- Sandbox name: `agent-box`\n- File to create: `hello.txt`\n- Expected content: `Hello, Amika!`\n\n## Expected Results\n- The sandbox `agent-box` exists.\n- The file `hello.txt` inside `agent-box` contains `Hello, Amika!`.\n\n## Integrations\n- Amika"
+}

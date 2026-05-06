@@ -1,0 +1,5 @@
+{
+  "task_name": "amika_sandbox_create",
+  "task_description": "# Create a Remote Sandbox with Amika\n\n## Background\nYou have the Amika CLI installed in your environment and are already authenticated. You need to create a new remote sandbox from the current git repository.\n\n## Requirements\n- Create a new remote sandbox using the Amika CLI.\n- The sandbox name must be `harbor-sandbox-test`.\n- The sandbox must be created from the current git repository and be a remote sandbox.\n\n## Constraints\n- Project path: /home/user/workspace\n- Use Amika CLI for sandbox creation.",
+  "truth": "# Verification Plan\n\n## Setup\n1. `cd /home/user/workspace`\n\n## Verification Steps\n1. Run `amika sandbox list --json` or `amika sandbox list` and verify that the sandbox named `harbor-sandbox-test` appears in the output.\n\n## Specific Test Data\n- Sandbox name: `harbor-sandbox-test`\n\n## Expected Results\n- The sandbox `harbor-sandbox-test` exists."
+}

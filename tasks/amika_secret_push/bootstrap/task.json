@@ -1,0 +1,5 @@
+{
+  "task_name": "amika_secret_push",
+  "task_description": "# Push an API key to Amika Cloud Vault\n\n## Background\nYou have the `amika` CLI installed and authenticated. You need to store a Claude API key securely in the Amika cloud vault so it can be injected into remote sandboxes.\n\n## Requirements\n- Push a mock Claude API key `sk-ant-api03-mock-key-123` to the Amika secret store as type `api_key`.\n- The secret must be named `mock-key`.\n\n## Constraints\n- Project path: /home/user/amika-project\n- Use the `amika` CLI to push the secret.\n\n## Integrations\n- None",
+  "truth": "# Verification Plan\n\n## Setup\n1. `cd /home/user/amika-project`\n\n## Verification Steps\n1. Run `amika secret claude list` and verify the secret `mock-key` exists and has type `api_key`.\n\n## Specific Test Data\n- Secret name: `mock-key`\n- Secret type: `api_key`\n\n## Expected Results\n- The command `amika secret claude list` should succeed and its output should contain `mock-key` and `api_key`.\n\n## Integrations\n- None"
+}

@@ -1,0 +1,5 @@
+{
+  "task_name": "amika_materialize_ls",
+  "task_description": "# Materialize ls Output\n\n## Background\nAmika provides ephemeral containers for batch tasks via the `materialize` command. You can run a command in an isolated environment and copy the output back to the host.\n\n## Requirements\n- Execute the `ls -R` command in an ephemeral container using `amika materialize`.\n- Copy the output directory from the container to the host at `/home/user/logs`.\n\n## Constraints\n- Project path: /home/user/myproject\n- Log directory: /home/user/logs",
+  "truth": "# Verification Plan\n\n## Setup\n1. `cd /home/user/myproject`\n\n## Verification Steps\n1. Verify that the directory `/home/user/logs` exists on the host.\n2. Verify that `/home/user/logs` contains output files from the `ls -R` command executed in the container.\n\n## Expected Results\n- The directory `/home/user/logs` exists.\n- The directory is not empty, indicating that the output was successfully copied back to the host.\n\n## Integrations\n- Amika"
+}
