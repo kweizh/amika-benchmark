@@ -1,0 +1,40 @@
+NAME                    STATE     LOCATION  PROVIDER  IMAGE  BRANCH            PORTS  CREATED
+git-sandbox             started   remote    daytona          main              -      2026-05-06T10:38:54.879Z
+test-daytona            started   remote    daytona                            -      2026-05-06T10:38:48.018Z
+transform-box           started   remote    daytona                            -      2026-05-06T10:38:06.073Z
+my-benchmark-box        started   remote    daytona          benchmark-branch  -      2026-05-06T10:38:03.480Z
+mount-test              started   remote    daytona                            -      2026-05-06T10:38:00.913Z
+test-docker-remote      started   remote    daytona                            -      2026-05-06T10:31:25.695Z
+temp-box                started   remote    daytona                            -      2026-05-06T10:30:47.184Z
+my-transform-sandbox    started   remote    daytona                            -      2026-05-06T10:27:00.363Z
+heredoc-sandbox-8       archived  remote    daytona          main              -      2026-04-27T11:18:38.146Z
+service-sandbox         archived  remote    daytona                            -      2026-04-27T11:15:57.614Z
+heredoc-sandbox-7       archived  remote    daytona          main              -      2026-04-27T11:15:36.299Z
+heredoc-sandbox-6       archived  remote    daytona          main              -      2026-04-27T11:14:00.119Z
+test-sandbox            archived  remote    daytona                            -      2026-04-27T11:13:42.041Z
+heredoc-sandbox-3       archived  remote    daytona          main              -      2026-04-27T11:13:17.654Z
+heredoc-sandbox         archived  remote    daytona                            -      2026-04-27T11:10:25.557Z
+multiplayer-box         archived  remote    daytona                            -      2026-04-27T11:07:37.044Z
+agent-box               archived  remote    daytona                            -      2026-04-27T11:05:45.169Z
+secret-sandbox          archived  remote    daytona                            -      2026-04-27T11:04:43.827Z
+test-ssh-box            archived  remote    daytona                            -      2026-04-27T11:00:56.410Z
+my-benchmark-box-mount  archived  remote    daytona          benchmark-branch  -      2026-04-27T10:48:55.967Z
+test-box-alpine         archived  remote    daytona                            -      2026-04-27T10:29:14.935Z
+secret-sandbox-dind     archived  remote    daytona                            -      2026-04-27T10:28:52.827Z
+secret-sandbox-coder    archived  remote    daytona                            -      2026-04-27T10:28:01.386Z
+test-box-ssh            archived  remote    daytona                            -      2026-04-27T10:27:27.598Z
+test-box-2              archived  remote    daytona                            -      2026-04-27T10:23:30.246Z
+test-docker             archived  remote    daytona                            -      2026-04-27T10:14:43.870Z
+test-git                archived  remote    daytona          main              -      2026-04-27T10:11:55.379Z
+dev-sandbox             archived  remote    daytona                            -      2026-04-26T17:51:31.657Z
+test-sandbox-new        archived  remote    daytona                            -      2026-04-26T17:48:03.744Z
+test-sandbox-4          archived  remote    daytona                            -      2026-04-26T17:47:17.919Z
+test-sandbox-3          archived  remote    daytona                            -      2026-04-26T17:46:31.163Z
+test-rwcopy             archived  remote    daytona                            -      2026-04-26T17:22:47.316Z
+test-ssh                archived  remote    daytona                            -      2026-04-26T17:19:04.979Z
+s1                      archived  remote    daytona                            -      2026-04-26T02:09:25.664Z
+dev-sandbox-2           archived  remote    daytona                            -      2026-04-26T02:07:53.212Z
+test-sandbox6           archived  remote    daytona                            -      2026-04-23T10:52:23.393Z
+test-sandbox-5          archived  remote    daytona                            -      2026-04-23T10:51:27.197Z
+test-sandbox3           archived  remote    daytona                            -      2026-04-23T10:50:05.849Z
+teal-panda              archived  remote    daytona          amika/teal-panda  -      2026-04-21T13:32:15.004Z

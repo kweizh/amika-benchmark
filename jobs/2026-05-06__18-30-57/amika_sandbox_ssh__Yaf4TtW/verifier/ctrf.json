@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778064646.15629,
+            "stop": 1778064647.3407123
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_log_file_exists",
+                "status": "passed",
+                "duration": 0.0004969390574842691,
+                "start": 1778064646.1654804,
+                "stop": 1778064646.1661773,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_ssh_command_execution",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.157403816934675,
+                "start": 1778064646.1663806,
+                "stop": 1778064647.3405373,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_ssh_command_execution():\n        \"\"\"Priority 1: Use amika CLI to verify the file was created on the remote sandbox.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"ssh\", \"test-box\", \"--\", \"cat\", \"/home/user/hello.txt\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"'amika sandbox ssh' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox ssh' failed: remote ssh: HTTP 400: {\"error\":\"SSH access is only supported for Daytona sandboxes\"}\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'test-box', '--', 'cat', '/home/user/hello.txt'], returncode=1, stdout='', stderr='remote ssh: HTTP 400: {\"error\":\"SSH access is only supported for Daytona sandboxes\"}\\n').returncode\n\ntests/test_final_state.py:18: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

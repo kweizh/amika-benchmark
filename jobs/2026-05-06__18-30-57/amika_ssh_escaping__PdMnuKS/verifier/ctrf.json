@@ -1,0 +1,50 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778065218.6408045,
+            "stop": 1778065218.6742709
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_execution",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.007675798377022147,
+                "start": 1778065218.650565,
+                "stop": 1778065218.6725566,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_execution():\n        \"\"\"Priority 1: Run the script and verify it succeeds.\"\"\"\n        result = subprocess.run([\"bash\", \"run_agent.sh\"], cwd=PROJECT_DIR, capture_output=True, text=True)\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\"\nE       AssertionError: Script execution failed: Error: no origin remote found in \"/home/user/workspace\"; specify a git HTTP(S) or SSH URL directly with --git <url>\nE         no origin remote found in \"/home/user/workspace\"; specify a git HTTP(S) or SSH URL directly with --git <url>\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['bash', 'run_agent.sh'], returncode=1, stdout='', stderr='Error: no origin remote found in \"/ho...<url>\\nno origin remote found in \"/home/user/workspace\"; specify a git HTTP(S) or SSH URL directly with --git <url>\\n').returncode\n\ntests/test_final_state.py:12: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_log_file_contains_correct_cwd",
+                "status": "passed",
+                "duration": 0.0004872728604823351,
+                "start": 1778065218.6727755,
+                "stop": 1778065218.6734025,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_content_fixed",
+                "status": "passed",
+                "duration": 0.00038788700476288795,
+                "start": 1778065218.6735694,
+                "stop": 1778065218.674075,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

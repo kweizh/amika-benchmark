@@ -1,0 +1,3 @@
+amika version v0.5.2
+commit: e7ce25e5910bbc9b7f8a2373ffece96e89455fb8
+date: 2026-04-15T22:17:30Z

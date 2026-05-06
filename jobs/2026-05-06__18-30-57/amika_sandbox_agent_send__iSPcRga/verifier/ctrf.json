@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778064851.0849042,
+            "stop": 1778064856.7859032
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_sandbox_exists_via_cli",
+                "status": "passed",
+                "duration": 1.6248283919412643,
+                "start": 1778064851.0954475,
+                "stop": 1778064852.7206428,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_file_created_in_sandbox_via_cli",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 4.046898355940357,
+                "start": 1778064852.7209795,
+                "stop": 1778064856.7857254,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_file_created_in_sandbox_via_cli():\n        \"\"\"Priority 1: Use Amika CLI to run a command in the sandbox and verify output.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"ssh\", \"agent-box\", \"--\", \"cat\", \"hello.txt\"],\n            capture_output=True, text=True\n        )\n>       assert result.returncode == 0, f\"'amika sandbox ssh' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox ssh' failed: Warning: Permanently added 'ssh.app.daytona.io' (ED25519) to the list of known hosts.\nE         \nE       assert 127 == 0\nE        +  where 127 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'agent-box', '--', 'cat', 'hello.txt'], returncode=127, stdout='', stderr=\"Warning: Permanently added 'ssh.app.daytona.io' (ED25519) to the list of known hosts.\\n\").returncode\n\ntests/test_final_state.py:20: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778065519.9861283,
+            "stop": 1778065523.765005
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_sandbox_exists_and_file_content_correct",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 3.7480341109912843,
+                "start": 1778065519.9959524,
+                "stop": 1778065523.760995,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_sandbox_exists_and_file_content_correct():\n        \"\"\"Priority 1: Use Amika CLI to verify the file content inside the sandbox.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"ssh\", SANDBOX_NAME, \"--\", \"cat\", FILE_PATH],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, \\\n            f\"'amika sandbox ssh' failed to read {FILE_PATH}: {result.stderr}\"\nE       AssertionError: 'amika sandbox ssh' failed to read /workspace/test_dir/result.txt: Warning: Permanently added 'ssh.app.daytona.io' (ED25519) to the list of known hosts.\nE         \nE       assert 127 == 0\nE        +  where 127 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'heredoc-sandbox', '--', 'cat', '/workspace/test_dir/result.txt'], r...ncode=127, stdout='', stderr=\"Warning: Permanently added 'ssh.app.daytona.io' (ED25519) to the list of known hosts.\\n\").returncode\n\ntests/test_final_state.py:15: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_sandbox_status",
+                "status": "passed",
+                "duration": 0.003417894011363387,
+                "start": 1778065523.7612238,
+                "stop": 1778065523.7648263,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778065312.5616622,
+            "stop": 1778065313.811904
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_config_file_exists",
+                "status": "passed",
+                "duration": 0.0005326541140675545,
+                "start": 1778065312.5928617,
+                "stop": 1778065312.593604,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_sandbox_service_accessible_via_ssh",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.1688010359648615,
+                "start": 1778065312.5938015,
+                "stop": 1778065313.8080847,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_sandbox_service_accessible_via_ssh():\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"ssh\", \"service-sandbox\", \"--\", \"curl\", \"-s\", \"localhost:8080\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"'amika sandbox ssh' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox ssh' failed: ssh not found: exec: \"ssh\": executable file not found in $PATH\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'service-sandbox', '--', 'curl', '-s', 'localhost:8080'], returncode=1, stdout='', stderr='ssh not found: exec: \"ssh\": executable file not found in $PATH\\n').returncode\n\ntests/test_final_state.py:22: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_output_log_exists_and_contains_url",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007464219816029072,
+                "start": 1778065313.8083892,
+                "stop": 1778065313.8116853,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_output_log_exists_and_contains_url():\n>       assert os.path.isfile(LOG_FILE), f\"Log file {LOG_FILE} does not exist.\"\nE       AssertionError: Log file /home/user/project/output.log does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x73d0792d4220>('/home/user/project/output.log')\nE        +    where <function isfile at 0x73d0792d4220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:26: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
