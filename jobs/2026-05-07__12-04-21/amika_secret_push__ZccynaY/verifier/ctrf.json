@@ -1,0 +1,29 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778127441.7484226,
+            "stop": 1778127462.0433974
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_secret_pushed_via_cli",
+                "status": "passed",
+                "duration": 20.285894189029932,
+                "start": 1778127441.756156,
+                "stop": 1778127462.042661,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

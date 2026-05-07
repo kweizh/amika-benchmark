@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778127861.2551558,
+            "stop": 1778127862.1975882
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_log_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006559812463819981,
+                "start": 1778127861.2638783,
+                "stop": 1778127861.2797859,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_log_file_exists():\n        \"\"\"Priority 3: Check if the log file was created.\"\"\"\n>       assert os.path.isfile(LOG_FILE), f\"Log file not found at {LOG_FILE}\"\nE       AssertionError: Log file not found at /home/user/project/output.log\nE       assert False\nE        +  where False = <function isfile at 0x760ea0ac8220>('/home/user/project/output.log')\nE        +    where <function isfile at 0x760ea0ac8220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:10: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_ssh_command_execution",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.9127668091095984,
+                "start": 1778127861.2800164,
+                "stop": 1778127862.1974146,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_ssh_command_execution():\n        \"\"\"Priority 1: Use amika CLI to verify the file was created on the remote sandbox.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"ssh\", \"test-box\", \"--\", \"cat\", \"/home/user/hello.txt\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"'amika sandbox ssh' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox ssh' failed: remote ssh: HTTP 404: {\"error\":\"Sandbox not found\"}\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'test-box', '--', 'cat', '/home/user/hello.txt'], returncode=1, stdout='', stderr='remote ssh: HTTP 404: {\"error\":\"Sandbox not found\"}\\n').returncode\n\ntests/test_final_state.py:18: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

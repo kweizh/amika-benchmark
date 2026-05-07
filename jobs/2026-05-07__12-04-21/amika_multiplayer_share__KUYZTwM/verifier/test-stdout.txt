@@ -1,0 +1,138 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 20ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py .FF                                            [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_service_exposed_via_cli _________________________
+
+    def test_service_exposed_via_cli():
+        """Priority 1: Use Amika CLI to verify the exposed service."""
+        result = subprocess.run(
+            ["amika", "service", "list", "--sandbox-name", "multiplayer-box"],
+            capture_output=True, text=True
+        )
+        assert result.returncode == 0, f"'amika service list' failed: {result.stderr}"
+>       assert "8080" in result.stdout, f"Expected port 8080 to be exposed, got: {result.stdout}"
+E       AssertionError: Expected port 8080 to be exposed, got: No services found.
+E         
+E       assert '8080' in 'No services found.\n'
+E        +  where 'No services found.\n' = CompletedProcess(args=['amika', 'service', 'list', '--sandbox-name', 'multiplayer-box'], returncode=0, stdout='No services found.\n', stderr='').stdout
+
+tests/test_final_state.py:26: AssertionError
+_____________________ test_share_url_file_exists_and_valid _____________________
+
+    def test_share_url_file_exists_and_valid():
+        """Priority 3: Verify the output file contains a valid URL."""
+        assert os.path.isfile(SHARE_URL_FILE), f"share_url.txt not found at {SHARE_URL_FILE}"
+        with open(SHARE_URL_FILE, "r") as f:
+            url = f.read().strip()
+    
+        assert url.startswith("http://") or url.startswith("https://"), f"Invalid URL format in {SHARE_URL_FILE}: {url}"
+    
+        # Verify the URL is accessible and returns the expected content
+        try:
+>           response = urllib.request.urlopen(url)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_final_state.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+usr/lib/python3.12/urllib/request.py:215: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+usr/lib/python3.12/urllib/request.py:553: in error
+    result = self._call_chain(*args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:745: in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+usr/lib/python3.12/urllib/request.py:553: in error
+    result = self._call_chain(*args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:745: in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:521: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:630: in http_response
+    response = self.parent.error(
+usr/lib/python3.12/urllib/request.py:559: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.12/urllib/request.py:492: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x74f215386750>
+req = <urllib.request.Request object at 0x74f2150f39e0>
+fp = <http.client.HTTPResponse object at 0x74f2150f3a30>, code = 400
+msg = 'Bad Request', hdrs = <http.client.HTTPMessage object at 0x74f2150f3f50>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 400: Bad Request
+
+usr/lib/python3.12/urllib/request.py:639: HTTPError
+
+During handling of the above exception, another exception occurred:
+
+    def test_share_url_file_exists_and_valid():
+        """Priority 3: Verify the output file contains a valid URL."""
+        assert os.path.isfile(SHARE_URL_FILE), f"share_url.txt not found at {SHARE_URL_FILE}"
+        with open(SHARE_URL_FILE, "r") as f:
+            url = f.read().strip()
+    
+        assert url.startswith("http://") or url.startswith("https://"), f"Invalid URL format in {SHARE_URL_FILE}: {url}"
+    
+        # Verify the URL is accessible and returns the expected content
+        try:
+            response = urllib.request.urlopen(url)
+            content = response.read().decode("utf-8")
+            assert response.status == 200, f"Expected HTTP 200, got {response.status}"
+            assert "Hello from frontend" in content, f"Expected 'Hello from frontend' in response, got: {content}"
+        except Exception as e:
+>           pytest.fail(f"Failed to access URL {url}: {e}")
+E           Failed: Failed to access URL https://8080-qjnotfjxcaymzywe.daytonaproxy01.net: HTTP Error 400: Bad Request
+
+tests/test_final_state.py:43: Failed
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_sandbox_running_via_cli
+FAILED tests/test_final_state.py::test_service_exposed_via_cli - AssertionErr...
+FAILED tests/test_final_state.py::test_share_url_file_exists_and_valid - Fail...
+========================= 2 failed, 1 passed in 4.03s ==========================

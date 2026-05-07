@@ -1,0 +1,55 @@
+{
+    "id": "1da1a251-58af-4648-b64d-640d787db856",
+    "started_at": "2026-05-07T12:04:24.767920",
+    "finished_at": "2026-05-07T12:48:33.667197",
+    "n_total_trials": 13,
+    "stats": {
+        "n_trials": 13,
+        "n_errors": 8,
+        "evals": {
+            "pochi__claude-4-6-sonnet__tasks": {
+                "n_trials": 12,
+                "n_errors": 8,
+                "metrics": [
+                    {
+                        "mean": 0.23076923076923078
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "amika_auth_login__WpycXpL",
+                            "amika_clean_room__Y4uNogz",
+                            "amika_git_workflow__PKgZ53W",
+                            "amika_materialize_logs__ZWYKvB3",
+                            "amika_multiplayer_share__KUYZTwM",
+                            "amika_sandbox_agent_send__e8fWYod",
+                            "amika_sandbox_ssh__k52St6q",
+                            "amika_service_expose__fVQKnsA",
+                            "amika_ssh_heredoc__PzmCNAf"
+                        ],
+                        "1.0": [
+                            "amika_auth_status__HwgbYwk",
+                            "amika_secret_inject__GhNJr3K",
+                            "amika_secret_push__ZccynaY"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "amika_auth_login__WpycXpL",
+                        "amika_git_workflow__PKgZ53W",
+                        "amika_materialize_logs__ZWYKvB3",
+                        "amika_sandbox_agent_send__e8fWYod",
+                        "amika_sandbox_ssh__k52St6q",
+                        "amika_service_expose__fVQKnsA",
+                        "amika_ssh_heredoc__PzmCNAf"
+                    ],
+                    "VerifierTimeoutError": [
+                        "amika_ssh_escaping__Q7EVYk7"
+                    ]
+                }
+            }
+        }
+    }
+}
