@@ -1,0 +1,54 @@
+{
+    "id": "ed9a2a0a-426b-44ab-b341-4dddf8017a04",
+    "started_at": "2026-05-07T11:06:24.815729",
+    "finished_at": "2026-05-07T11:37:02.673838",
+    "n_total_trials": 13,
+    "stats": {
+        "n_trials": 13,
+        "n_errors": 8,
+        "evals": {
+            "pochi__gemini-3.1-pro__tasks": {
+                "n_trials": 13,
+                "n_errors": 8,
+                "metrics": [
+                    {
+                        "mean": 0.23076923076923078
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "amika_auth_login__tVriAuw",
+                            "amika_clean_room__oZU8CoA",
+                            "amika_git_workflow__g6cwzt5",
+                            "amika_materialize_logs__G9J6hUZ",
+                            "amika_multiplayer_share__RZ6i9cW",
+                            "amika_sandbox_agent_send__LkuQ844",
+                            "amika_sandbox_ssh__wCJAqxQ",
+                            "amika_service_expose__EoSEhdp",
+                            "amika_ssh_escaping__9E4CsDk",
+                            "amika_ssh_heredoc__TgLXqjB"
+                        ],
+                        "1.0": [
+                            "amika_auth_status__M4UbHFy",
+                            "amika_secret_inject__xfMLS6r",
+                            "amika_secret_push__nyEmG9K"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "amika_auth_login__tVriAuw",
+                        "amika_git_workflow__g6cwzt5",
+                        "amika_materialize_logs__G9J6hUZ",
+                        "amika_multiplayer_share__RZ6i9cW",
+                        "amika_sandbox_agent_send__LkuQ844",
+                        "amika_sandbox_ssh__wCJAqxQ",
+                        "amika_service_expose__EoSEhdp",
+                        "amika_ssh_heredoc__TgLXqjB"
+                    ]
+                }
+            }
+        }
+    }
+}

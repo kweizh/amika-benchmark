@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778123760.2952595,
+            "stop": 1778123761.9257128
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_sandbox_exists_and_on_branch",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.5902295031119138,
+                "start": 1778123760.3037767,
+                "stop": 1778123761.925479,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_sandbox_exists_and_on_branch():\n        \"\"\"Priority 1: Use Amika CLI to verify the sandbox state.\"\"\"\n        result = subprocess.run(\n            [\"amika\", \"sandbox\", \"ssh\", \"my-benchmark-box\", \"--\", \"git\", \"branch\", \"--show-current\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"'amika sandbox ssh' failed: {result.stderr}\"\nE       AssertionError: 'amika sandbox ssh' failed: ssh not found: exec: \"ssh\": executable file not found in $PATH\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['amika', 'sandbox', 'ssh', 'my-benchmark-box', '--', 'git', 'branch', '--show-current'], returncode=1, stdout='', stderr='ssh not found: exec: \"ssh\": executable file not found in $PATH\\n').returncode\n\ntests/test_final_state.py:14: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

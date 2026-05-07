@@ -1,0 +1,50 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778124636.1911337,
+            "stop": 1778124638.6284971
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_execution",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 2.40753122093156,
+                "start": 1778124636.2017841,
+                "stop": 1778124638.6267493,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_execution():\n        \"\"\"Priority 1: Run the script and verify it succeeds.\"\"\"\n        result = subprocess.run([\"bash\", \"run_agent.sh\"], cwd=PROJECT_DIR, capture_output=True, text=True)\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\"\nE       AssertionError: Script execution failed: Using Claude credential \"mock-key-3\" (api_key)\nE         Error: remote create sandbox: HTTP 409: {\"type\":\"error\",\"error_code\":\"sandbox_name_conflict\",\"message\":\"A sandbox with that name already exists\"}\nE         remote create sandbox: HTTP 409: {\"type\":\"error\",\"error_code\":\"sandbox_name_conflict\",\"message\":\"A sandbox with that name already exists\"}\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['bash', 'run_agent.sh'], returncode=1, stdout='', stderr='Using Claude credential \"mock-key-3\" ...HTTP 409: {\"type\":\"error\",\"error_code\":\"sandbox_name_conflict\",\"message\":\"A sandbox with that name already exists\"}\\n').returncode\n\ntests/test_final_state.py:12: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_log_file_contains_correct_cwd",
+                "status": "passed",
+                "duration": 0.0004733768291771412,
+                "start": 1778124638.6269648,
+                "stop": 1778124638.6276357,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_content_fixed",
+                "status": "passed",
+                "duration": 0.0004128690343350172,
+                "start": 1778124638.6278088,
+                "stop": 1778124638.6283538,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}
