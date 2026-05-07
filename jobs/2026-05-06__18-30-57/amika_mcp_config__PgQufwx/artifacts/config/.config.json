@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "mock-mcp": {
-      "command": "python3",
-      "args": ["/home/user/project/mock_mcp.py"]
-    }
-  }
-}
